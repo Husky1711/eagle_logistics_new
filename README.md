@@ -39,20 +39,25 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173)
 
-### GitHub Codespaces
+### GitHub Codespaces (client demo)
 
-1. Open [eagle_logistics_new](https://github.com/Husky1711/eagle_logistics_new) on GitHub → **Code** → **Codespaces** → **Create codespace on main**.
-2. Wait for `postCreateCommand` — installs deps, Playwright Chromium, then runs **`npm run verify`** (unit tests, production build, and browser QA on preview).
-3. After the codespace starts, the public dev server auto-starts on port **5173** (`postStartCommand`). To start it manually:
+Use branch **`project-2`** — it has the latest site content (couriers, settings, offers).
+
+1. GitHub → **Code** → **Codespaces** → **Create codespace on `project-2`**
+2. Wait ~2–3 minutes (install + content sync only — no tests on create)
+3. The public site auto-starts on port **5173** (`postStartCommand`)
+4. Check the terminal output for the shareable URL, or open the **Ports** tab
+5. Set port **5173** visibility to **Public**, copy the link, send to your client
+
+No terminal commands needed. The client opens the link and browses the site (Home, Pricing, Tracking, Contact, etc.).
+
+To restart the demo server manually:
 
 ```bash
-npm run dev
-# or: npm run dev:codespaces   # background start (same as auto-start)
+npm run demo:codespaces
 ```
 
-4. When port **5173** is forwarded, open the preview URL and spot-check all routes. To **share** the URL, set port **5173** visibility to **Public** in the **Ports** tab.
-
-Manual full sign-off (local or Codespaces):
+For local development sign-off (not run on Codespace create):
 
 ```bash
 npm run verify

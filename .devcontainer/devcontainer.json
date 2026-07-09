@@ -8,13 +8,13 @@
   },
   "forwardPorts": [5173, 5174, 8000, 4173],
   "portsAttributes": {
-    "5173": { "label": "Public site", "onAutoForward": "notify" },
+    "5173": { "label": "Public site (share this)", "onAutoForward": "notify" },
     "5174": { "label": "Admin app", "onAutoForward": "silent" },
     "8000": { "label": "FastAPI", "onAutoForward": "silent" },
     "4173": { "label": "Vite preview", "onAutoForward": "silent" }
   },
-  "postCreateCommand": "npm install && npm install --workspace=admin && pip install -r backend/requirements.txt && npx playwright install chromium && npm test && npm run test:api",
-  "postStartCommand": "node scripts/codespaces-start.mjs",
+  "postCreateCommand": "npm install && npm run sync:content",
+  "postStartCommand": "node scripts/codespaces-demo.mjs",
   "customizations": {
     "vscode": {
       "extensions": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss", "ms-python.python"]
