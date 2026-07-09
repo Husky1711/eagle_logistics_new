@@ -29,7 +29,7 @@ export default function Contact() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
-            <div className="space-y-4 order-2 lg:order-1">
+            <div className="space-y-4">
               {whatsappUrl && (
                 <Card className="border-primary-200 bg-primary-50 lg:hidden">
                   <Button href={whatsappUrl} className="w-full">
@@ -97,7 +97,7 @@ export default function Contact() {
               )}
             </div>
 
-            <Card className="order-1 lg:order-2">
+            <Card>
               <h3 className="mb-4 font-display text-lg font-semibold">{content.mapTitle || 'Find Us'}</h3>
               {contact.googleMapsEmbed ? (
                 <div className="aspect-video overflow-hidden rounded-lg" dangerouslySetInnerHTML={{ __html: contact.googleMapsEmbed }} />

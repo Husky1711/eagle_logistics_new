@@ -18,7 +18,13 @@ export default function About() {
       <PageMeta meta={page?.meta} />
       <section className="relative overflow-hidden bg-dark py-20 text-white lg:py-28">
         {heroImg && (
-          <img src={heroImg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
+          <img
+            src={heroImg}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover opacity-40"
+            decoding="async"
+            fetchPriority="high"
+          />
         )}
         <div className="absolute inset-0 bg-black/55" />
         <Container className="relative z-10 text-center">

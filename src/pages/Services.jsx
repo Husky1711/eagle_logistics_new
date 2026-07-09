@@ -27,7 +27,13 @@ export default function Services() {
       <PageMeta meta={page?.meta} />
       <section className="relative overflow-hidden bg-dark py-20 text-white lg:py-28">
         {heroSrc && (
-          <img src={heroSrc} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
+          <img
+            src={heroSrc}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover opacity-40"
+            decoding="async"
+            fetchPriority="high"
+          />
         )}
         <div className="absolute inset-0 bg-black/50" />
         <Container className="relative z-10 text-center">
@@ -64,7 +70,13 @@ export default function Services() {
                 <Card key={service.title} className="overflow-hidden p-0">
                   {img ? (
                     <div className="h-40 overflow-hidden">
-                      <img src={img} alt={service.title} className="h-full w-full object-cover" loading="lazy" />
+                      <img
+                        src={img}
+                        alt={service.title}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </div>
                   ) : (
                     <div className="flex h-32 items-center justify-center bg-primary-50 text-primary-600">

@@ -8,4 +8,15 @@ export default defineConfig({
     port: 5173,
     open: false,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          helmet: ['react-helmet-async'],
+          icons: ['lucide-react'],
+        },
+      },
+    },
+  },
 })

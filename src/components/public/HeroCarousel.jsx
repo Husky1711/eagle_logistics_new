@@ -24,6 +24,8 @@ export default function HeroCarousel({ images = [], reducedMotion = false }) {
           src={current.url}
           alt={current.alt || 'Hero slide'}
           className="absolute inset-0 h-full w-full object-cover"
+          decoding="async"
+          fetchPriority={index === 0 ? 'high' : 'low'}
         />
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-gold-600" />

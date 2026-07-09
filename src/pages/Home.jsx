@@ -9,6 +9,7 @@ import LoadingSpinner from '../components/common/LoadingSpinner'
 import HeroCarousel from '../components/public/HeroCarousel'
 import { DynamicIcon } from '../components/common/DynamicIcon'
 import { heroImageUrl, courierLogoUrl } from '../utils/assets'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 
 function CourierCard({ courier }) {
   const logo = courierLogoUrl(courier.logo)
@@ -27,6 +28,7 @@ function CourierCard({ courier }) {
 }
 
 export default function Home() {
+  const reducedMotion = useReducedMotion()
   const { data: page, loading: pageLoading, error: pageError } = useContent('pages/home.json')
   const { data: couriers, loading: couriersLoading } = useContent('couriers.json')
 
@@ -55,7 +57,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-[560px] lg:min-h-[640px]">
         <div className="absolute inset-0">
-          <HeroCarousel images={slides} />
+          <HeroCarousel images={slides} reducedMotion={reducedMotion} />
         </div>
         <Container className="relative z-10 flex min-h-[560px] items-center py-20 lg:min-h-[640px]">
           <div className="max-w-2xl text-white">

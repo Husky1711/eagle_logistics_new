@@ -13,11 +13,13 @@ export default function Footer() {
       <Container className="section-padding !py-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <img
-              src={assetUrl('/assets/brand/logo.png')}
-              alt={site.name || 'Eagle Logistics'}
-              className="mb-4 h-10 brightness-0 invert"
-            />
+            <div className="mb-4 inline-flex rounded-lg bg-white px-3 py-2 shadow-soft">
+              <img
+                src={assetUrl('/assets/brand/logo.png')}
+                alt={site.name || 'Eagle Logistics'}
+                className="h-10 w-auto object-contain"
+              />
+            </div>
             <p className="max-w-md text-sm leading-relaxed text-neutral-400">
               {footer.description || site.description}
             </p>
