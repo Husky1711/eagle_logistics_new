@@ -54,6 +54,9 @@ export default function AdminLayout({ children }) {
           <NavLink to="/offers" className={navClass}>
             Offers
           </NavLink>
+          <NavLink to="/couriers" className={navClass}>
+            Couriers
+          </NavLink>
           <a
             href="http://localhost:5173"
             target="_blank"

@@ -18,6 +18,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "qa:browser": "node scripts/browser-qa.mjs",
+    "qa:couriers": "node scripts/couriers-browser-qa.mjs",
     "verify": "node scripts/codespaces-verify.mjs",
     "dev:codespaces": "node scripts/codespaces-start.mjs",
     "dev:api": "cd backend && python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000",

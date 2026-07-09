@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 
 from app.config import settings
-from app.routers import auth, offers, publish, settings as settings_router
+from app.routers import auth, couriers, offers, publish, settings as settings_router
 
 app = FastAPI(title=settings.APP_NAME, version=settings.APP_VERSION)
 
@@ -27,6 +27,7 @@ app.include_router(auth.router, prefix="/api")
 app.include_router(settings_router.router, prefix="/api")
 app.include_router(offers.router, prefix="/api")
 app.include_router(publish.router, prefix="/api")
+app.include_router(couriers.router, prefix="/api")
 
 
 @app.get("/health")
