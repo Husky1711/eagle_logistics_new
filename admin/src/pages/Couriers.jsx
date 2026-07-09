@@ -1,7 +1,8 @@
 import { cloneElement, useEffect, useMemo, useState } from 'react'
 import { api } from '../api/client'
+import { PUBLIC_SITE_URL } from '../config/publicSite'
 
-const PUBLIC_SITE = import.meta.env.VITE_PUBLIC_SITE_URL || 'http://localhost:5173'
+const PUBLIC_SITE = PUBLIC_SITE_URL
 
 function Field({ label, hint, children, id }) {
   const hintId = hint ? `${id}-hint` : undefined

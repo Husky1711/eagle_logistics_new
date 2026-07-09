@@ -1,6 +1,48 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { api } from '../api/client'
+
+function formatSavedAt(iso) {
+  if (!iso) return 'Not saved yet'
+  try {
+    return new Date(iso).toLocaleString()
+  } catch {
+    return iso
+  }
+}
 
 export default function Dashboard() {
+  const [meta, setMeta] = useState(null)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    api
+      .getMeta()
+      .then(setMeta)
+      .catch((err) => setError(err.message))
+  }, [])
+
+  const cards = [
+    {
+      to: '/settings',
+      title: 'Site settings',
+      description: 'Contact details, header menu, footer links',
+      savedAt: meta?.settings_saved_at,
+    },
+    {
+      to: '/offers',
+      title: 'Promotional offer',
+      description: 'Offer strip title, dates, code, and CTA',
+      savedAt: meta?.offers_saved_at,
+    },
+    {
+      to: '/couriers',
+      title: 'Courier partners',
+      description: 'Names, logos, tracking URLs, and display order',
+      savedAt: meta?.couriers_saved_at,
+    },
+  ]
+
   return (
     <div className="space-y-6">
       <div>
@@ -8,21 +50,23 @@ export default function Dashboard() {
         <p className="mt-2 text-neutral-600">
           Edit settings, offers, and couriers. Changes sync to the public site automatically.
         </p>
+        {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <Link to="/settings" className="rounded-xl border border-neutral-200 bg-white p-6 shadow-soft hover:border-primary-500">
-          <h2 className="font-semibold">Site settings</h2>
-          <p className="mt-2 text-sm text-neutral-600">Contact details, header menu, footer links</p>
-        </Link>
-        <Link to="/offers" className="rounded-xl border border-neutral-200 bg-white p-6 shadow-soft hover:border-primary-500">
-          <h2 className="font-semibold">Promotional offer</h2>
-          <p className="mt-2 text-sm text-neutral-600">Offer strip title, dates, code, and CTA</p>
-        </Link>
-        <Link to="/couriers" className="rounded-xl border border-neutral-200 bg-white p-6 shadow-soft hover:border-primary-500">
-          <h2 className="font-semibold">Courier partners</h2>
-          <p className="mt-2 text-sm text-neutral-600">Names, logos, tracking URLs, and display order</p>
-        </Link>
+        {cards.map((card) => (
+          <Link
+            key={card.to}
+            to={card.to}
+            className="rounded-xl border border-neutral-200 bg-white p-6 shadow-soft hover:border-primary-500"
+          >
+            <h2 className="font-semibold">{card.title}</h2>
+            <p className="mt-2 text-sm text-neutral-600">{card.description}</p>
+            <p className="mt-3 text-xs text-neutral-500">
+              Last saved: {meta ? formatSavedAt(card.savedAt) : 'Loading…'}
+            </p>
+          </Link>
+        ))}
       </div>
     </div>
   )

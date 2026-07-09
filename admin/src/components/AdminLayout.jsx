@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { PUBLIC_SITE_URL } from '../config/publicSite'
 
 const navClass = ({ isActive }) =>
   `rounded-lg px-3 py-2 text-sm font-medium ${
@@ -58,7 +59,7 @@ export default function AdminLayout({ children }) {
             Couriers
           </NavLink>
           <a
-            href="http://localhost:5173"
+            href={PUBLIC_SITE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg px-3 py-2 text-sm font-medium text-primary-600 hover:bg-orange-50"

@@ -1,3 +1,5 @@
+import json
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -68,5 +70,45 @@ def test_offers_round_trip(client):
     updated = client.put("/api/admin/offers", json=payload)
     assert updated.status_code == 200
     assert updated.json()["title"] == "QA Offer Title"
+    payload["title"] = original_title
+    client.put("/api/admin/offers", json=payload)
+
+
+def test_settings_phone_syncs_public_content(client):
+    """Sprint 1 exit criteria — settings save updates public/content/."""
+    login(client)
+    current = client.get("/api/admin/settings")
+    assert current.status_code == 200
+    payload = current.json()
+    original_phone = payload["contact"]["phone"]
+    marker = "+91 40 9999 0001"
+    payload["contact"]["phone"] = marker
+    updated = client.put("/api/admin/settings", json=payload)
+    assert updated.status_code == 200
+
+    public_path = settings.REPO_ROOT / "public" / "content" / "settings.json"
+    synced = json.loads(public_path.read_text(encoding="utf-8"))
+    assert synced["contact"]["phone"] == marker
+
+    payload["contact"]["phone"] = original_phone
+    client.put("/api/admin/settings", json=payload)
+
+
+def test_offers_title_syncs_public_content(client):
+    """Sprint 1 exit criteria — offers save updates public/content/."""
+    login(client)
+    current = client.get("/api/admin/offers")
+    assert current.status_code == 200
+    payload = current.json()
+    original_title = payload["title"]
+    marker = "Sprint 1 QA Offer"
+    payload["title"] = marker
+    updated = client.put("/api/admin/offers", json=payload)
+    assert updated.status_code == 200
+
+    public_path = settings.REPO_ROOT / "public" / "content" / "offers.json"
+    synced = json.loads(public_path.read_text(encoding="utf-8"))
+    assert synced["title"] == marker
+
     payload["title"] = original_title
     client.put("/api/admin/offers", json=payload)

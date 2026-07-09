@@ -44,5 +44,6 @@ export const api = {
   updateOffers: (data) => request('/admin/offers', { method: 'PUT', body: JSON.stringify(data) }),
   getCouriers: () => request('/admin/couriers'),
   updateCouriers: (data) => request('/admin/couriers', { method: 'PUT', body: JSON.stringify(data) }),
+  getMeta: () => request('/admin/meta'),
   syncContent: () => request('/admin/publish/sync', { method: 'POST' }),
 }

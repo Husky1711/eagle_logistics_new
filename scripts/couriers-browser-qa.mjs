@@ -29,6 +29,7 @@ async function login(page, adminUrl) {
     await page.goto(`${adminUrl}/`, { waitUntil: 'networkidle' })
     if (await page.getByRole('heading', { name: 'Dashboard' }).count()) return
   }
+  await page.locator('#username').fill('admin')
   await page.locator('#password').fill(PASSWORD)
   await page.getByRole('button', { name: /Sign in/i }).click()
   await page.waitForURL((url) => !url.pathname.includes('/login'), { timeout: 10000 })

@@ -1,6 +1,7 @@
 import json
 import shutil
 import subprocess
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -40,7 +41,21 @@ class ContentStore:
             json.dump(data, handle, indent=2, ensure_ascii=False)
             handle.write("\n")
 
-        temp_path.replace(path)
+        for attempt in range(3):
+            try:
+                temp_path.replace(path)
+                break
+            except PermissionError:
+                if attempt == 2:
+                    raise
+                time.sleep(0.15 * (attempt + 1))
+
+    def last_modified_at(self, filename: str) -> str | None:
+        path = self._resolve(filename)
+        if not path.exists():
+            return None
+        mtime = path.stat().st_mtime
+        return datetime.fromtimestamp(mtime, tz=timezone.utc).isoformat()
 
     def sync_public_content(self) -> None:
         script = self.repo_root / "scripts" / "sync-content.js"

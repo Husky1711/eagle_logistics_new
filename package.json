@@ -19,6 +19,7 @@
     "test:watch": "vitest",
     "qa:browser": "node scripts/browser-qa.mjs",
     "qa:couriers": "node scripts/couriers-browser-qa.mjs",
+    "qa:sprint-1-2a": "node scripts/admin-e2e-qa.mjs",
     "verify": "node scripts/codespaces-verify.mjs",
     "demo:codespaces": "node scripts/codespaces-demo.mjs",
     "dev:codespaces": "node scripts/codespaces-demo.mjs",

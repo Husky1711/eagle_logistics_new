@@ -1,6 +1,6 @@
 # Project 2 — Eagle Logistics Admin CMS
 
-**Status:** Planning  
+**Status:** In progress (~50% overall)  
 **Branch:** `project-2` (all P2 work happens here; `main` stays frozen at `v1.0.0-p1`)  
 **Depends on:** [PROJECT1.md](PROJECT1.md) — static public site complete  
 **Repository:** [eagle_logistics_new](https://github.com/Husky1711/eagle_logistics_new)
@@ -248,7 +248,7 @@ Base URL: `http://localhost:8000/api`
 
 ## 8. Sprint plan
 
-### Sprint 1 — Settings + Offers (MVP admin) ✅ scaffolded
+### Sprint 1 — Settings + Offers (MVP admin) ✅ complete
 
 **Goal:** Edit contact info and promotional offer without touching IDE.
 
@@ -262,19 +262,23 @@ Base URL: `http://localhost:8000/api`
 | Login + settings + offers forms | ✅ |
 | pytest for auth/settings/offers | ✅ |
 | `npm run dev:all` | ✅ |
-| Manual test | Pending QA |
+| Dashboard last-saved timestamps | ✅ |
+| Sprint 1 exit QA (`npm run qa:sprint-1-2a` or pytest sync tests) | ✅ |
 
-**Exit criteria:** Admin can log in, edit offer dates/title, edit phone number, save, and see changes on public site at `:5173`.
+**Exit criteria:** Admin can log in, edit offer dates/title, edit phone number, save, and see changes on public site at `:5173`. **Met.**
 
 ---
 
-### Sprint 2a — Couriers
+### Sprint 2a — Couriers ✅ complete
 
-| Task | Done when |
-|------|-----------|
-| CRUD API for couriers | Valid JSON written |
-| Admin UI table/forms | Add/edit/delete couriers |
-| pytest coverage | Courier endpoints |
+| Task | Status |
+|------|--------|
+| CRUD API for couriers | ✅ |
+| Admin UI forms (add/edit/delete/reorder) | ✅ |
+| pytest coverage | ✅ |
+| Stable courier ids (locked after save, 409 on rename) | ✅ |
+| a11y + E2E content restore | ✅ |
+| Browser QA (`npm run qa:couriers`) | ✅ |
 
 ### Sprint 2b — Pricing rules
 
@@ -411,11 +415,10 @@ Ports: public **5173**, admin **5174**, API **8000**.
 
 ## 15. Next action
 
-**Sprint 1 scaffold is on `project-2`.** Remaining:
+**Sprint 1 scaffold is on `project-2`.** Sprints **1** and **2a** are complete. Remaining:
 
-1. Manual QA: login → edit offer → verify on `:5173`
-2. Sprint 2a: couriers CRUD
-3. CI workflow on PRs to `project-2`
+1. Sprint 2b: pricing rules CRUD + CI workflow
+2. Sprint 3: pages, media, map sanitizer, merge to `main`
 
 ---
 
