@@ -43,13 +43,14 @@ Open [http://localhost:5173](http://localhost:5173)
 
 1. Open [eagle_logistics_new](https://github.com/Husky1711/eagle_logistics_new) on GitHub → **Code** → **Codespaces** → **Create codespace on main**.
 2. Wait for `postCreateCommand` — installs deps, Playwright Chromium, then runs **`npm run verify`** (unit tests, production build, and browser QA on preview).
-3. If verify passes, start the dev server for manual review:
+3. After the codespace starts, the public dev server auto-starts on port **5173** (`postStartCommand`). To start it manually:
 
 ```bash
 npm run dev
+# or: npm run dev:codespaces   # background start (same as auto-start)
 ```
 
-4. When port **5173** is forwarded, open the preview URL and spot-check all routes.
+4. When port **5173** is forwarded, open the preview URL and spot-check all routes. To **share** the URL, set port **5173** visibility to **Public** in the **Ports** tab.
 
 Manual full sign-off (local or Codespaces):
 
