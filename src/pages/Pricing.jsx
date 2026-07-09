@@ -8,6 +8,7 @@ import Button from '../components/common/Button'
 import Input from '../components/common/Input'
 import PageContentGate from '../components/common/PageContentGate'
 import { isOfferActive } from '../utils/dates'
+import { parsePositiveNumber } from '../utils/numbers'
 import { calculatePricing } from '../utils/pricingCalculator'
 import { buildWhatsAppUrl, buildPricingWhatsAppMessage } from '../utils/whatsapp'
 
@@ -29,15 +30,31 @@ export default function Pricing() {
   const [formError, setFormError] = useState('')
 
   const content = page?.content || {}
-  const offerCode = isOfferActive(offers) ? offers.code : undefined
+  const offerActive = isOfferActive(offers)
+  const offerCode = offerActive ? offers?.code : undefined
 
   const handleCalculate = (e) => {
     e.preventDefault()
     setFormError('')
     setResults(null)
-    const w = parseFloat(weight)
-    const d = parseFloat(distance)
-    const outcome = calculatePricing({ weight: w, distance: d, rules, couriers })
+
+    const weightResult = parsePositiveNumber(weight, 'weight (kg)')
+    if (weightResult.error) {
+      setFormError(weightResult.error)
+      return
+    }
+    const distanceResult = parsePositiveNumber(distance, 'distance (km)')
+    if (distanceResult.error) {
+      setFormError(distanceResult.error)
+      return
+    }
+
+    const outcome = calculatePricing({
+      weight: weightResult.value,
+      distance: distanceResult.value,
+      rules,
+      couriers,
+    })
     if (outcome.error) {
       setFormError(outcome.error)
       return
@@ -128,7 +145,7 @@ export default function Pricing() {
                       </div>
                     </Card>
                   ))}
-                  {content.offerReminder && (
+                  {offerActive && content.offerReminder && (
                     <p className="text-sm text-primary-700">{content.offerReminder}</p>
                   )}
                   {whatsappUrl && (

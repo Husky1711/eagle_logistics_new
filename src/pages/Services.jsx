@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useContent, combineContentStates } from '../hooks/useContent'
+import { useContent } from '../hooks/useContent'
 import PageMeta from '../components/common/PageMeta'
 import Container from '../components/common/Container'
 import Card from '../components/common/Card'

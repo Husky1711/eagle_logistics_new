@@ -2,12 +2,15 @@
 
 Static, responsive marketing website for **Eagle Logistics** — a logistics aggregator that compares courier partners for the best shipping rates.
 
-## Project 1 (current)
+## Project 1 (complete)
 
 - 8 public routes: Home, Services, Pricing, Tracking, About, Contact, Privacy, Terms
-- Content-driven via JSON (`/content/` at repo root)
+- Content-driven via JSON (`/content/` at repo root) — see `content/README.md`
 - Pricing calculator powered by `pricing-rules.json` + client-side engine
 - Images from repo assets only (`public/assets/`)
+- **Deploy target:** GitHub Codespaces (`npm run dev`). Run `npm run verify` for sign-off.
+- **GitHub Pages / public SEO:** deferred until pre-launch (basename, sitemap, og:image).
+- **Release tag:** `v1.0.0-p1` — static marketing MVP; Project 2 adds admin CMS.
 
 ## Content workflow
 
