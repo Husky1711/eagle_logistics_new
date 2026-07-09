@@ -2,6 +2,8 @@
 
 Static, responsive marketing website for **Eagle Logistics** — a logistics aggregator that compares courier partners for the best shipping rates.
 
+> **Full Project 1 documentation:** see **[PROJECT1.md](PROJECT1.md)** — requirements, architecture, flows, repo structure, testing, and handoff to Project 2.
+
 ## Project 1 (complete)
 
 - 8 public routes: Home, Services, Pricing, Tracking, About, Contact, Privacy, Terms
