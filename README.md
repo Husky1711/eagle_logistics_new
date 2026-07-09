@@ -71,6 +71,8 @@ Images copied from reference repo branch `render-v1.0.0` ([Husky1711/eagle](http
 
 Admin panel + FastAPI backend to CRUD the same JSON files (content, offers, pricing rules, SEO, media).
 
+**Planning:** see **[PROJECT2.md](PROJECT2.md)** — development happens on branch **`project-2`**; `main` stays frozen at Project 1.
+
 ## Reference
 
 - **New repo:** [eagle_logistics_new](https://github.com/Husky1711/eagle_logistics_new)
