@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "title": "Terms of Service | Eagle Logistics",
+    "description": "Terms of service for Eagle Logistics website and shipping mediation services.",
+    "keywords": ["terms of service", "Eagle Logistics"]
+  },
+  "content": {
+    "title": "Terms of Service",
+    "lastUpdated": "2026-07-09",
+    "sections": [
+      {
+        "title": "Service Description",
+        "body": "Eagle Logistics operates as a logistics mediation center. We compare and coordinate shipments through third-party courier partners. We are not the carrier of record unless explicitly stated."
+      },
+      {
+        "title": "Rates & Quotes",
+        "body": "Rates displayed on our website are estimates from our rate card. Final pricing may vary based on actual weight, dimensions, destination zone, and partner availability. Confirm final quotes before shipping."
+      },
+      {
+        "title": "Promotional Offers",
+        "body": "Promotional codes (e.g. EAGLE15) are subject to terms, validity dates, and eligibility. Offers cannot be combined unless stated otherwise."
+      },
+      {
+        "title": "Tracking",
+        "body": "Tracking links redirect to partner courier websites. Eagle Logistics is not responsible for the accuracy or availability of third-party tracking systems."
+      },
+      {
+        "title": "Limitation of Liability",
+        "body": "To the extent permitted by law, Eagle Logistics is not liable for delays, loss, or damage occurring during partner carrier transit. Claims should be directed per the selected partner's policies."
+      },
+      {
+        "title": "Contact",
+        "body": "Questions about these terms: hello@eaglelogistics.in or our Contact page."
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "title": "About Us | Eagle Logistics",
+    "description": "Eagle Logistics is a trusted logistics mediation center connecting India to the world since 2010.",
+    "keywords": ["about Eagle Logistics", "logistics aggregator", "Hyderabad courier", "international shipping"]
+  },
+  "content": {
+    "hero": {
+      "title": "Connecting India to the World Since 2010",
+      "subtitle": "Your trusted partner for domestic and international courier services — delivering happiness across borders.",
+      "image": "about-hero.jpg"
+    },
+    "story": [
+      {
+        "title": "Who We Are",
+        "body": "Eagle Logistics is a logistics mediation center — not a single fleet operator. We sit at the center of a trusted partner network, comparing couriers so you get the best rate and route for every shipment."
+      },
+      {
+        "title": "Our Mission",
+        "body": "To simplify shipping for individuals and businesses by comparing multiple courier vendors, selecting the best option, and providing one hub for drop-off, pricing, and support."
+      },
+      {
+        "title": "Why Aggregator?",
+        "body": "Shippers shouldn't need five tabs open to compare prices. Eagle does the comparison for you — one drop-off, multiple partners, best price. That's our promise."
+      }
+    ],
+    "stats": [
+      { "value": "15+", "label": "Courier Partners" },
+      { "value": "10K+", "label": "Shipments Mediated" },
+      { "value": "50+", "label": "Cities Covered" },
+      { "value": "24/7", "label": "Tracking Support" }
+    ],
+    "cta": {
+      "title": "Ready to ship smarter?",
+      "subtitle": "Calculate your cost or talk to our team on WhatsApp.",
+      "button": "Get Started",
+      "buttonLink": "/pricing"
+    }
+  }
+}

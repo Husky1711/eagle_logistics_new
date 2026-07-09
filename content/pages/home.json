@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "title": "Eagle Logistics | Courier Comparison & Smart Shipping",
+    "description": "Compare courier partners, calculate shipping costs, and track parcels. One drop-off — Eagle finds the best rate and route across India.",
+    "keywords": ["logistics", "courier comparison", "shipping calculator", "Eagle Logistics", "Hyderabad", "DTDC", "Delhivery"]
+  },
+  "content": {
+    "hero": {
+      "headline": "One Drop-off. Multiple Partners. Best Price.",
+      "subheadline": "We compare trusted courier partners to find you the best shipping rates and fastest delivery — one hub, zero hassle.",
+      "cta": "Calculate Shipping Cost",
+      "ctaLink": "/pricing"
+    },
+    "heroImages": [
+      "slide-1.jpg",
+      "slide-2.jpg",
+      "slide-3.jpg",
+      "slide-4.jpg",
+      "slide-5.jpg"
+    ],
+    "howItWorks": {
+      "enabled": true,
+      "title": "How It Works",
+      "subtitle": "Simple steps to get your parcel delivered at the best price",
+      "steps": [
+        { "id": 1, "title": "Drop Your Parcel", "description": "Bring your parcel to our logistics hub — we handle the rest.", "icon": "Package" },
+        { "id": 2, "title": "We Compare Partners", "description": "We evaluate multiple courier partners and pick the best option for your route and budget.", "icon": "Search" },
+        { "id": 3, "title": "Fast & Safe Delivery", "description": "Your parcel ships with a trusted partner and arrives safely, on time.", "icon": "Truck" }
+      ]
+    },
+    "whyChooseUs": {
+      "enabled": true,
+      "title": "Why Choose Eagle",
+      "subtitle": "Why thousands of shippers trust us for domestic and international parcels",
+      "features": [
+        { "id": 1, "title": "Best Prices", "description": "We compare multiple vendors so you always get competitive rates.", "icon": "IndianRupee" },
+        { "id": 2, "title": "Fast Delivery", "description": "Express and standard options matched to your timeline and budget.", "icon": "Zap" },
+        { "id": 3, "title": "Easy Tracking", "description": "Track across partner networks from one place — no juggling multiple sites.", "icon": "MapPin" }
+      ]
+    },
+    "courierPartners": {
+      "enabled": true,
+      "title": "Our Courier Partners",
+      "subtitle": "We work with trusted courier services for reliable delivery nationwide"
+    },
+    "cta": {
+      "title": "Ready to Ship?",
+      "subtitle": "Calculate your shipping cost now and get the best rates from our partner network.",
+      "button": "Get Started",
+      "buttonLink": "/pricing"
+    }
+  }
+}

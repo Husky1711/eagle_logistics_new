@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Generated content (source of truth is /content/)
+public/content/
+
+# Environment
+.env
+.env.local
+
+# Reference clone (local only)
+reference-repo/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

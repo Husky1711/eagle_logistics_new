@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "Contact Us | Eagle Logistics",
+    "description": "Contact Eagle Logistics in Hyderabad. WhatsApp, phone, email — we're here for your shipping questions.",
+    "keywords": ["contact Eagle Logistics", "Hyderabad logistics", "WhatsApp shipping"]
+  },
+  "content": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch for shipping quotes, tracking help, or partnership inquiries",
+    "whatsappCta": "Chat on WhatsApp",
+    "emailCta": "Send Email",
+    "mapTitle": "Find Us",
+    "mapPlaceholder": "Map will be displayed here once a Google Maps embed is configured."
+  }
+}

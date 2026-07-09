@@ -1,0 +1,56 @@
+[
+  {
+    "id": "dtdc",
+    "name": "DTDC",
+    "logo": "",
+    "tracking_url": "https://www.dtdc.in/tracking.asp?strCnno={id}",
+    "description": "Nationwide express courier with strong domestic coverage.",
+    "active": true,
+    "display_order": 1
+  },
+  {
+    "id": "delhivery",
+    "name": "Delhivery",
+    "logo": "",
+    "tracking_url": "https://www.delhivery.com/track/package/{id}",
+    "description": "Fast-growing logistics partner for e-commerce and retail.",
+    "active": true,
+    "display_order": 2
+  },
+  {
+    "id": "bluedart",
+    "name": "Blue Dart",
+    "logo": "",
+    "tracking_url": "https://www.bluedart.com/web/guest/trackdartresult?trackNo={id}",
+    "description": "Premium express delivery with reliable timelines.",
+    "active": true,
+    "display_order": 3
+  },
+  {
+    "id": "fedex",
+    "name": "FedEx",
+    "logo": "",
+    "tracking_url": "https://www.fedex.com/fedextrack/?trknbr={id}",
+    "description": "International and domestic express shipping.",
+    "active": true,
+    "display_order": 4
+  },
+  {
+    "id": "dhl",
+    "name": "DHL",
+    "logo": "",
+    "tracking_url": "https://www.dhl.com/in-en/home/tracking.html?tracking-id={id}",
+    "description": "Global express logistics for international shipments.",
+    "active": true,
+    "display_order": 5
+  },
+  {
+    "id": "ekart",
+    "name": "Ekart",
+    "logo": "partner-sample.png",
+    "tracking_url": "https://ekartlogistics.com/track/{id}",
+    "description": "Last-mile delivery partner for domestic parcels.",
+    "active": true,
+    "display_order": 6
+  }
+]

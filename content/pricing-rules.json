@@ -1,0 +1,68 @@
+[
+  {
+    "id": "dtdc-standard",
+    "courier": "dtdc",
+    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "distance_zones": [
+      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 45, "price_per_kg": 12, "estimated_delivery": "1–2 days" },
+      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 85, "price_per_kg": 18, "estimated_delivery": "2–4 days" },
+      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 130, "price_per_kg": 24, "estimated_delivery": "4–7 days" }
+    ],
+    "active": true
+  },
+  {
+    "id": "delhivery-standard",
+    "courier": "delhivery",
+    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "distance_zones": [
+      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 42, "price_per_kg": 11, "estimated_delivery": "1–2 days" },
+      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 78, "price_per_kg": 17, "estimated_delivery": "2–4 days" },
+      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 125, "price_per_kg": 22, "estimated_delivery": "4–7 days" }
+    ],
+    "active": true
+  },
+  {
+    "id": "bluedart-standard",
+    "courier": "bluedart",
+    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "distance_zones": [
+      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 55, "price_per_kg": 14, "estimated_delivery": "1–2 days" },
+      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 95, "price_per_kg": 20, "estimated_delivery": "2–3 days" },
+      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 145, "price_per_kg": 26, "estimated_delivery": "3–6 days" }
+    ],
+    "active": true
+  },
+  {
+    "id": "fedex-standard",
+    "courier": "fedex",
+    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "distance_zones": [
+      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 65, "price_per_kg": 16, "estimated_delivery": "1 day" },
+      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 110, "price_per_kg": 22, "estimated_delivery": "2–3 days" },
+      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 165, "price_per_kg": 28, "estimated_delivery": "3–5 days" }
+    ],
+    "active": true
+  },
+  {
+    "id": "dhl-standard",
+    "courier": "dhl",
+    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "distance_zones": [
+      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 70, "price_per_kg": 18, "estimated_delivery": "1 day" },
+      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 120, "price_per_kg": 24, "estimated_delivery": "2–3 days" },
+      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 175, "price_per_kg": 30, "estimated_delivery": "3–5 days" }
+    ],
+    "active": true
+  },
+  {
+    "id": "ekart-standard",
+    "courier": "ekart",
+    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "distance_zones": [
+      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 40, "price_per_kg": 10, "estimated_delivery": "1–2 days" },
+      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 72, "price_per_kg": 16, "estimated_delivery": "2–4 days" },
+      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 118, "price_per_kg": 21, "estimated_delivery": "4–7 days" }
+    ],
+    "active": true
+  }
+]

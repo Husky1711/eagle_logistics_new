@@ -1,0 +1,29 @@
+{
+  "active": true,
+  "title": "Monsoon Express — 15% off domestic shipping",
+  "subtitle": "Book before 31 Aug · Free pickup on orders above 5 kg · Use code EAGLE15",
+  "code": "EAGLE15",
+  "startDate": "2026-06-01",
+  "endDate": "2026-08-31",
+  "cta": {
+    "text": "Calculate Price",
+    "url": "/pricing"
+  },
+  "alternates": [
+    {
+      "title": "Diwali Delight — Flat ₹75 off your first shipment",
+      "subtitle": "Code EAGLEFIRST",
+      "code": "EAGLEFIRST"
+    },
+    {
+      "title": "Study abroad? 20% off document & parcel to UK/US/AU",
+      "subtitle": "Code EAGLESTUDY",
+      "code": "EAGLESTUDY"
+    },
+    {
+      "title": "SME Partner Plan — Volume rates from 10+ shipments/month",
+      "subtitle": "Talk to us on WhatsApp",
+      "code": ""
+    }
+  ]
+}

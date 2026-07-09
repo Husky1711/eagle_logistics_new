@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "title": "Services | Eagle Logistics",
+    "description": "Express, cargo, domestic, international, and specialty shipping. Eagle Logistics compares partners to deliver what you need.",
+    "keywords": ["logistics services", "express shipping", "cargo", "international courier", "Eagle Logistics"]
+  },
+  "content": {
+    "hero": {
+      "headline": "What We Deliver",
+      "subheadline": "From affectionate parcels to families abroad to critical commercial cargo — we handle it all with precision and care.",
+      "image": "services-hero.jpg"
+    },
+    "tabs": [
+      {
+        "id": "express",
+        "label": "Express",
+        "heroImage": "slide-1.jpg",
+        "services": [
+          {
+            "title": "Express Domestic",
+            "highlight": "Express 24–48 Hours",
+            "description": "Priority shipments delivered through our fastest partner routes across India.",
+            "image": "slide-1.jpg",
+            "icon": "Zap"
+          },
+          {
+            "title": "International Express",
+            "highlight": "Global Reach",
+            "description": "Documents and parcels to UK, USA, Australia, and beyond via premium partners.",
+            "image": "slide-2.jpg",
+            "icon": "Globe"
+          }
+        ]
+      },
+      {
+        "id": "specialty",
+        "label": "Specialty",
+        "heroImage": "slide-3.jpg",
+        "services": [
+          {
+            "title": "Healthcare & Pharma",
+            "highlight": "Critical Care & Vaccines",
+            "description": "Specialized handling for medicines including cold chain logistics for vaccines.",
+            "image": "slide-3.jpg",
+            "icon": "HeartPulse"
+          },
+          {
+            "title": "Food & Homemade",
+            "highlight": "Authentic Taste of Home",
+            "description": "Gentle packing for pickles, sweets, spices, and homemade snacks with zero-breakage care.",
+            "image": "slide-4.jpg",
+            "icon": "UtensilsCrossed"
+          },
+          {
+            "title": "Student Documents",
+            "highlight": "University Applications",
+            "description": "Exclusive deliveries for university applications with student-friendly rates abroad.",
+            "image": "slide-5.jpg",
+            "icon": "GraduationCap"
+          }
+        ]
+      },
+      {
+        "id": "cargo",
+        "label": "Cargo & Bulk",
+        "heroImage": "about-hero.jpg",
+        "services": [
+          {
+            "title": "Bulk Cargo",
+            "highlight": "Economical Bulk Shipping",
+            "description": "Cost-effective FCL and LCL solutions to major ports and hubs worldwide.",
+            "image": "about-hero.jpg",
+            "icon": "Container"
+          },
+          {
+            "title": "Domestic Freight",
+            "highlight": "Pan-India Network",
+            "description": "Seamless connectivity across India through our partner network and hub model.",
+            "image": "services-hero.jpg",
+            "icon": "Truck"
+          },
+          {
+            "title": "Warehousing",
+            "highlight": "Storage & Distribution",
+            "description": "Procurement, storage, processing, packaging, and dispatch through partner facilities.",
+            "icon": "Warehouse"
+          }
+        ]
+      }
+    ],
+    "cta": {
+      "title": "Ready to Ship?",
+      "subtitle": "Tell us what you're sending — we'll find the best partner and rate.",
+      "button": "Calculate Price",
+      "buttonLink": "/pricing"
+    }
+  }
+}
