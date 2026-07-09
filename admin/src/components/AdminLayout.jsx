@@ -58,6 +58,9 @@ export default function AdminLayout({ children }) {
           <NavLink to="/couriers" className={navClass}>
             Couriers
           </NavLink>
+          <NavLink to="/pricing-rules" className={navClass}>
+            Pricing rules
+          </NavLink>
           <a
             href={PUBLIC_SITE_URL}
             target="_blank"

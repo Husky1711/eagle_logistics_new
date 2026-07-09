@@ -41,6 +41,12 @@ export default function Dashboard() {
       description: 'Names, logos, tracking URLs, and display order',
       savedAt: meta?.couriers_saved_at,
     },
+    {
+      to: '/pricing-rules',
+      title: 'Pricing rules',
+      description: 'Rate cards for the public shipping calculator',
+      savedAt: meta?.pricing_rules_saved_at,
+    },
   ]
 
   return (
@@ -48,7 +54,7 @@ export default function Dashboard() {
       <div>
         <h1 className="font-display text-2xl font-bold text-dark">Dashboard</h1>
         <p className="mt-2 text-neutral-600">
-          Edit settings, offers, and couriers. Changes sync to the public site automatically.
+          Edit settings, offers, couriers, and pricing rules. Changes sync to the public site automatically.
         </p>
         {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
       </div>

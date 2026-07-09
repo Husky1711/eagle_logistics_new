@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Settings from './pages/Settings'
 import Offers from './pages/Offers'
 import Couriers from './pages/Couriers'
+import PricingRules from './pages/PricingRules'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="settings" element={<Settings />} />
         <Route path="offers" element={<Offers />} />
         <Route path="couriers" element={<Couriers />} />
+        <Route path="pricing-rules" element={<PricingRules />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

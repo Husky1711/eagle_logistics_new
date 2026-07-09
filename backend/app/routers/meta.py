@@ -13,6 +13,7 @@ META_FILES = {
     "settings_saved_at": "settings.json",
     "offers_saved_at": "offers.json",
     "couriers_saved_at": "couriers.json",
+    "pricing_rules_saved_at": "pricing-rules.json",
 }
 
 

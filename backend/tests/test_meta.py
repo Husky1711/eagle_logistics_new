@@ -14,7 +14,12 @@ def test_meta_returns_saved_at_fields(auth_client: TestClient):
     response = auth_client.get("/api/admin/meta")
     assert response.status_code == 200
     body = response.json()
-    assert set(body.keys()) == {"settings_saved_at", "offers_saved_at", "couriers_saved_at"}
+    assert set(body.keys()) == {
+        "settings_saved_at",
+        "offers_saved_at",
+        "couriers_saved_at",
+        "pricing_rules_saved_at",
+    }
     for value in body.values():
         assert value is None or isinstance(value, str)
 
