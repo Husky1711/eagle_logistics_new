@@ -11,6 +11,7 @@ export default function Button({
   variant = 'primary',
   to,
   href,
+  type,
   className = '',
   ...props
 }) {
@@ -33,7 +34,7 @@ export default function Button({
   }
 
   return (
-    <button type="button" className={classes} {...props}>
+    <button type={type ?? 'button'} className={classes} {...props}>
       {children}
     </button>
   )

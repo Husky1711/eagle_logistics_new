@@ -7,6 +7,7 @@ export default function Footer() {
   const { settings } = useSettings()
   const site = settings?.site || {}
   const footer = settings?.footer || {}
+  const logo = assetUrl(settings?.header?.logo || '/assets/brand/logo.png')
 
   return (
     <footer className="bg-dark text-neutral-300">
@@ -15,7 +16,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-4 inline-flex rounded-lg bg-white px-3 py-2 shadow-soft">
               <img
-                src={assetUrl('/assets/brand/logo.png')}
+                src={logo}
                 alt={site.name || 'Eagle Logistics'}
                 className="h-10 w-auto object-contain"
               />

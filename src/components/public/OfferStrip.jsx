@@ -40,7 +40,7 @@ export default function OfferStrip() {
           <button
             type="button"
             onClick={dismiss}
-            className="rounded p-1 hover:bg-white/20 md:hidden"
+            className="rounded p-1 hover:bg-white/20"
             aria-label="Dismiss offer"
           >
             <X size={18} />

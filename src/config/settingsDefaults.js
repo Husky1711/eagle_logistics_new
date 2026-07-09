@@ -1,0 +1,47 @@
+/** Fallback settings when settings.json cannot be loaded */
+export const DEFAULT_SETTINGS = {
+  site: {
+    name: 'Eagle Logistics',
+    tagline: 'Delivering Excellence, Every Mile',
+    description:
+      'One drop-off. Multiple courier partners. Eagle finds you the best rate and fastest route.',
+  },
+  header: {
+    logo: '/assets/brand/logo.png',
+    menuItems: [
+      { path: '/', label: 'Home' },
+      { path: '/services', label: 'Services' },
+      { path: '/pricing', label: 'Pricing' },
+      { path: '/tracking', label: 'Tracking' },
+      { path: '/about', label: 'About' },
+      { path: '/contact', label: 'Contact' },
+    ],
+    ctaButton: {
+      text: 'Calculate Price',
+      url: '/pricing',
+      enabled: true,
+    },
+  },
+  footer: {
+    description:
+      'Smart logistics mediation — we compare trusted courier partners so you get the best shipping rates and reliable delivery.',
+    quickLinks: [
+      { path: '/pricing', label: 'Pricing Calculator' },
+      { path: '/tracking', label: 'Track Parcel' },
+      { path: '/services', label: 'Services' },
+      { path: '/about', label: 'About Us' },
+    ],
+    supportLinks: [
+      { path: '/contact', label: 'Contact Us' },
+      { path: '/privacy', label: 'Privacy Policy' },
+      { path: '/terms', label: 'Terms of Service' },
+    ],
+  },
+  contact: {
+    address: 'Plot 42, Logistics Park, Gachibowli, Hyderabad, Telangana 500032',
+    phone: '+91 40 4521 8900',
+    whatsapp: '+919876543210',
+    email: 'hello@eaglelogistics.in',
+    hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
+  },
+}

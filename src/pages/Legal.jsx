@@ -1,12 +1,19 @@
 import { useContent } from '../hooks/useContent'
 import PageMeta from '../components/common/PageMeta'
 import Container from '../components/common/Container'
-import LoadingSpinner from '../components/common/LoadingSpinner'
+import PageContentGate from '../components/common/PageContentGate'
 
 function LegalPage({ path, fallbackTitle }) {
-  const { data: page, loading } = useContent(path)
-  if (loading) return <LoadingSpinner />
+  const { data: page, loading, error } = useContent(path)
 
+  return (
+    <PageContentGate loading={loading} error={error}>
+      <LegalContent page={page} fallbackTitle={fallbackTitle} />
+    </PageContentGate>
+  )
+}
+
+function LegalContent({ page, fallbackTitle }) {
   const content = page?.content || {}
   return (
     <>

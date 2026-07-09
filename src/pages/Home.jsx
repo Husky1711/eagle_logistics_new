@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
-import { useContent } from '../hooks/useContent'
+import { useContent, combineContentStates } from '../hooks/useContent'
 import PageMeta from '../components/common/PageMeta'
 import Container from '../components/common/Container'
 import Button from '../components/common/Button'
 import Card from '../components/common/Card'
-import LoadingSpinner from '../components/common/LoadingSpinner'
+import PageContentGate from '../components/common/PageContentGate'
 import HeroCarousel from '../components/public/HeroCarousel'
 import { DynamicIcon } from '../components/common/DynamicIcon'
 import { heroImageUrl, courierLogoUrl } from '../utils/assets'
@@ -29,18 +29,20 @@ function CourierCard({ courier }) {
 
 export default function Home() {
   const reducedMotion = useReducedMotion()
-  const { data: page, loading: pageLoading, error: pageError } = useContent('pages/home.json')
-  const { data: couriers, loading: couriersLoading } = useContent('couriers.json')
+  const pageState = useContent('pages/home.json')
+  const couriersState = useContent('couriers.json')
+  const { loading, error } = combineContentStates(pageState, couriersState)
+  const { data: page } = pageState
+  const { data: couriers } = couriersState
 
-  if (pageLoading || couriersLoading) return <LoadingSpinner />
-  if (pageError) {
-    return (
-      <Container className="py-20 text-center text-red-600">
-        Failed to load page content: {pageError}
-      </Container>
-    )
-  }
+  return (
+    <PageContentGate loading={loading} error={error}>
+      <HomeContent page={page} couriers={couriers} reducedMotion={reducedMotion} />
+    </PageContentGate>
+  )
+}
 
+function HomeContent({ page, couriers, reducedMotion }) {
   const content = page?.content || {}
   const hero = content.hero || {}
   const slides = (content.heroImages || []).map((file, i) => ({

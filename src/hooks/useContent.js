@@ -4,22 +4,28 @@ import { contentUrl } from '../utils/assets'
 const cache = new Map()
 
 export function useContent(path) {
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const url = contentUrl(path)
+  const cached = cache.has(url)
+  const [data, setData] = useState(cached ? cache.get(url) : null)
+  const [loading, setLoading] = useState(!cached)
   const [error, setError] = useState(null)
 
   useEffect(() => {
     let cancelled = false
-    const url = contentUrl(path)
 
     async function load() {
+      if (cache.has(url)) {
+        if (!cancelled) {
+          setData(cache.get(url))
+          setLoading(false)
+          setError(null)
+        }
+        return
+      }
+
       setLoading(true)
       setError(null)
       try {
-        if (cache.has(url)) {
-          if (!cancelled) setData(cache.get(url))
-          return
-        }
         const res = await fetch(url)
         if (!res.ok) throw new Error(`Failed to load ${path}`)
         const json = await res.json()
@@ -36,9 +42,16 @@ export function useContent(path) {
     return () => {
       cancelled = true
     }
-  }, [path])
+  }, [path, url])
 
   return { data, loading, error }
+}
+
+export function combineContentStates(...states) {
+  return {
+    loading: states.some((state) => state.loading),
+    error: states.map((state) => state.error).find(Boolean) ?? null,
+  }
 }
 
 export function clearContentCache() {

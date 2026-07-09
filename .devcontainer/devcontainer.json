@@ -2,10 +2,17 @@
   "name": "Eagle Logistics Dev",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "forwardPorts": [5173],
-  "postCreateCommand": "npm install && npm run sync:content",
+  "portsAttributes": {
+    "5173": {
+      "label": "Vite dev server",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "npm install && npm run sync:content && npm test",
   "customizations": {
     "vscode": {
       "extensions": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss"]
     }
-  }
+  },
+  "remoteUser": "node"
 }

@@ -3,6 +3,7 @@ node_modules/
 
 # Build
 dist/
+qa-screenshots/
 
 # Generated content (source of truth is /content/)
 public/content/

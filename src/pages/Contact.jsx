@@ -1,21 +1,28 @@
 import { Mail, MapPin, Phone, MessageCircle, Clock } from 'lucide-react'
-import { useContent } from '../hooks/useContent'
+import { useContent, combineContentStates } from '../hooks/useContent'
 import { useSettings } from '../context/SettingsContext'
 import PageMeta from '../components/common/PageMeta'
 import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
-import LoadingSpinner from '../components/common/LoadingSpinner'
+import PageContentGate from '../components/common/PageContentGate'
 import { buildWhatsAppUrl } from '../utils/whatsapp'
 
 export default function Contact() {
-  const { data: page, loading: pageLoading } = useContent('pages/contact.json')
+  const pageState = useContent('pages/contact.json')
   const { settings, loading: settingsLoading } = useSettings()
+  const { loading: pageLoading, error } = combineContentStates(pageState)
+  const { data: page } = pageState
 
-  if (pageLoading || settingsLoading) return <LoadingSpinner />
+  return (
+    <PageContentGate loading={pageLoading || settingsLoading} error={error}>
+      <ContactContent page={page} contact={settings?.contact || {}} />
+    </PageContentGate>
+  )
+}
 
+function ContactContent({ page, contact }) {
   const content = page?.content || {}
-  const contact = settings?.contact || {}
   const whatsappUrl = buildWhatsAppUrl(contact.whatsapp, 'Hi Eagle Logistics, I have a shipping inquiry.')
 
   return (
@@ -100,6 +107,7 @@ export default function Contact() {
             <Card>
               <h3 className="mb-4 font-display text-lg font-semibold">{content.mapTitle || 'Find Us'}</h3>
               {contact.googleMapsEmbed ? (
+                // Repo-controlled embed HTML from settings.json — sanitize in Project 2 admin
                 <div className="aspect-video overflow-hidden rounded-lg" dangerouslySetInnerHTML={{ __html: contact.googleMapsEmbed }} />
               ) : contact.googleMapsUrl ? (
                 <a

@@ -19,6 +19,7 @@ Static, responsive marketing website for **Eagle Logistics** — a logistics agg
 npm run sync:content   # copies content/ → public/content/
 npm run dev            # sync runs automatically (predev)
 npm run build          # sync runs automatically (prebuild)
+npm test               # unit tests (pricing calculator, offer dates)
 ```
 
 ## Development
@@ -32,7 +33,23 @@ Open [http://localhost:5173](http://localhost:5173)
 
 ### GitHub Codespaces
 
-Open this repo in Codespaces — `postCreateCommand` installs dependencies and syncs content.
+1. Open [eagle_logistics_new](https://github.com/Husky1711/eagle_logistics_new) on GitHub → **Code** → **Codespaces** → **Create codespace on main**.
+2. Wait for `postCreateCommand` to finish (`npm install`, `sync:content`, and `npm test`).
+3. Start the dev server:
+
+```bash
+npm run dev
+```
+
+4. When port **5173** is forwarded, open the preview URL and smoke-test all routes: `/`, `/services`, `/pricing`, `/tracking`, `/about`, `/contact`, `/privacy`, `/terms`.
+
+Production build in Codespaces:
+
+```bash
+npm run build && npm run preview
+```
+
+Preview runs on port **4173** (forward if prompted).
 
 ## Environment
 

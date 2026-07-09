@@ -1,42 +1,71 @@
 import { useState } from 'react'
 import { ExternalLink } from 'lucide-react'
-import { useContent } from '../hooks/useContent'
+import { useContent, combineContentStates } from '../hooks/useContent'
 import { useSettings } from '../context/SettingsContext'
 import PageMeta from '../components/common/PageMeta'
 import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import Input from '../components/common/Input'
-import LoadingSpinner from '../components/common/LoadingSpinner'
+import PageContentGate from '../components/common/PageContentGate'
 import { buildWhatsAppUrl, buildTrackingWhatsAppMessage } from '../utils/whatsapp'
 
 export default function Tracking() {
-  const { data: page, loading: pageLoading } = useContent('pages/tracking.json')
-  const { data: couriers, loading: couriersLoading } = useContent('couriers.json')
+  const pageState = useContent('pages/tracking.json')
+  const couriersState = useContent('couriers.json')
   const { settings } = useSettings()
+  const { loading, error } = combineContentStates(pageState, couriersState)
+  const { data: page } = pageState
+  const { data: couriers } = couriersState
   const [courierId, setCourierId] = useState('')
   const [trackingId, setTrackingId] = useState('')
-  const [error, setError] = useState('')
+  const [formError, setFormError] = useState('')
 
-  if (pageLoading || couriersLoading) return <LoadingSpinner />
+  return (
+    <PageContentGate loading={loading} error={error}>
+      <TrackingContent
+        page={page}
+        couriers={couriers}
+        settings={settings}
+        courierId={courierId}
+        setCourierId={setCourierId}
+        trackingId={trackingId}
+        setTrackingId={setTrackingId}
+        formError={formError}
+        setFormError={setFormError}
+      />
+    </PageContentGate>
+  )
+}
 
+function TrackingContent({
+  page,
+  couriers,
+  settings,
+  courierId,
+  setCourierId,
+  trackingId,
+  setTrackingId,
+  formError,
+  setFormError,
+}) {
   const content = page?.content || {}
   const activeCouriers = (couriers || []).filter((c) => c.active).sort((a, b) => a.display_order - b.display_order)
 
   const handleTrack = (e) => {
     e.preventDefault()
-    setError('')
+    setFormError('')
     const courier = activeCouriers.find((c) => c.id === courierId)
     if (!courier) {
-      setError('Please select a courier')
+      setFormError('Please select a courier')
       return
     }
     if (!trackingId.trim()) {
-      setError('Please enter a tracking number')
+      setFormError('Please enter a tracking number')
       return
     }
     if (!courier.tracking_url?.includes('{id}')) {
-      setError(content.missingTemplateMessage)
+      setFormError(content.missingTemplateMessage)
       return
     }
     const url = courier.tracking_url.replace('{id}', encodeURIComponent(trackingId.trim()))
@@ -85,7 +114,7 @@ export default function Tracking() {
                 placeholder="Enter your tracking number"
                 required
               />
-              {error && <p className="text-sm text-red-600">{error}</p>}
+              {formError && <p className="text-sm text-red-600">{formError}</p>}
               <Button type="submit" className="w-full">
                 {content.trackButton || 'Track Parcel'}
                 <ExternalLink className="ml-2 inline" size={16} />

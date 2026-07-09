@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import { DEFAULT_SETTINGS } from '../config/settingsDefaults'
 import { contentUrl } from '../utils/assets'
 
 const SettingsContext = createContext({ settings: null, loading: true, error: null })
@@ -37,5 +38,10 @@ export function SettingsProvider({ children }) {
 }
 
 export function useSettings() {
-  return useContext(SettingsContext)
+  const { settings, loading, error } = useContext(SettingsContext)
+  return {
+    settings: settings ?? (error ? DEFAULT_SETTINGS : null),
+    loading,
+    error,
+  }
 }

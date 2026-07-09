@@ -1,41 +1,45 @@
 import { useState } from 'react'
-import { useContent } from '../hooks/useContent'
+import { useContent, combineContentStates } from '../hooks/useContent'
 import { useSettings } from '../context/SettingsContext'
 import PageMeta from '../components/common/PageMeta'
 import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import Input from '../components/common/Input'
-import LoadingSpinner from '../components/common/LoadingSpinner'
+import PageContentGate from '../components/common/PageContentGate'
+import { isOfferActive } from '../utils/dates'
 import { calculatePricing } from '../utils/pricingCalculator'
 import { buildWhatsAppUrl, buildPricingWhatsAppMessage } from '../utils/whatsapp'
 
 export default function Pricing() {
-  const { data: page, loading: pageLoading } = useContent('pages/pricing.json')
-  const { data: rules, loading: rulesLoading } = useContent('pricing-rules.json')
-  const { data: couriers, loading: couriersLoading } = useContent('couriers.json')
+  const pageState = useContent('pages/pricing.json')
+  const rulesState = useContent('pricing-rules.json')
+  const couriersState = useContent('couriers.json')
   const { data: offers } = useContent('offers.json')
   const { settings } = useSettings()
+
+  const { loading, error } = combineContentStates(pageState, rulesState, couriersState)
+  const { data: page } = pageState
+  const { data: rules } = rulesState
+  const { data: couriers } = couriersState
 
   const [weight, setWeight] = useState('')
   const [distance, setDistance] = useState('')
   const [results, setResults] = useState(null)
-  const [error, setError] = useState('')
-
-  const loading = pageLoading || rulesLoading || couriersLoading
-  if (loading) return <LoadingSpinner />
+  const [formError, setFormError] = useState('')
 
   const content = page?.content || {}
+  const offerCode = isOfferActive(offers) ? offers.code : undefined
 
   const handleCalculate = (e) => {
     e.preventDefault()
-    setError('')
+    setFormError('')
     setResults(null)
     const w = parseFloat(weight)
     const d = parseFloat(distance)
     const outcome = calculatePricing({ weight: w, distance: d, rules, couriers })
     if (outcome.error) {
-      setError(outcome.error)
+      setFormError(outcome.error)
       return
     }
     setResults(outcome.results)
@@ -46,12 +50,12 @@ export default function Pricing() {
     buildPricingWhatsAppMessage({
       weight,
       distance,
-      code: offers?.code,
+      code: offerCode,
     }),
   )
 
   return (
-    <>
+    <PageContentGate loading={loading} error={error}>
       <PageMeta meta={page?.meta} />
       <section className="section-padding bg-neutral-50">
         <Container>
@@ -84,7 +88,7 @@ export default function Pricing() {
                   placeholder="e.g. 200"
                   required
                 />
-                {error && <p className="text-sm text-red-600">{error}</p>}
+                {formError && <p className="text-sm text-red-600">{formError}</p>}
                 <Button type="submit" className="w-full">
                   {content.calculateButton || 'Calculate Price'}
                 </Button>
@@ -152,6 +156,6 @@ export default function Pricing() {
           </div>
         </Container>
       </section>
-    </>
+    </PageContentGate>
   )
 }

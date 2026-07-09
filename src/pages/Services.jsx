@@ -1,19 +1,25 @@
 import { useState } from 'react'
-import { useContent } from '../hooks/useContent'
+import { useContent, combineContentStates } from '../hooks/useContent'
 import PageMeta from '../components/common/PageMeta'
 import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
-import LoadingSpinner from '../components/common/LoadingSpinner'
+import PageContentGate from '../components/common/PageContentGate'
 import { DynamicIcon } from '../components/common/DynamicIcon'
 import { pageImageUrl, heroImageUrl } from '../utils/assets'
 
 export default function Services() {
-  const { data: page, loading } = useContent('pages/services.json')
+  const { data: page, loading, error } = useContent('pages/services.json')
   const [activeTab, setActiveTab] = useState(0)
 
-  if (loading) return <LoadingSpinner />
+  return (
+    <PageContentGate loading={loading} error={error}>
+      <ServicesContent page={page} activeTab={activeTab} setActiveTab={setActiveTab} />
+    </PageContentGate>
+  )
+}
 
+function ServicesContent({ page, activeTab, setActiveTab }) {
   const content = page?.content || {}
   const tabs = content.tabs || []
   const tab = tabs[activeTab] || tabs[0]
@@ -32,7 +38,7 @@ export default function Services() {
             alt=""
             className="absolute inset-0 h-full w-full object-cover opacity-40"
             decoding="async"
-            fetchPriority="high"
+            fetchpriority="high"
           />
         )}
         <div className="absolute inset-0 bg-black/50" />
@@ -44,11 +50,15 @@ export default function Services() {
 
       <section className="section-padding">
         <Container>
-          <div className="mb-8 flex flex-wrap gap-2 border-b border-neutral-200 pb-4">
+          <div className="mb-8 flex flex-wrap gap-2 border-b border-neutral-200 pb-4" role="tablist" aria-label="Service categories">
             {tabs.map((t, i) => (
               <button
                 key={t.id}
                 type="button"
+                role="tab"
+                id={`tab-${t.id}`}
+                aria-selected={i === activeTab}
+                aria-controls={`tabpanel-${t.id}`}
                 onClick={() => setActiveTab(i)}
                 className={`rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
                   i === activeTab
@@ -61,7 +71,12 @@ export default function Services() {
             ))}
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+            role="tabpanel"
+            id={`tabpanel-${tab?.id}`}
+            aria-labelledby={`tab-${tab?.id}`}
+          >
             {tab?.services?.map((service) => {
               const img = service.image
                 ? heroImageUrl(service.image) || pageImageUrl(service.image)

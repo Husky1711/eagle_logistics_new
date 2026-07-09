@@ -1,5 +1,8 @@
+import { useId } from 'react'
+
 export default function Input({ label, id, error, className = '', ...props }) {
-  const inputId = id || label?.toLowerCase().replace(/\s+/g, '-')
+  const generatedId = useId()
+  const inputId = id || generatedId
   return (
     <div className={className}>
       {label && (

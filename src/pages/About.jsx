@@ -3,13 +3,20 @@ import PageMeta from '../components/common/PageMeta'
 import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
-import LoadingSpinner from '../components/common/LoadingSpinner'
+import PageContentGate from '../components/common/PageContentGate'
 import { pageImageUrl } from '../utils/assets'
 
 export default function About() {
-  const { data: page, loading } = useContent('pages/about.json')
-  if (loading) return <LoadingSpinner />
+  const { data: page, loading, error } = useContent('pages/about.json')
 
+  return (
+    <PageContentGate loading={loading} error={error}>
+      <AboutContent page={page} />
+    </PageContentGate>
+  )
+}
+
+function AboutContent({ page }) {
   const content = page?.content || {}
   const heroImg = pageImageUrl(content.hero?.image)
 
@@ -23,7 +30,7 @@ export default function About() {
             alt=""
             className="absolute inset-0 h-full w-full object-cover opacity-40"
             decoding="async"
-            fetchPriority="high"
+            fetchpriority="high"
           />
         )}
         <div className="absolute inset-0 bg-black/55" />
