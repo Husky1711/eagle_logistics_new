@@ -71,7 +71,25 @@ Images copied from reference repo branch `render-v1.0.0` ([Husky1711/eagle](http
 
 Admin panel + FastAPI backend to CRUD the same JSON files (content, offers, pricing rules, SEO, media).
 
-**Planning:** see **[PROJECT2.md](PROJECT2.md)** — development happens on branch **`project-2`**; `main` stays frozen at Project 1.
+**Planning:** see **[PROJECT2.md](PROJECT2.md)** — development on branch **`project-2`**.
+
+### Sprint 1 dev (project-2 branch)
+
+```bash
+# Terminal A — API (copy backend/.env.example → backend/.env first)
+npm run dev:api
+
+# Terminal B — public site
+npm run dev
+
+# Terminal C — admin UI (http://localhost:5174)
+npm run dev:admin
+
+# Or all three:
+npm run dev:all
+```
+
+Default admin login: see `backend/.env.example` (`admin` / `change-me-in-production`).
 
 ## Reference
 

@@ -1,21 +1,22 @@
 {
   "name": "Eagle Logistics Dev",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
-  "forwardPorts": [5173, 4173],
-  "portsAttributes": {
-    "5173": {
-      "label": "Vite dev server",
-      "onAutoForward": "notify"
-    },
-    "4173": {
-      "label": "Vite preview (production build)",
-      "onAutoForward": "silent"
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
     }
   },
-  "postCreateCommand": "npm install && npx playwright install chromium && npm run verify",
+  "forwardPorts": [5173, 5174, 8000, 4173],
+  "portsAttributes": {
+    "5173": { "label": "Public site", "onAutoForward": "notify" },
+    "5174": { "label": "Admin app", "onAutoForward": "silent" },
+    "8000": { "label": "FastAPI", "onAutoForward": "silent" },
+    "4173": { "label": "Vite preview", "onAutoForward": "silent" }
+  },
+  "postCreateCommand": "npm install && npm install --workspace=admin && pip install -r backend/requirements.txt && npx playwright install chromium && npm test && npm run test:api",
   "customizations": {
     "vscode": {
-      "extensions": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss"]
+      "extensions": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss", "ms-python.python"]
     }
   },
   "remoteUser": "node"

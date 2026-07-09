@@ -15,7 +15,17 @@ Build an **admin panel + API** so non-developers can edit site content without t
 |------------|----------|
 | Edit `/content/*.json` in IDE | Edit via admin UI |
 | `npm run sync:content` | API saves JSON + optional auto-sync |
-| Manual commit/push | Save → validate → publish workflow |
+| Manual commit/push | Save → validate → sync (dev); production publish TBD |
+
+### 1.1 Publish model
+
+| Environment | What “publish” means |
+|-------------|----------------------|
+| **Local dev (Sprint 1)** | API writes `/content/*.json` → runs `sync:content` → refresh public site at `:5173` |
+| **Codespaces** | Same as local dev |
+| **Production (later)** | Separate deploy sprint: rebuild `dist/`, GitHub Pages, optional git commit — **not in Sprint 1** |
+
+Sprint 1 does **not** auto-commit to git. Editors see changes after sync + browser refresh.
 
 ---
 
@@ -130,8 +140,19 @@ eagle_logistics_new/
 ├── .github/workflows/          # NEW — CI
 ├── PROJECT1.md
 ├── PROJECT2.md                 # this document
-└── package.json                # consider npm workspaces
+└── package.json                # npm workspaces (`admin` app)
 ```
+
+### 4.1 Atomic content writes
+
+On every `PUT`, the API:
+
+1. Copies current file to `content/.backups/{name}.{timestamp}.json`
+2. Writes to `{name}.json.tmp`
+3. Renames tmp → final (atomic replace)
+4. Runs `node scripts/sync-content.js`
+
+Implemented in `backend/app/services/content_store.py`.
 
 ---
 
@@ -140,11 +161,11 @@ eagle_logistics_new/
 | Layer | Choice | Why |
 |-------|--------|-----|
 | API | **FastAPI** (Python 3.11+) | Matches prior reference repo; fast CRUD; Pydantic validation |
-| Auth | **JWT** or session cookie | Single admin; env-based credentials for MVP |
+| Auth | **httpOnly session cookie** (Starlette `SessionMiddleware`) | Single admin; XSS-resistant vs localStorage JWT |
 | Admin UI | **React 18 + Vite + Tailwind** | Team already knows stack; reuse orange/gold tokens |
 | Validation | **Pydantic v2** | Request/response + JSON file shape |
 | Map sanitize | **bleach** or allowlist iframe attrs | TD-5 from P1 |
-| Tests | **pytest** (API) + existing Vitest/Playwright (public) | |
+| Tests | **pytest** (API, from Sprint 1) + Vitest/Playwright (public) | |
 | Dev env | Extend `.devcontainer` | Run public + admin + API together |
 
 ---
@@ -198,15 +219,22 @@ Base URL: `http://localhost:8000/api`
 | **Dashboard** | Links to sections; last saved timestamp |
 | **Site settings** | Site name, tagline, description |
 | **Header / Footer** | Menu items, quick links, footer description |
-| **Contact** | Address, phone, WhatsApp, email, hours, Maps URL |
+| **Contact** | Address, phone, WhatsApp, email, hours, Maps URL (**not embed textarea**) |
 | **Offers** | Active toggle, title, subtitle, code, start/end dates, CTA |
 
-### Sprint 2
+> **Sprint 1 security:** `googleMapsEmbed` is **preserved** on settings save (not editable in admin until Sprint 3 sanitizer).
+
+### Sprint 2a — Couriers
 
 | Screen | Edits |
 |--------|-------|
 | **Couriers** | List, add/edit, logo filename, tracking URL, active, order |
-| **Pricing rules** | Rules table, weight ranges, distance zones |
+
+### Sprint 2b — Pricing rules
+
+| Screen | Edits |
+|--------|-------|
+| **Pricing rules** | Validated JSON editor (nested zones) |
 
 ### Sprint 3
 
@@ -220,35 +248,41 @@ Base URL: `http://localhost:8000/api`
 
 ## 8. Sprint plan
 
-### Sprint 1 — Settings + Offers (MVP admin)
+### Sprint 1 — Settings + Offers (MVP admin) ✅ scaffolded
 
 **Goal:** Edit contact info and promotional offer without touching IDE.
 
-| Task | Owner | Done when |
-|------|-------|-----------|
-| Scaffold `backend/` FastAPI app | Dev | `uvicorn` runs, health check |
-| Admin auth (env user/pass) | Dev | Login returns token; protected routes 401 without it |
-| GET/PUT settings | Dev | Round-trip matches `settings.json` |
-| GET/PUT offers | Dev | Round-trip matches `offers.json` |
-| Scaffold `admin/` Vite app | Dev | Login + settings + offers forms |
-| Wire admin → API | Dev | Save updates file on disk |
-| Post-save `sync:content` | Dev | `public/content/` updated after save |
-| Pydantic schemas for settings + offers | Dev | Invalid payload returns 422 |
-| README + dev instructions | Dev | Document 3-terminal dev flow |
-| Manual test | QA | Change offer title → visible on public site after sync |
+| Task | Status |
+|------|--------|
+| Scaffold `backend/` FastAPI app | ✅ |
+| Session cookie auth (env user/pass) | ✅ |
+| GET/PUT settings + offers | ✅ |
+| Atomic writes + backup + sync | ✅ |
+| Scaffold `admin/` Vite app | ✅ |
+| Login + settings + offers forms | ✅ |
+| pytest for auth/settings/offers | ✅ |
+| `npm run dev:all` | ✅ |
+| Manual test | Pending QA |
 
 **Exit criteria:** Admin can log in, edit offer dates/title, edit phone number, save, and see changes on public site at `:5173`.
 
 ---
 
-### Sprint 2 — Couriers + Pricing rules
+### Sprint 2a — Couriers
 
 | Task | Done when |
 |------|-----------|
-| CRUD API for couriers + pricing-rules | Valid JSON written |
-| Admin UI tables/forms | Add/edit/delete couriers and rules |
-| pytest for API | Core endpoints covered |
-| GitHub Actions CI | `npm test` + `pytest` on PR to `project-2` |
+| CRUD API for couriers | Valid JSON written |
+| Admin UI table/forms | Add/edit/delete couriers |
+| pytest coverage | Courier endpoints |
+
+### Sprint 2b — Pricing rules
+
+| Task | Done when |
+|------|-----------|
+| CRUD API for pricing-rules | Valid JSON written |
+| Admin JSON editor with validation | Save shows Pydantic errors inline |
+| GitHub Actions CI | `npm test` + `npm run test:api` + `npm run verify` on PR |
 
 ---
 
@@ -288,11 +322,13 @@ Base URL: `http://localhost:8000/api`
 ```env
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=change-me-in-production
-JWT_SECRET=generate-a-long-random-string
+SESSION_SECRET=generate-a-long-random-string
 CONTENT_DIR=../content
-ASSETS_DIR=../public/assets
+REPO_ROOT=..
 CORS_ORIGINS=http://localhost:5174
 ```
+
+> Auth uses **session cookie** (`credentials: 'include'` from admin). Not JWT in localStorage.
 
 ### Admin (`admin/.env`)
 
@@ -321,7 +357,19 @@ npm run dev                    # :5173
 cd admin && npm run dev        # :5174
 ```
 
-Or a root `npm run dev:all` script (Sprint 1 nice-to-have).
+Or one command:
+
+```bash
+npm run dev:all
+```
+
+Ports: public **5173**, admin **5174**, API **8000**.
+
+### 11.1 Devcontainer (Project 2)
+
+- Python 3.11 feature + Node 20
+- Forwards 5173, 5174, 8000
+- `postCreateCommand` installs Node, admin workspace, pip deps, runs `npm test` + `npm run test:api`
 
 ---
 
@@ -363,11 +411,11 @@ Or a root `npm run dev:all` script (Sprint 1 nice-to-have).
 
 ## 15. Next action
 
-**Sprint 1 kickoff on branch `project-2`:**
+**Sprint 1 scaffold is on `project-2`.** Remaining:
 
-1. Scaffold `backend/` (FastAPI + auth + settings/offers routes)
-2. Scaffold `admin/` (login + settings + offers pages)
-3. Verify save → sync → public site reflects change
+1. Manual QA: login → edit offer → verify on `:5173`
+2. Sprint 2a: couriers CRUD
+3. CI workflow on PRs to `project-2`
 
 ---
 
