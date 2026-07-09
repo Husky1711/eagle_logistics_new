@@ -20,12 +20,15 @@ npm run sync:content   # copies content/ → public/content/
 npm run dev            # sync runs automatically (predev)
 npm run build          # sync runs automatically (prebuild)
 npm test               # unit tests (pricing calculator, offer dates)
+npm run qa:browser     # browser QA (dev server on :5173)
+npm run verify         # full sign-off: test + build + preview + browser QA
 ```
 
 ## Development
 
 ```bash
 npm install
+npm run generate:logos # one-time courier logo assets (already committed)
 npm run dev
 ```
 
@@ -34,22 +37,20 @@ Open [http://localhost:5173](http://localhost:5173)
 ### GitHub Codespaces
 
 1. Open [eagle_logistics_new](https://github.com/Husky1711/eagle_logistics_new) on GitHub → **Code** → **Codespaces** → **Create codespace on main**.
-2. Wait for `postCreateCommand` to finish (`npm install`, `sync:content`, and `npm test`).
-3. Start the dev server:
+2. Wait for `postCreateCommand` — installs deps, Playwright Chromium, then runs **`npm run verify`** (unit tests, production build, and browser QA on preview).
+3. If verify passes, start the dev server for manual review:
 
 ```bash
 npm run dev
 ```
 
-4. When port **5173** is forwarded, open the preview URL and smoke-test all routes: `/`, `/services`, `/pricing`, `/tracking`, `/about`, `/contact`, `/privacy`, `/terms`.
+4. When port **5173** is forwarded, open the preview URL and spot-check all routes.
 
-Production build in Codespaces:
+Manual full sign-off (local or Codespaces):
 
 ```bash
-npm run build && npm run preview
+npm run verify
 ```
-
-Preview runs on port **4173** (forward if prompted).
 
 ## Environment
 

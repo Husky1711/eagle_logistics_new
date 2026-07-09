@@ -1,5 +1,5 @@
 /**
- * One-off browser QA — run while `npm run dev` is up on :5173
+ * Browser QA — run against dev (5173) or preview (4173) server.
  * Usage: node scripts/browser-qa.mjs
  */
 import { chromium } from 'playwright'
@@ -21,6 +21,12 @@ const routes = [
   { path: '/missing-page', name: '404', expect: /not found|404/i },
 ]
 
+const viewports = [
+  { name: 'mobile', width: 375, height: 812 },
+  { name: 'tablet', width: 768, height: 1024 },
+  { name: 'desktop', width: 1440, height: 900 },
+]
+
 const issues = []
 const passes = []
 
@@ -32,6 +38,28 @@ function fail(msg) {
 function pass(msg) {
   passes.push(msg)
   console.log(`  OK: ${msg}`)
+}
+
+async function checkRoute(page, route, label) {
+  await page.goto(`${BASE}${route.path}`, { waitUntil: 'networkidle' })
+  await page.waitForTimeout(250)
+
+  const bodyText = await page.locator('body').innerText()
+  if (!route.expect.test(bodyText)) {
+    fail(`${label}: expected content matching ${route.expect}`)
+  } else {
+    pass(`${label}: page content loaded`)
+  }
+
+  if ((await page.locator('header').count()) === 0) fail(`${label}: missing header`)
+  else pass(`${label}: header present`)
+
+  if ((await page.locator('footer').count()) === 0) fail(`${label}: missing footer`)
+  else pass(`${label}: footer present`)
+
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2)
+  if (overflow) fail(`${label}: horizontal overflow`)
+  else pass(`${label}: no horizontal overflow`)
 }
 
 async function run() {
@@ -47,27 +75,12 @@ async function run() {
   })
   page.on('pageerror', (err) => consoleErrors.push(err.message))
 
-  console.log(`\n=== Desktop QA (${BASE}) ===\n`)
+  console.log(`\n=== Desktop QA 1440px (${BASE}) ===\n`)
+  await page.setViewportSize({ width: 1440, height: 900 })
 
   for (const route of routes) {
     consoleErrors.length = 0
-    await page.goto(`${BASE}${route.path}`, { waitUntil: 'networkidle' })
-    await page.waitForTimeout(300)
-
-    const bodyText = await page.locator('body').innerText()
-    if (!route.expect.test(bodyText)) {
-      fail(`${route.name}: expected content matching ${route.expect}`)
-    } else {
-      pass(`${route.name}: page content loaded`)
-    }
-
-    const header = page.locator('header')
-    if ((await header.count()) === 0) fail(`${route.name}: missing header`)
-    else pass(`${route.name}: header present`)
-
-    const footer = page.locator('footer')
-    if ((await footer.count()) === 0) fail(`${route.name}: missing footer`)
-    else pass(`${route.name}: footer present`)
+    await checkRoute(page, route, route.name)
 
     if (consoleErrors.length) {
       fail(`${route.name}: console errors — ${consoleErrors.join('; ')}`)
@@ -78,56 +91,64 @@ async function run() {
     await page.screenshot({ path: path.join(OUT, `desktop-${route.name}.png`), fullPage: true })
   }
 
-  // Pricing calculator interaction
+  // Courier logos on home
+  await page.goto(`${BASE}/`, { waitUntil: 'networkidle' })
+  const courierImages = page.locator('img[alt="DTDC"], img[alt="Delhivery"], img[alt="Blue Dart"]')
+  if ((await courierImages.count()) < 3) fail('home: courier logo images missing')
+  else pass('home: courier partner logos visible')
+
+  // Contact map embed
+  await page.goto(`${BASE}/contact`, { waitUntil: 'networkidle' })
+  const mapFrame = page.locator('iframe[title*="Eagle"], iframe[title*="location"], iframe[src*="maps"]')
+  if ((await mapFrame.count()) === 0) fail('contact: Google Maps embed missing')
+  else pass('contact: Google Maps embed present')
+
+  // Pricing calculator
   await page.goto(`${BASE}/pricing`, { waitUntil: 'networkidle' })
   await page.getByLabel(/Weight/i).fill('2')
   await page.getByLabel(/Distance/i).fill('100')
   await page.getByRole('button', { name: /Calculate/i }).click()
   await page.waitForTimeout(500)
-  const results = page.locator('text=Best Options')
-  if ((await results.count()) === 0) fail('pricing: calculator did not show results')
+  if ((await page.locator('text=Best Options').count()) === 0) fail('pricing: calculator did not show results')
   else pass('pricing: calculator shows results for 2kg / 100km')
 
   // Services tabs
   await page.goto(`${BASE}/services`, { waitUntil: 'networkidle' })
   const tabs = page.getByRole('tab')
-  const tabCount = await tabs.count()
-  if (tabCount < 2) fail('services: expected multiple tabs')
+  if ((await tabs.count()) < 2) fail('services: expected multiple tabs')
   else {
     await tabs.nth(1).click()
-    await page.waitForTimeout(200)
-    const selected = await tabs.nth(1).getAttribute('aria-selected')
-    if (selected !== 'true') fail('services: tab aria-selected not updated')
+    if ((await tabs.nth(1).getAttribute('aria-selected')) !== 'true') fail('services: tab aria-selected not updated')
     else pass('services: tab switching works')
   }
 
-  // Header nav links
+  // Header nav
   await page.goto(`${BASE}/`, { waitUntil: 'networkidle' })
   await page.getByRole('link', { name: 'Pricing', exact: true }).first().click()
   await page.waitForURL('**/pricing')
   if (!page.url().includes('/pricing')) fail('nav: Pricing link broken')
   else pass('nav: Pricing link works')
 
-  // Mobile viewport
-  console.log('\n=== Mobile QA (375px) ===\n')
-  await page.setViewportSize({ width: 375, height: 812 })
-  for (const route of routes.slice(0, 5)) {
-    consoleErrors.length = 0
-    await page.goto(`${BASE}${route.path}`, { waitUntil: 'networkidle' })
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 2)
-    if (overflow) fail(`${route.name} mobile: horizontal overflow`)
-    else pass(`${route.name} mobile: no horizontal overflow`)
-    await page.screenshot({ path: path.join(OUT, `mobile-${route.name}.png`), fullPage: true })
-  }
+  for (const vp of viewports) {
+    console.log(`\n=== ${vp.name} QA (${vp.width}px) ===\n`)
+    await page.setViewportSize({ width: vp.width, height: vp.height })
+    for (const route of routes) {
+      await checkRoute(page, route, `${route.name} ${vp.name}`)
+      await page.screenshot({ path: path.join(OUT, `${vp.name}-${route.name}.png`), fullPage: true })
+    }
 
-  // Contact: open mobile menu check
-  await page.goto(`${BASE}/contact`, { waitUntil: 'networkidle' })
-  const menuBtn = page.getByRole('button', { name: /Open menu/i })
-  if ((await menuBtn.count()) > 0) {
-    await menuBtn.click()
-    const mobileNav = page.getByRole('navigation', { name: /Mobile/i })
-    if ((await mobileNav.count()) === 0) fail('contact mobile: menu did not open')
-    else pass('contact mobile: hamburger menu opens')
+    if (vp.name === 'mobile') {
+      await page.goto(`${BASE}/contact`, { waitUntil: 'networkidle' })
+      const menuBtn = page.getByRole('button', { name: /Open menu/i })
+      if ((await menuBtn.count()) > 0) {
+        await menuBtn.click()
+        if ((await page.getByRole('navigation', { name: /Mobile/i }).count()) === 0) {
+          fail('contact mobile: menu did not open')
+        } else {
+          pass('contact mobile: hamburger menu opens')
+        }
+      }
+    }
   }
 
   await browser.close()

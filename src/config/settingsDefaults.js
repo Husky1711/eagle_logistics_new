@@ -43,5 +43,8 @@ export const DEFAULT_SETTINGS = {
     whatsapp: '+919876543210',
     email: 'hello@eaglelogistics.in',
     hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
+    googleMapsUrl: 'https://maps.google.com/?q=Plot+42+Logistics+Park+Gachibowli+Hyderabad',
+    googleMapsEmbed:
+      '<iframe src="https://maps.google.com/maps?q=Gachibowli+Hyderabad+Telangana+500032&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Eagle Logistics Gachibowli location"></iframe>',
   },
 }

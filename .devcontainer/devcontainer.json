@@ -1,14 +1,18 @@
 {
   "name": "Eagle Logistics Dev",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
-  "forwardPorts": [5173],
+  "forwardPorts": [5173, 4173],
   "portsAttributes": {
     "5173": {
       "label": "Vite dev server",
       "onAutoForward": "notify"
+    },
+    "4173": {
+      "label": "Vite preview (production build)",
+      "onAutoForward": "silent"
     }
   },
-  "postCreateCommand": "npm install && npm run sync:content && npm test",
+  "postCreateCommand": "npm install && npx playwright install chromium && npm run verify",
   "customizations": {
     "vscode": {
       "extensions": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss"]

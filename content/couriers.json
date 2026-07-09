@@ -2,7 +2,7 @@
   {
     "id": "dtdc",
     "name": "DTDC",
-    "logo": "",
+    "logo": "dtdc.png",
     "tracking_url": "https://www.dtdc.in/tracking.asp?strCnno={id}",
     "description": "Nationwide express courier with strong domestic coverage.",
     "active": true,
@@ -11,7 +11,7 @@
   {
     "id": "delhivery",
     "name": "Delhivery",
-    "logo": "",
+    "logo": "delhivery.png",
     "tracking_url": "https://www.delhivery.com/track/package/{id}",
     "description": "Fast-growing logistics partner for e-commerce and retail.",
     "active": true,
@@ -20,7 +20,7 @@
   {
     "id": "bluedart",
     "name": "Blue Dart",
-    "logo": "",
+    "logo": "bluedart.png",
     "tracking_url": "https://www.bluedart.com/web/guest/trackdartresult?trackNo={id}",
     "description": "Premium express delivery with reliable timelines.",
     "active": true,
@@ -29,7 +29,7 @@
   {
     "id": "fedex",
     "name": "FedEx",
-    "logo": "",
+    "logo": "fedex.png",
     "tracking_url": "https://www.fedex.com/fedextrack/?trknbr={id}",
     "description": "International and domestic express shipping.",
     "active": true,
@@ -38,7 +38,7 @@
   {
     "id": "dhl",
     "name": "DHL",
-    "logo": "",
+    "logo": "dhl.png",
     "tracking_url": "https://www.dhl.com/in-en/home/tracking.html?tracking-id={id}",
     "description": "Global express logistics for international shipments.",
     "active": true,
@@ -47,7 +47,7 @@
   {
     "id": "ekart",
     "name": "Ekart",
-    "logo": "partner-sample.png",
+    "logo": "ekart.png",
     "tracking_url": "https://ekartlogistics.com/track/{id}",
     "description": "Last-mile delivery partner for domestic parcels.",
     "active": true,

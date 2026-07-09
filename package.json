@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "sync:content": "node scripts/sync-content.js",
+    "generate:logos": "node scripts/generate-courier-logos.mjs",
     "compress:images": "node scripts/compress-images.mjs",
     "predev": "npm run sync:content",
     "dev": "vite",
@@ -12,7 +13,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "qa:browser": "node scripts/browser-qa.mjs",
+    "verify": "node scripts/codespaces-verify.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.294.0",

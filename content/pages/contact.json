@@ -10,6 +10,6 @@
     "whatsappCta": "Chat on WhatsApp",
     "emailCta": "Send Email",
     "mapTitle": "Find Us",
-    "mapPlaceholder": "Map will be displayed here once a Google Maps embed is configured."
+    "mapPlaceholder": "Map unavailable — use the address or Google Maps link above."
   }
 }
