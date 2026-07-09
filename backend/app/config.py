@@ -13,7 +13,12 @@ class Settings(BaseSettings):
     SESSION_SECRET: str = "dev-session-secret-change-me"
     CONTENT_DIR: Path = Path(__file__).resolve().parents[2] / "content"
     REPO_ROOT: Path = Path(__file__).resolve().parents[2]
-    CORS_ORIGINS: str = "http://localhost:5174"
+    CORS_ORIGINS: str = (
+        "http://localhost:5174,"
+        "http://localhost:5175,"
+        "http://127.0.0.1:5174,"
+        "http://127.0.0.1:5175"
+    )
     SESSION_MAX_AGE: int = 60 * 60 * 24
 
     @property

@@ -1,14 +1,19 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
 
 async function request(path, options = {}) {
-  const response = await fetch(`${API_URL}${path}`, {
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-      ...(options.headers || {}),
-    },
-    ...options,
-  })
+  let response
+  try {
+    response = await fetch(`${API_URL}${path}`, {
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(options.headers || {}),
+      },
+      ...options,
+    })
+  } catch {
+    throw new Error('Network error — is the API running and CORS configured for this admin origin?')
+  }
 
   if (!response.ok) {
     let detail = 'Request failed'
@@ -17,6 +22,9 @@ async function request(path, options = {}) {
       detail = body.detail || detail
     } catch {
       // ignore
+    }
+    if (Array.isArray(detail)) {
+      detail = detail.map((item) => item.msg || String(item)).join(', ')
     }
     throw new Error(typeof detail === 'string' ? detail : JSON.stringify(detail))
   }

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
@@ -9,10 +10,16 @@ const navClass = ({ isActive }) =>
 export default function AdminLayout({ children }) {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
+  const [logoutError, setLogoutError] = useState('')
 
   const handleLogout = async () => {
-    await logout()
-    navigate('/login')
+    setLogoutError('')
+    try {
+      await logout()
+      navigate('/login')
+    } catch (err) {
+      setLogoutError(err.message || 'Logout failed. Please try again.')
+    }
   }
 
   return (
@@ -23,13 +30,16 @@ export default function AdminLayout({ children }) {
             <p className="font-display text-lg font-bold text-dark">Eagle Admin</p>
             <p className="text-xs text-neutral-500">Signed in as {user?.username}</p>
           </div>
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="rounded-lg border border-neutral-300 px-3 py-1.5 text-sm hover:bg-neutral-50"
-          >
-            Logout
-          </button>
+          <div className="flex flex-col items-end gap-1">
+            {logoutError && <p className="text-xs text-red-600">{logoutError}</p>}
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="rounded-lg border border-neutral-300 px-3 py-1.5 text-sm hover:bg-neutral-50"
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </header>
 

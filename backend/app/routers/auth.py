@@ -16,6 +16,7 @@ async def login(request: Request, payload: LoginRequest) -> AuthUser:
     if not (valid_user and valid_pass):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
 
+    request.session.clear()
     request.session["admin_username"] = payload.username
     return AuthUser(username=payload.username)
 

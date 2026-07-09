@@ -71,7 +71,7 @@ flowchart TB
   end
 
   subgraph api [FastAPI - port 8000]
-    AUTH[JWT / session auth]
+    AUTH[Session cookie auth]
     CRUD[Content CRUD services]
     VAL[JSON validation]
     SAN[HTML sanitizer]
@@ -87,7 +87,7 @@ flowchart TB
     SYNC[sync-content.js]
   end
 
-  AUI -->|HTTPS + token| AUTH --> CRUD
+  AUI -->|HTTPS + session cookie| AUTH --> CRUD
   CRUD --> VAL
   CRUD --> SAN
   CRUD --> C
@@ -178,8 +178,8 @@ Base URL: `http://localhost:8000/api`
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `POST` | `/auth/login` | `{ username, password }` → token |
-| `POST` | `/auth/logout` | Invalidate session (if cookie-based) |
+| `POST` | `/auth/login` | `{ username, password }` → `{ username }` + **httpOnly session cookie** |
+| `POST` | `/auth/logout` | Invalidate session cookie (requires auth) |
 | `GET` | `/auth/me` | Current user (admin) |
 
 ### Content (protected)
@@ -325,7 +325,7 @@ ADMIN_PASSWORD=change-me-in-production
 SESSION_SECRET=generate-a-long-random-string
 CONTENT_DIR=../content
 REPO_ROOT=..
-CORS_ORIGINS=http://localhost:5174
+CORS_ORIGINS=http://localhost:5174,http://localhost:5175,http://127.0.0.1:5174,http://127.0.0.1:5175
 ```
 
 > Auth uses **session cookie** (`credentials: 'include'` from admin). Not JWT in localStorage.
