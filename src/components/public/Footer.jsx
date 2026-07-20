@@ -8,6 +8,7 @@ export default function Footer() {
   const site = settings?.site || {}
   const footer = settings?.footer || {}
   const logo = assetUrl(settings?.header?.logo || '/assets/brand/logo.png')
+  const countries = footer.countries || []
 
   return (
     <footer className="bg-dark text-neutral-300">
@@ -24,6 +25,28 @@ export default function Footer() {
             <p className="max-w-md text-sm leading-relaxed text-neutral-400">
               {footer.description || site.description}
             </p>
+            {countries.length > 0 && (
+              <div className="mt-6">
+                <h3 className="mb-3 font-display text-sm font-semibold uppercase tracking-wide text-white">
+                  We ship worldwide
+                </h3>
+                <ul className="flex flex-wrap gap-3" aria-label="Countries we ship to">
+                  {countries.map((country) => (
+                    <li
+                      key={country.code}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-700 bg-neutral-900/40 px-2.5 py-1.5 text-sm"
+                      title={country.name}
+                    >
+                      <span className="text-base leading-none" aria-hidden>
+                        {country.flag}
+                      </span>
+                      <span className="text-xs text-neutral-400">{country.code}</span>
+                      <span className="sr-only">{country.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <div>
@@ -33,7 +56,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {(footer.quickLinks || []).map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-sm hover:text-gold-400">
+                  <Link to={link.path} className="text-sm hover:text-primary-300">
                     {link.label}
                   </Link>
                 </li>
@@ -48,7 +71,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {(footer.supportLinks || []).map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-sm hover:text-gold-400">
+                  <Link to={link.path} className="text-sm hover:text-primary-300">
                     {link.label}
                   </Link>
                 </li>

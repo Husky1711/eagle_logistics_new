@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Cargo Services | Eagle Logistics",
+    "description": "Air, sea, and surface cargo services from Eagle Logistics - fast air logistics, worldwide sea freight, and reliable surface transport."
+  },
+  "content": {
+    "items": [
+      {
+        "id": "air",
+        "slug": "air",
+        "title": "Air Cargo",
+        "image": "home/air-cargo.jpg",
+        "meta": {
+          "title": "Air Cargo | Eagle Logistics",
+          "description": "Economical air logistics with fast delivery and multimodal surface connectivity across India."
+        },
+        "body": [
+          "Being as a reputed service provider of domain, our Air Logistics Services we are applauded in the entire market for fast & quick delivery system. Following to structured and systematic approach we have expand our base all over India. We carefully complete all the undertaken responsibilities with supreme level of accuracy. Our air logistics service is economical in price and provided all across the country. Our surface operations are extended to provide multimodal services and deliver across the country. We have marked our presence in the entire India and serving clients from North East and East areas of the country."
+        ],
+        "bullets": [
+          "Own & attached closed body vehicular fleet plying round the clock on the national highways",
+          "Cargo movements through weatherproof containerized vehicles for safe delivery"
+        ]
+      },
+      {
+        "id": "sea",
+        "slug": "sea",
+        "title": "Sea Cargo",
+        "image": "home/sea-cargo.jpg",
+        "meta": {
+          "title": "Sea Cargo | Eagle Logistics",
+          "description": "Full and less-than container load sea freight with worldwide shipping networks."
+        },
+        "body": [
+          "High in demand in different verticals of industry, our extensive range of Sea Cargo Carrier is a reliable option for assuring safe storage and secure transportation. These ensure complete safety and security of goods by protecting them from the adverse climatic conditions and other environmental factors. We offer our range to clients in different sizes and also customize it on different parameters."
+        ],
+        "bullets": [
+          "Specialized and reliable Full Container Load (FCL) services",
+          "Expert and trustworthy Less than Container Load (LCL) services",
+          "Step-by-step project cargo logistics management",
+          "Worldwide sea freight shipping networks",
+          "Shipment for sweets, medicines, clothes, books, photos, spices and more",
+          "Computerized order tracking services",
+          "Export consolidation services",
+          "Flexible integrated multimodal solutions for pre- and on-carriage from port-to-port"
+        ]
+      },
+      {
+        "id": "surface",
+        "slug": "surface",
+        "title": "Surface Cargo",
+        "image": "home/surface-cargo.jpg",
+        "meta": {
+          "title": "Surface Cargo | Eagle Logistics",
+          "description": "Reliable surface cargo with careful handling and on-time domestic transport."
+        },
+        "body": [
+          "Fostered with rich industry experience and in-depth market knowledge, we are able to provide Surface Cargo Service to the clients. Our rendered service is appreciated for its excellent attention and care given to the products to prevent the damage and breakage during the transport. We also provide our clients an efficient transport of products from one place to another with great ease. Moreover, with the help of our dexterous personnel, we are able to transport the products within a promised time frame. The offered service is highly acclaimed in the market for its reliability and promptness."
+        ],
+        "bullets": []
+      }
+    ]
+  }
+}

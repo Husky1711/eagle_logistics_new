@@ -29,7 +29,7 @@ async function findAdminUrl(page) {
 
 async function testPublicSite(page) {
   console.log('\n=== PUBLIC SITE (visitor) ===\n')
-  const routes = ['/', '/services', '/pricing', '/tracking', '/about', '/contact', '/privacy', '/terms']
+  const routes = ['/', '/services', '/pricing', '/tracking', '/offers', '/about', '/contact', '/privacy', '/terms']
   for (const route of routes) {
     await page.goto(`${PUBLIC}${route}`, { waitUntil: 'networkidle' })
     const title = await page.title()
@@ -110,7 +110,7 @@ async function testAdmin(page, adminUrl) {
   else fail('Admin', 'phone change NOT on public Contact (sync issue)')
 
   await page.goto(`${adminUrl}/settings`, { waitUntil: 'networkidle' })
-  await page.getByText('Phone', { exact: true }).locator('..').locator('input').fill('+91 40 4521 8900')
+  await page.getByText('Phone', { exact: true }).locator('..').locator('input').fill('+91 80-40969947')
   await page.getByRole('button', { name: /Save settings/i }).click()
   await page.waitForTimeout(1500)
   pass('Admin', 'settings phone restored')

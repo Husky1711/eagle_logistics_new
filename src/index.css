@@ -8,11 +8,22 @@
   }
 
   body {
-    @apply font-sans text-neutral-800 bg-white antialiased;
+    @apply font-sans bg-white antialiased overflow-x-hidden;
+    color: #333333;
   }
 
+  #root {
+    @apply min-h-screen w-full max-w-full overflow-x-hidden;
+  }
+
+  /* Match live site: section titles in brand blue (override with text-white on dark heroes) */
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
+    color: #1572B7;
+  }
+
+  p {
+    color: #333333;
   }
 }
 
@@ -22,11 +33,26 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg bg-primary-500 px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all hover:bg-primary-600 hover:shadow-medium focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-white shadow-soft transition-all hover:shadow-medium focus:outline-none focus:ring-2 focus:ring-offset-2;
+    background-color: #1572B7;
+  }
+  .btn-primary:hover {
+    background-color: #0f5f96;
+  }
+  .btn-primary:focus {
+    --tw-ring-color: #1572B7;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center rounded-lg border-2 border-primary-500 px-6 py-3 text-sm font-semibold text-primary-500 transition-all hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center rounded-lg border-2 px-6 py-3 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-offset-2;
+    border-color: #1572B7;
+    color: #1572B7;
+  }
+  .btn-outline:hover {
+    background-color: #eff7fc;
+  }
+  .btn-outline:focus {
+    --tw-ring-color: #1572B7;
   }
 
   .section-padding {
@@ -34,7 +60,16 @@
   }
 
   .gradient-gold {
-    @apply bg-gradient-to-r from-primary-500 to-gold-500;
+    @apply bg-gradient-to-r from-primary-500 to-primary-400;
+  }
+
+  .gradient-gold h1,
+  .gradient-gold h2,
+  .gradient-gold h3,
+  .gradient-gold h4,
+  .gradient-gold h5,
+  .gradient-gold h6 {
+    color: #fff;
   }
 }
 

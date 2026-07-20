@@ -26,3 +26,12 @@ export function pageImageUrl(filename) {
   if (!filename) return null
   return assetUrl(`assets/pages/${filename}`)
 }
+
+/** Resolve service/page media — slides live in hero/, *-hero images in pages/. */
+export function mediaImageUrl(filename) {
+  if (!filename) return null
+  if (filename.includes('/')) return assetUrl(`assets/${filename.replace(/^assets\//, '')}`)
+  if (/^slide-\d+\.(jpe?g|png|webp)$/i.test(filename)) return heroImageUrl(filename)
+  if (/hero/i.test(filename)) return pageImageUrl(filename)
+  return heroImageUrl(filename)
+}

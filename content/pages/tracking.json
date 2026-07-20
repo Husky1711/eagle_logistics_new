@@ -1,14 +1,17 @@
 {
   "meta": {
-    "title": "Track Your Parcel | Eagle Logistics",
-    "description": "Track your shipment across DTDC, Delhivery, Blue Dart, FedEx, DHL, and more partner networks.",
-    "keywords": ["track parcel", "courier tracking", "shipment status", "Eagle Logistics"]
+    "title": "Shipment Tracker | Eagle Logistics",
+    "description": "Track your shipment with DHL, FedEx, or UPS.",
+    "keywords": ["shipment tracker", "courier tracking", "DHL", "FedEx", "UPS", "Eagle Logistics"]
   },
   "content": {
-    "title": "Track Your Parcel",
-    "subtitle": "Select your courier partner and enter your tracking number",
+    "title": "Shipment Tracker",
+    "subtitle": "Select DHL, FedEx, or UPS and enter your tracking number",
     "courierLabel": "Select Courier",
-    "trackButton": "Track Parcel",
+    "featuredLabel": "Our partners",
+    "featuredCourierIds": ["dhl", "fedex", "ups"],
+    "otherLabel": "Other partners",
+    "trackButton": "Track Shipment",
     "redirectNotice": "You will be redirected to the official courier tracking website. Eagle Logistics is not responsible for partner tracking accuracy.",
     "missingTemplateMessage": "Tracking link unavailable for this partner. Contact us on WhatsApp with your tracking number."
   }

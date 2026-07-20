@@ -8,6 +8,7 @@ import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import Input from '../components/common/Input'
 import PageContentGate from '../components/common/PageContentGate'
+import { courierLogoUrl } from '../utils/assets'
 import { buildWhatsAppUrl, buildTrackingWhatsAppMessage } from '../utils/whatsapp'
 
 export default function Tracking() {
@@ -38,6 +39,29 @@ export default function Tracking() {
   )
 }
 
+function CourierLogoTab({ courier, selected, onSelect }) {
+  const logo = courierLogoUrl(courier.logo)
+  return (
+    <button
+      type="button"
+      onClick={() => onSelect(courier.id)}
+      aria-pressed={selected}
+      className={`flex min-h-[88px] flex-col items-center justify-center gap-2 rounded-xl border px-3 py-3 transition ${
+        selected
+          ? 'border-primary-500 bg-primary-50 ring-1 ring-primary-500'
+          : 'border-neutral-200 bg-white hover:border-primary-300'
+      }`}
+    >
+      {logo ? (
+        <img src={logo} alt="" className="h-10 max-w-[120px] object-contain" />
+      ) : (
+        <span className="font-display text-lg font-bold text-primary-600">{courier.name.slice(0, 2)}</span>
+      )}
+      <span className="text-xs font-semibold text-ink">{courier.name}</span>
+    </button>
+  )
+}
+
 function TrackingContent({
   page,
   couriers,
@@ -51,6 +75,11 @@ function TrackingContent({
 }) {
   const content = page?.content || {}
   const activeCouriers = (couriers || []).filter((c) => c.active).sort((a, b) => a.display_order - b.display_order)
+  const featuredIds = content.featuredCourierIds || ['dhl', 'fedex', 'ups']
+  const featured = featuredIds
+    .map((id) => activeCouriers.find((c) => c.id === id))
+    .filter(Boolean)
+  const others = activeCouriers.filter((c) => !featuredIds.includes(c.id))
 
   const handleTrack = (e) => {
     e.preventDefault()
@@ -80,33 +109,53 @@ function TrackingContent({
   return (
     <>
       <PageMeta meta={page?.meta} />
-      <section className="section-padding bg-neutral-50">
-        <Container className="max-w-xl">
+      <section className="section-padding bg-primary-50">
+        <Container className="max-w-2xl">
           <div className="mb-10 text-center">
-            <h1 className="font-display text-4xl font-bold text-dark">{content.title}</h1>
-            <p className="mt-4 text-neutral-600">{content.subtitle}</p>
+            <h1 className="font-display text-4xl font-bold text-heading">{content.title}</h1>
+            <p className="mt-4 text-ink">{content.subtitle}</p>
           </div>
           <Card>
-            <form onSubmit={handleTrack} className="space-y-4">
-              <div>
-                <label htmlFor="courier" className="mb-2 block text-sm font-medium text-neutral-700">
-                  {content.courierLabel || 'Select Courier'}
-                </label>
-                <select
-                  id="courier"
-                  value={courierId}
-                  onChange={(e) => setCourierId(e.target.value)}
-                  className="w-full rounded-lg border border-neutral-300 px-4 py-3 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
-                  required
-                >
-                  <option value="">Choose a courier...</option>
-                  {activeCouriers.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
+            <form onSubmit={handleTrack} className="space-y-6">
+              {featured.length > 0 && (
+                <div>
+                  <p className="mb-3 text-sm font-medium text-ink">
+                    {content.featuredLabel || 'Popular carriers'}
+                  </p>
+                  <div className="grid grid-cols-3 gap-3">
+                    {featured.map((courier) => (
+                      <CourierLogoTab
+                        key={courier.id}
+                        courier={courier}
+                        selected={courierId === courier.id}
+                        onSelect={setCourierId}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {others.length > 0 && (
+                <div>
+                  <label htmlFor="courier" className="mb-2 block text-sm font-medium text-ink">
+                    {content.otherLabel || content.courierLabel || 'Other partners'}
+                  </label>
+                  <select
+                    id="courier"
+                    value={featuredIds.includes(courierId) ? '' : courierId}
+                    onChange={(e) => setCourierId(e.target.value)}
+                    className="w-full rounded-lg border border-neutral-300 px-4 py-3 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                  >
+                    <option value="">Choose another courier...</option>
+                    {others.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+
               <Input
                 label="Tracking Number"
                 value={trackingId}
@@ -116,7 +165,7 @@ function TrackingContent({
               />
               {formError && <p className="text-sm text-red-600">{formError}</p>}
               <Button type="submit" className="w-full">
-                {content.trackButton || 'Track Parcel'}
+                {content.trackButton || 'Track Shipment'}
                 <ExternalLink className="ml-2 inline" size={16} />
               </Button>
             </form>

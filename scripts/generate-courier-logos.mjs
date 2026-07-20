@@ -17,6 +17,7 @@ const couriers = [
   { id: 'fedex', name: 'FedEx', color: '#4D148C' },
   { id: 'dhl', name: 'DHL', color: '#D40511' },
   { id: 'ekart', name: 'Ekart', color: '#2874F0' },
+  { id: 'ups', name: 'UPS', color: '#351C15' },
 ]
 
 function logoSvg({ name, color }) {

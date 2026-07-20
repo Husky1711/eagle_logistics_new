@@ -6,7 +6,7 @@ export default function Input({ label, id, error, className = '', ...props }) {
   return (
     <div className={className}>
       {label && (
-        <label htmlFor={inputId} className="mb-2 block text-sm font-medium text-neutral-700">
+        <label htmlFor={inputId} className="mb-2 block text-sm font-medium text-ink">
           {label}
         </label>
       )}

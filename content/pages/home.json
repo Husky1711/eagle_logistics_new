@@ -1,52 +1,171 @@
 {
   "meta": {
-    "title": "Eagle Logistics | Courier Comparison & Smart Shipping",
-    "description": "Compare courier partners, calculate shipping costs, and track parcels. One drop-off — Eagle finds the best rate and route across India.",
-    "keywords": ["logistics", "courier comparison", "shipping calculator", "Eagle Logistics", "Hyderabad", "DTDC", "Delhivery"]
+    "title": "Home | Eagle Logistics & Express Services",
+    "description": "Eagle Logistics, Estd 2010 - discounted international logistics from India to USA, UK, EU, Middle East and Far East. Doorstep pickup, tracked delivery, domestic and international courier.",
+    "keywords": [
+      "Eagle Logistics",
+      "Bangalore courier",
+      "international shipping India",
+      "door to door cargo",
+      "domestic courier"
+    ]
   },
   "content": {
     "hero": {
-      "headline": "One Drop-off. Multiple Partners. Best Price.",
-      "subheadline": "We compare trusted courier partners to find you the best shipping rates and fastest delivery — one hub, zero hassle.",
-      "cta": "Calculate Shipping Cost",
+      "promo": "Your Gift or Parcel to abroad at most economical price : Just 567*/Kg",
+      "cta": "Price Calculator",
       "ctaLink": "/pricing"
     },
     "heroImages": [
-      "slide-1.jpg",
-      "slide-2.jpg",
-      "slide-3.jpg",
-      "slide-4.jpg",
-      "slide-5.jpg"
+      "home/slider-1.jpg",
+      "home/slider-2.jpg",
+      "home/slider-3.jpg",
+      "home/slider-4.jpg",
+      "home/slider-5.jpg"
     ],
-    "howItWorks": {
-      "enabled": true,
-      "title": "How It Works",
-      "subtitle": "Simple steps to get your parcel delivered at the best price",
-      "steps": [
-        { "id": 1, "title": "Drop Your Parcel", "description": "Bring your parcel to our logistics hub — we handle the rest.", "icon": "Package" },
-        { "id": 2, "title": "We Compare Partners", "description": "We evaluate multiple courier partners and pick the best option for your route and budget.", "icon": "Search" },
-        { "id": 3, "title": "Fast & Safe Delivery", "description": "Your parcel ships with a trusted partner and arrives safely, on time.", "icon": "Truck" }
+    "intro": {
+      "title": "Eagle Logistics & Express Services",
+      "body": "We, Eagle Logistics, Estd in 2010 provide a very discounted international logistics. We've got some unbelievably low prices for sending international parcels from India to USA, UK or any other destinations in European Unions, Middle east or far east. We arrange your parcel collected from your door step. Or drop it off at a local pickup point and the parcel will be delivered by our reliable and tracked logistics service which can save you considerable amounts when sending parcels overseas. We specialize in local, national and international courier. We employ the most stringent safety measures. With us there is no chance of loss, pilferage or damage to your package. Besides we are one of the few courier companies that provide international door-to door cargo. So when you think reliability, think Eagle logistics & Express services.",
+      "readMoreLabel": "Read More",
+      "readMoreLink": "/about"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "image": "home/parcel.jpg",
+      "items": [
+        "Let us be the link between you and your loved ones",
+        "To track and record all customer shipments to abroad",
+        "Have dedicated and passionate staff working for you",
+        "Give you, the customer, transparency throughout the delivery process",
+        "Give you, the customer, the best possible customer service experience"
       ]
     },
-    "whyChooseUs": {
-      "enabled": true,
-      "title": "Why Choose Eagle",
-      "subtitle": "Why thousands of shippers trust us for domestic and international parcels",
-      "features": [
-        { "id": 1, "title": "Best Prices", "description": "We compare multiple vendors so you always get competitive rates.", "icon": "IndianRupee" },
-        { "id": 2, "title": "Fast Delivery", "description": "Express and standard options matched to your timeline and budget.", "icon": "Zap" },
-        { "id": 3, "title": "Easy Tracking", "description": "Track across partner networks from one place — no juggling multiple sites.", "icon": "MapPin" }
+    "serviceCards": [
+      {
+        "id": "domestic",
+        "title": "Domestic",
+        "body": "Your time sensitive Documents / Non documents are delivered next day in all Metros/Major cities & Towns on priority basis",
+        "image": "home/domestic.jpg",
+        "link": "/services",
+        "linkLabel": "Read More"
+      },
+      {
+        "id": "international",
+        "title": "International",
+        "body": "All documents / Non-documents are delivered worldwide at most economical rates. The chosen modes of operational connectivity gives us a cutting edge for faster services as per the requirements of the customers.",
+        "image": "home/international.jpg",
+        "link": "/services",
+        "linkLabel": "Read More"
+      }
+    ],
+    "advantages": {
+      "title": "Advantage of Our Services",
+      "items": [
+        {
+          "id": "track",
+          "text": "Track your parcel from collection to delivery",
+          "icon": "MapPin",
+          "iconImage": "home/advantage-1.png",
+          "link": "/tracking"
+        },
+        {
+          "id": "quotes",
+          "text": "Get quotes in seconds for international shipping",
+          "icon": "Calculator",
+          "iconImage": "home/advantage-2.png",
+          "link": "/pricing"
+        },
+        {
+          "id": "protection",
+          "text": "Add protection cover to the parcel if required",
+          "icon": "Shield",
+          "iconImage": "home/advantage-3.png",
+          "link": "/services"
+        },
+        {
+          "id": "customs",
+          "text": "Easy to fill out customs documents, built into the booking process",
+          "icon": "FileText",
+          "iconImage": "home/advantage-4.png",
+          "link": "/services"
+        },
+        {
+          "id": "pickup",
+          "text": "Choice of having the parcel collected from home / work / drop it off locally",
+          "icon": "Package",
+          "iconImage": "home/advantage-5.png",
+          "link": "/contact"
+        }
       ]
     },
-    "courierPartners": {
-      "enabled": true,
-      "title": "Our Courier Partners",
-      "subtitle": "We work with trusted courier services for reliable delivery nationwide"
+    "popularItems": {
+      "title": "Most Popular Items We Send",
+      "viewAllLabel": "View All",
+      "viewAllLink": "/things-we-send",
+      "items": [
+        { "id": "sweets", "title": "Sweets", "slug": "sweets", "image": "home/popular-sweets.jpg" },
+        { "id": "footwear", "title": "Footwear", "slug": "footwear", "image": "home/popular-footwear.jpg" },
+        { "id": "spices", "title": "Spices", "slug": "spices", "image": "home/popular-spices.jpg" },
+        { "id": "medicines", "title": "Medicines", "slug": "medicines", "image": "home/popular-medicines.jpg" },
+        { "id": "photos", "title": "Photos", "slug": "photos", "image": "home/popular-photos.jpg" },
+        { "id": "books", "title": "Books", "slug": "books", "image": "home/popular-books.jpg" },
+        { "id": "clothes", "title": "Clothes", "slug": "clothes", "image": "home/popular-clothes.jpg" },
+        { "id": "electronics", "title": "Electronics", "slug": "electronics", "image": "home/popular-electronics.jpg" }
+      ]
+    },
+    "testimonials": {
+      "title": "Real People From Heart",
+      "items": [
+        {
+          "id": 1,
+          "quote": "Me and my family are very much impressed with the awesome service by Eagle Logistics.",
+          "name": "Mr. John Marcus",
+          "location": "California"
+        },
+        {
+          "id": 2,
+          "quote": "Me and my family are very much impressed with the awesome service by Eagle Logistics.",
+          "name": "Nidhi",
+          "location": "Malleshwaram"
+        },
+        {
+          "id": 3,
+          "quote": "Very good service. I sent a parcel to my husband at NV USA; it reached within the third day. Thank you Eagle.",
+          "name": "Sharda",
+          "location": "Indiranagar"
+        }
+      ]
+    },
+    "cargo": {
+      "title": "Cargo Services",
+      "items": [
+        {
+          "id": "air",
+          "title": "Air Cargo",
+          "slug": "air",
+          "image": "home/air-cargo.jpg",
+          "summary": "Fast air logistics with economical pricing and multimodal reach across India."
+        },
+        {
+          "id": "sea",
+          "title": "Sea Cargo",
+          "slug": "sea",
+          "image": "home/sea-cargo.jpg",
+          "summary": "Reliable FCL and LCL sea freight with worldwide shipping networks."
+        },
+        {
+          "id": "surface",
+          "title": "Surface Cargo",
+          "slug": "surface",
+          "image": "home/surface-cargo.jpg",
+          "summary": "Careful road transport with reliable, on-time domestic surface delivery."
+        }
+      ]
     },
     "cta": {
-      "title": "Ready to Ship?",
-      "subtitle": "Calculate your shipping cost now and get the best rates from our partner network.",
-      "button": "Get Started",
+      "title": "Ready to ship with Eagle?",
+      "subtitle": "Calculate your cost or talk to our team on WhatsApp.",
+      "button": "Price Calculator",
       "buttonLink": "/pricing"
     }
   }

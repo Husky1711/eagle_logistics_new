@@ -1,30 +1,12 @@
 [
   {
-    "id": "dtdc",
-    "name": "DTDC",
-    "logo": "dtdc.png",
-    "tracking_url": "https://www.dtdc.in/tracking.asp?strCnno={id}",
-    "description": "Nationwide express courier with strong domestic coverage.",
+    "id": "dhl",
+    "name": "DHL",
+    "logo": "dhl.png",
+    "tracking_url": "https://www.dhl.com/in-en/home/tracking.html?tracking-id={id}",
+    "description": "Global express logistics for international shipments.",
     "active": true,
     "display_order": 1
-  },
-  {
-    "id": "delhivery",
-    "name": "Delhivery",
-    "logo": "delhivery.png",
-    "tracking_url": "https://www.delhivery.com/track/package/{id}",
-    "description": "Fast-growing logistics partner for e-commerce and retail.",
-    "active": true,
-    "display_order": 2
-  },
-  {
-    "id": "bluedart",
-    "name": "Blue Dart",
-    "logo": "bluedart.png",
-    "tracking_url": "https://www.bluedart.com/web/guest/trackdartresult?trackNo={id}",
-    "description": "Premium express delivery with reliable timelines.",
-    "active": true,
-    "display_order": 3
   },
   {
     "id": "fedex",
@@ -33,24 +15,15 @@
     "tracking_url": "https://www.fedex.com/fedextrack/?trknbr={id}",
     "description": "International and domestic express shipping.",
     "active": true,
-    "display_order": 4
+    "display_order": 2
   },
   {
-    "id": "dhl",
-    "name": "DHL",
-    "logo": "dhl.png",
-    "tracking_url": "https://www.dhl.com/in-en/home/tracking.html?tracking-id={id}",
-    "description": "Global express logistics for international shipments.",
+    "id": "ups",
+    "name": "UPS",
+    "logo": "ups.png",
+    "tracking_url": "https://www.ups.com/track?tracknum={id}",
+    "description": "Global package delivery and logistics network.",
     "active": true,
-    "display_order": 5
-  },
-  {
-    "id": "ekart",
-    "name": "Ekart",
-    "logo": "ekart.png",
-    "tracking_url": "https://ekartlogistics.com/track/{id}",
-    "description": "Last-mile delivery partner for domestic parcels.",
-    "active": true,
-    "display_order": 6
+    "display_order": 3
   }
 ]

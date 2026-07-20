@@ -24,10 +24,17 @@ class HeaderSettings(BaseModel):
     ctaButton: CtaButton
 
 
+class FooterCountry(BaseModel):
+    code: str
+    name: str
+    flag: str
+
+
 class FooterSettings(BaseModel):
     description: str
     quickLinks: list[NavItem]
     supportLinks: list[NavItem]
+    countries: list[FooterCountry] = Field(default_factory=list)
 
 
 class ContactSettings(BaseModel):
@@ -35,9 +42,12 @@ class ContactSettings(BaseModel):
     phone: str
     whatsapp: str
     email: str
-    hours: str
+    hours: str = ""
     googleMapsUrl: str
     googleMapsEmbed: str = ""
+    companyName: str = ""
+    phoneSecondary: str = ""
+    website: str = ""
 
 
 class SocialSettings(BaseModel):
@@ -45,6 +55,8 @@ class SocialSettings(BaseModel):
     instagram: str = ""
     linkedin: str = ""
     twitter: str = ""
+    youtube: str = ""
+    gmail: str = ""
 
 
 class SettingsDocument(BaseModel):

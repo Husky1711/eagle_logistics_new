@@ -74,11 +74,11 @@ export default function Pricing() {
   return (
     <PageContentGate loading={loading} error={error}>
       <PageMeta meta={page?.meta} />
-      <section className="section-padding bg-neutral-50">
+      <section className="section-padding bg-primary-50">
         <Container>
           <div className="mb-12 text-center">
-            <h1 className="font-display text-4xl font-bold text-dark">{content.title}</h1>
-            <p className="mx-auto mt-4 max-w-2xl text-neutral-600">{content.subtitle}</p>
+            <h1 className="font-display text-4xl font-bold text-heading">{content.title}</h1>
+            <p className="mx-auto mt-4 max-w-2xl text-ink">{content.subtitle}</p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
@@ -135,7 +135,7 @@ export default function Pricing() {
                           ₹{r.price.toFixed(2)}
                         </p>
                       </div>
-                      <div className="mt-3 space-y-1 text-sm text-neutral-600">
+                      <div className="mt-3 space-y-1 text-sm text-ink">
                         <p>Base: ₹{r.breakdown.base_price}</p>
                         <p>
                           Weight ({r.breakdown.weight}kg × ₹{r.breakdown.price_per_kg}/kg): ₹
@@ -157,7 +157,7 @@ export default function Pricing() {
               ) : results && results.length === 0 ? (
                 <Card className="text-center">
                   <h2 className="font-display text-lg font-semibold">{content.noMatchTitle}</h2>
-                  <p className="mt-2 text-neutral-600">{content.noMatchMessage}</p>
+                  <p className="mt-2 text-ink">{content.noMatchMessage}</p>
                   {whatsappUrl && (
                     <Button href={whatsappUrl} className="mt-4">
                       {content.whatsappCta || 'Get Quote on WhatsApp'}

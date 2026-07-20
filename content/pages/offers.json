@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Special Offers | Eagle Logistics",
+    "description": "Festive shipping offers, international discounts, and special student rates for university applications from Eagle Logistics.",
+    "keywords": [
+      "special offers",
+      "festive offers",
+      "student courier discount",
+      "university applications",
+      "Eagle Logistics"
+    ]
+  },
+  "content": {
+    "title": "Special Offers",
+    "heroImage": "special-offers-hero.png",
+    "headline": "Celebrate all leading festivals with Eagle Logistics special festive offers!!",
+    "lead": "Are you disappointed that you are not able to share the joy of festivals with your loved ones who stay abroad and away from each other?",
+    "reassure": "Do not worry!! Eagle Logistics is here to help you!!",
+    "body": [
+      "For the festive season and New Year, Eagle Logistics - India’s premier express courier and logistics company - introduces exciting offers for our esteemed customers so you can share joy with loved ones around the world.",
+      "Festivals like New Year, Ugadi, Dussehra, Diwali, Christmas and more are moments to cherish relationships no matter where your family is. Eagle Logistics understands this need of bridging the gap between relatives away from each other, and therefore we offer a range of promotions for our valued customers."
+    ],
+    "featuresTitle": "Special Features",
+    "features": [
+      "Reliable and secured delivery across India",
+      "Express delivery to anywhere around the world at discounted price",
+      "Attractively packaged gift parcels",
+      "Pick-up facility at your doorstep",
+      "Loyalty points",
+      "Dedicated customer service teams",
+      "Online tracking 24x7"
+    ],
+    "offerNote": "As part of the offer, customers receive huge discounts on shipments sent through Eagle Logistics premium services or to international locations. During festive periods, customers making international bookings may also be eligible for lucky-draw coupons with a chance to win exciting prizes.",
+    "promoCard": {
+      "line1": "Send Parcels to USA from Bangalore",
+      "line2": "@ ₹ 567/-* per kg",
+      "image": "special-offers-promo.png",
+      "items": [
+        "Books",
+        "Clothes",
+        "Homemade Sweets",
+        "Foot wears",
+        "Spices",
+        "Biscuits",
+        "Medicines",
+        "Etc."
+      ],
+      "disclaimer": "Conditions apply"
+    },
+    "sections": [
+      {
+        "id": "university",
+        "title": "University Applications",
+        "subtitle": "Huge discounts on international courier service for students!!",
+        "lead": "Looking for a reliable and secure courier service to send your applications to universities abroad?",
+        "reassure": "Eagle Logistics is the one you need!!",
+        "body": [
+          "Eagle Logistics offers special discounts for students to send applications to universities from India to UK, USA, Australia, New Zealand and other major destinations.",
+          "We provide exclusive services specially designed to deliver student applications to universities across the globe in the most reliable, fast and secure way.",
+          "With Eagle Logistics, you gain premium express services with huge discounts and added special service features. You can also enjoy loyalty benefits with each order.",
+          "The more you ship, the more you gain!"
+        ],
+        "featuresTitle": "Special Features",
+        "features": [
+          "Free home pick-up",
+          "Dedicated customer service",
+          "Loyalty bonus",
+          "Online tracking 24x7"
+        ]
+      }
+    ],
+    "whatsappCta": "Ask about offers on WhatsApp",
+    "ctaDefault": "Price Calculator",
+    "currentPromoLabel": "Current promo"
+  }
+}

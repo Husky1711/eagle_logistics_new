@@ -5,21 +5,31 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#EA580C',
-          600: '#c2410c',
-          700: '#9a3412',
-          800: '#7c2d12',
-          900: '#431407',
+          50: '#e6f2fa',
+          100: '#d0e7f5',
+          200: '#add7ef',
+          300: '#7abce3',
+          400: '#428BCA',
+          500: '#1572B7',
+          600: '#0f5f96',
+          700: '#0a4d7a',
+          800: '#0c3f63',
+          900: '#0a3352',
+        },
+        /* Live site (eaglelogistics.in) typography colors */
+        heading: {
+          DEFAULT: '#1572B7',
+          bright: '#0C89CA',
+          link: '#428BCA',
+        },
+        ink: {
+          DEFAULT: '#333333',
+          soft: '#555555',
         },
         gold: {
-          400: '#EAB308',
-          500: '#D4A017',
-          600: '#B8860B',
+          400: '#5BA3D0',
+          500: '#1572B7',
+          600: '#0f5f96',
         },
         dark: {
           DEFAULT: '#171717',

@@ -1,97 +1,150 @@
 {
   "meta": {
     "title": "Services | Eagle Logistics",
-    "description": "Express, cargo, domestic, international, and specialty shipping. Eagle Logistics compares partners to deliver what you need.",
-    "keywords": ["logistics services", "express shipping", "cargo", "international courier", "Eagle Logistics"]
+    "description": "Domestic express, international courier, air cargo, surface cargo, student document delivery, and logistics solutions from Eagle Logistics.",
+    "keywords": [
+      "logistics services",
+      "express shipping",
+      "air cargo",
+      "international courier",
+      "surface cargo",
+      "Eagle Logistics"
+    ]
   },
   "content": {
     "hero": {
-      "headline": "What We Deliver",
-      "subheadline": "From affectionate parcels to families abroad to critical commercial cargo — we handle it all with precision and care.",
+      "headline": "Services",
+      "subheadline": "Affordable international and domestic courier with professional customer care and continuous Track & Trace.",
       "image": "services-hero.jpg"
     },
+    "intro": "Eagle Logistics & Express Services is dedicated to reach every Documents, Non-Documents - Sample Shipments, Commercial Shipments, Import & Export Goods - to every possible place in the world as per customer requirements. We are committed to provide affordable international courier service adhering to stringent time schedules and quality standards. We provide international express service with operational versatility and professional Customer Care, with shipment status monitored on a continuous basis through our web-based Track & Trace system. Our associates in New York/USA, Singapore and Dubai/UAE function as world hubs for international connectivity through a network of strategic business partners.",
     "tabs": [
       {
-        "id": "express",
-        "label": "Express",
-        "heroImage": "slide-1.jpg",
+        "id": "domestic",
+        "label": "Domestic",
+        "heroImage": "slide-4.jpg",
         "services": [
           {
-            "title": "Express Domestic",
-            "highlight": "Express 24–48 Hours",
-            "description": "Priority shipments delivered through our fastest partner routes across India.",
-            "image": "slide-1.jpg",
+            "title": "Express Service",
+            "highlight": "Next-day priority",
+            "description": "Your time-sensitive Documents / Non-documents are delivered next day in all Metros, Major Cities & Towns on a priority basis.",
+            "image": "slide-4.jpg",
             "icon": "Zap"
           },
           {
-            "title": "International Express",
-            "highlight": "Global Reach",
-            "description": "Documents and parcels to UK, USA, Australia, and beyond via premium partners.",
+            "title": "Surface Cargo",
+            "highlight": "Pan-India fleet",
+            "description": "All your bulk consignments are transported through our own fleet of vehicles, leased railway wagons, and other modes to stations all over India - supported by container LCVs. We ensure added safety and timely delivery of surface shipments.",
             "image": "slide-2.jpg",
-            "icon": "Globe"
+            "icon": "Truck"
           }
         ]
       },
       {
-        "id": "specialty",
-        "label": "Specialty",
-        "heroImage": "slide-3.jpg",
+        "id": "international",
+        "label": "International",
+        "heroImage": "slide-5.jpg",
         "services": [
           {
-            "title": "Healthcare & Pharma",
-            "highlight": "Critical Care & Vaccines",
-            "description": "Specialized handling for medicines including cold chain logistics for vaccines.",
-            "image": "slide-3.jpg",
-            "icon": "HeartPulse"
+            "title": "Global Service",
+            "highlight": "Worldwide delivery",
+            "description": "All documents / Non-documents are delivered worldwide at most economical rates. Chosen modes of operational connectivity give us a cutting edge for faster services as per customer requirements.",
+            "image": "slide-1.jpg",
+            "icon": "Globe"
           },
           {
-            "title": "Food & Homemade",
-            "highlight": "Authentic Taste of Home",
-            "description": "Gentle packing for pickles, sweets, spices, and homemade snacks with zero-breakage care.",
-            "image": "slide-4.jpg",
-            "icon": "UtensilsCrossed"
+            "title": "Air Cargo",
+            "highlight": "24-48 hours",
+            "description": "Bulk consignments sent as cargo on flights to destinations of your choice. Specialized handling and door-to-door delivery for critical priority shipments such as medicines (vaccines), perishable commodities (fruits and vegetables), and other time-sensitive cargo. Delivered to the specific destination in 24-48 hrs based on requirements.",
+            "image": "services-hero.jpg",
+            "icon": "Plane"
           },
           {
-            "title": "Student Documents",
-            "highlight": "University Applications",
-            "description": "Exclusive deliveries for university applications with student-friendly rates abroad.",
+            "title": "Universal Express",
+            "highlight": "University applications",
+            "description": "Special messenger services for exclusive delivery of university applications. Special discounts for students sending applications from India to UK, USA, Australia, New Zealand and other major destinations - reliable, fast and secure.",
             "image": "slide-5.jpg",
             "icon": "GraduationCap"
           }
         ]
       },
       {
-        "id": "cargo",
-        "label": "Cargo & Bulk",
-        "heroImage": "about-hero.jpg",
+        "id": "specialty",
+        "label": "Specialty",
+        "heroImage": "slide-1.jpg",
         "services": [
           {
-            "title": "Bulk Cargo",
-            "highlight": "Economical Bulk Shipping",
-            "description": "Cost-effective FCL and LCL solutions to major ports and hubs worldwide.",
-            "image": "about-hero.jpg",
-            "icon": "Container"
-          },
-          {
-            "title": "Domestic Freight",
-            "highlight": "Pan-India Network",
-            "description": "Seamless connectivity across India through our partner network and hub model.",
+            "title": "Healthcare & Pharma",
+            "highlight": "Critical care & vaccines",
+            "description": "Specialized handling for medicines including cold-chain logistics for vaccines and other critical healthcare shipments.",
             "image": "services-hero.jpg",
-            "icon": "Truck"
+            "icon": "HeartPulse"
           },
           {
-            "title": "Warehousing",
-            "highlight": "Storage & Distribution",
-            "description": "Procurement, storage, processing, packaging, and dispatch through partner facilities.",
+            "title": "Food & Homemade",
+            "highlight": "Authentic taste of home",
+            "description": "Gentle packing for pickles, sweets, spices, and homemade snacks with careful handling to protect fragile contents.",
+            "image": "slide-1.jpg",
+            "icon": "UtensilsCrossed"
+          }
+        ]
+      },
+      {
+        "id": "solutions",
+        "label": "Logistics Solutions",
+        "heroImage": "slide-3.jpg",
+        "services": [
+          {
+            "title": "Warehousing & Dispatches",
+            "highlight": "One-stop logistics",
+            "description": "We provide godown facilities and function as a logistics service provider for procurement, storage, processing, packaging and dispatch of goods as per customer needs - a one-stop shop for all logistic solutions.",
+            "image": "slide-4.jpg",
             "icon": "Warehouse"
+          },
+          {
+            "title": "Bulk Cargo",
+            "highlight": "Economical bulk shipping",
+            "description": "Cost-effective solutions for larger consignments to major hubs worldwide through our partner network.",
+            "image": "slide-3.jpg",
+            "icon": "Container"
           }
         ]
       }
     ],
+    "advantages": {
+      "title": "Advantage of Our Services",
+      "items": [
+        {
+          "title": "End-to-end tracking",
+          "description": "Track your parcel from collection to delivery.",
+          "icon": "MapPin"
+        },
+        {
+          "title": "Quick quotes",
+          "description": "Get quotes in seconds for international shipping.",
+          "icon": "Calculator"
+        },
+        {
+          "title": "Parcel protection",
+          "description": "Add protection cover to the parcel if required.",
+          "icon": "Shield"
+        },
+        {
+          "title": "Customs support",
+          "description": "Easy to fill out customs documents, built into the booking process.",
+          "icon": "FileText"
+        },
+        {
+          "title": "Flexible pickup",
+          "description": "Choice of having the parcel collected from home / work, or drop it off locally.",
+          "icon": "Home"
+        }
+      ]
+    },
     "cta": {
       "title": "Ready to Ship?",
-      "subtitle": "Tell us what you're sending — we'll find the best partner and rate.",
-      "button": "Calculate Price",
+      "subtitle": "Tell us what you're sending - we'll find the best partner and rate.",
+      "button": "Price Calculator",
       "buttonLink": "/pricing"
     }
   }

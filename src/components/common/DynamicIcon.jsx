@@ -1,13 +1,18 @@
 import {
+  Calculator,
   Circle,
   Container,
+  FileText,
   Globe,
   GraduationCap,
   HeartPulse,
+  Home,
   IndianRupee,
   MapPin,
   Package,
+  Plane,
   Search,
+  Shield,
   Truck,
   UtensilsCrossed,
   Warehouse,
@@ -27,6 +32,11 @@ const ICONS = {
   GraduationCap,
   Container,
   Warehouse,
+  Plane,
+  Calculator,
+  Shield,
+  FileText,
+  Home,
 }
 
 export function DynamicIcon({ name, size = 24, className = '' }) {

@@ -2,11 +2,15 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { DEFAULT_SETTINGS } from '../config/settingsDefaults'
 import { contentUrl } from '../utils/assets'
 
-const SettingsContext = createContext({ settings: null, loading: true, error: null })
+const SettingsContext = createContext({
+  settings: DEFAULT_SETTINGS,
+  loading: false,
+  error: null,
+})
 
 export function SettingsProvider({ children }) {
-  const [settings, setSettings] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [settings, setSettings] = useState(DEFAULT_SETTINGS)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -21,9 +25,6 @@ export function SettingsProvider({ children }) {
       })
       .catch((err) => {
         if (!cancelled) setError(err.message)
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false)
       })
     return () => {
       cancelled = true
@@ -40,7 +41,7 @@ export function SettingsProvider({ children }) {
 export function useSettings() {
   const { settings, loading, error } = useContext(SettingsContext)
   return {
-    settings: settings ?? (error ? DEFAULT_SETTINGS : null),
+    settings: settings ?? DEFAULT_SETTINGS,
     loading,
     error,
   }

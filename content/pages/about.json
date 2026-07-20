@@ -1,37 +1,64 @@
 {
   "meta": {
-    "title": "About Us | Eagle Logistics",
-    "description": "Eagle Logistics is a trusted logistics mediation center connecting India to the world since 2010.",
-    "keywords": ["about Eagle Logistics", "logistics aggregator", "Hyderabad courier", "international shipping"]
+    "title": "Why Eagle | Eagle Logistics",
+    "description": "Eagle Logistics, established in 2010, provides courier and logistics services across India and worldwide - door-to-door pickup, tracked delivery, and reliable express partners.",
+    "keywords": [
+      "Why Eagle",
+      "Eagle Logistics About",
+      "Bangalore courier",
+      "international shipping India",
+      "door to door cargo"
+    ]
   },
   "content": {
     "hero": {
-      "title": "Connecting India to the World Since 2010",
-      "subtitle": "Your trusted partner for domestic and international courier services — delivering happiness across borders.",
+      "title": "Why Eagle",
+      "subtitle": "Established in 2010 - trusted courier and logistics from Bangalore to destinations across India and the world.",
       "image": "about-hero.jpg"
     },
-    "story": [
-      {
-        "title": "Who We Are",
-        "body": "Eagle Logistics is a logistics mediation center — not a single fleet operator. We sit at the center of a trusted partner network, comparing couriers so you get the best rate and route for every shipment."
-      },
-      {
-        "title": "Our Mission",
-        "body": "To simplify shipping for individuals and businesses by comparing multiple courier vendors, selecting the best option, and providing one hub for drop-off, pricing, and support."
-      },
-      {
-        "title": "Why Aggregator?",
-        "body": "Shippers shouldn't need five tabs open to compare prices. Eagle does the comparison for you — one drop-off, multiple partners, best price. That's our promise."
-      }
-    ],
-    "stats": [
-      { "value": "15+", "label": "Courier Partners" },
-      { "value": "10K+", "label": "Shipments Mediated" },
-      { "value": "50+", "label": "Cities Covered" },
-      { "value": "24/7", "label": "Tracking Support" }
-    ],
+    "about": {
+      "eyebrow": "Estd. 2010",
+      "title": "About Us",
+      "lead": "We, Eagle Logistics, Estd in 2010 are one of the leading providers of courier and logistics services in India, catering to the needs of common people, Industries, Commercial Establishments and Educational Institutions. We undertake door-to-door bulk pickup and deliveries of documents, books, stationeries, clothing and footwear, non perishable food items, Electronics etc. Our delivery services cover major destinations throughout the world like USA, UK, European Union (EU), Middle East, Far East and including local and National destinations. We offer these services at unbelievable low prices, for sending international couriers and parcels from India to destinations across the world.",
+      "highlights": [
+        {
+          "icon": "MapPin",
+          "title": "Doorstep or local pickup",
+          "body": "We also can arrange to pick your parcel from your door step Or collect it from a local pickup point and assure that it will be delivered by our reliable and tracked logistics service thus saving you considerable amount of time and money."
+        },
+        {
+          "icon": "Shield",
+          "title": "Safety you can trust",
+          "body": "We employ the most stringent safety measures ensuring that there is no chance of loss, pilferage or damage to your package. Besides, we are one of the few courier companies that provide international door-to door cargo. So when you think reliability, think Eagle logistics & Express services."
+        },
+        {
+          "icon": "Search",
+          "title": "Tracked every step",
+          "body": "Our customer services team is well-equipped with an on line tracking system and other communication aids to enable round the clock tracking and prompt delivery of your shipments. We guarantee that all shipments will be handled with great care and also that the same will be booked through recognized Express Courier companies."
+        }
+      ]
+    },
+    "vision": {
+      "title": "Vision",
+      "body": "To be identified as the largest & most trusted Courier Company in the country with its presence in every nook and corner of our country. To be identified as an economical and cost effective Courier Service. To stay well ahead of the others and establish new benchmarks in courier service, productivity enhancement, customer & employee satisfaction."
+    },
+    "mission": {
+      "title": "Mission",
+      "body": "Let us be the link between you and your loved ones. Have dedicated and passionate staff working for you. Give you, the Customer, full transparency throughout the delivery process. Give you, the Customer, best possible customer service experience."
+    },
+    "values": {
+      "title": "Values",
+      "body": "We offer a quick and easy consulting service to show you how we can cut your costs and save you money. The service comes at a very small charge but should you choose to ship with Eagle Express, we will cover the consulting costs and save you even more. Simply ask us about the benefits of our consulting work when you contact us or request a quote.",
+      "items": [
+        "Entrepreneurship",
+        "Partnerships",
+        "Reliability",
+        "Accountability",
+        "Service Excellence"
+      ]
+    },
     "cta": {
-      "title": "Ready to ship smarter?",
+      "title": "Ready to ship with Eagle?",
       "subtitle": "Calculate your cost or talk to our team on WhatsApp.",
       "button": "Get Started",
       "buttonLink": "/pricing"

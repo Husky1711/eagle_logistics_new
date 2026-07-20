@@ -18,17 +18,17 @@ function LegalContent({ page, fallbackTitle }) {
   return (
     <>
       <PageMeta meta={page?.meta} />
-      <section className="section-padding">
+      <section className="section-padding bg-primary-50">
         <Container className="max-w-3xl">
-          <h1 className="font-display text-4xl font-bold text-dark">{content.title || fallbackTitle}</h1>
+          <h1 className="font-display text-4xl font-bold text-heading">{content.title || fallbackTitle}</h1>
           {content.lastUpdated && (
             <p className="mt-2 text-sm text-neutral-500">Last updated: {content.lastUpdated}</p>
           )}
-          <div className="mt-10 space-y-8">
+          <div className="mt-10 space-y-8 rounded-2xl border border-primary-100 bg-white p-6 shadow-soft sm:p-8">
             {content.sections?.map((section) => (
               <article key={section.title}>
-                <h2 className="font-display text-xl font-semibold text-dark">{section.title}</h2>
-                <p className="mt-3 leading-relaxed text-neutral-600">{section.body}</p>
+                <h2 className="font-display text-xl font-semibold text-heading">{section.title}</h2>
+                <p className="mt-3 leading-relaxed text-ink">{section.body}</p>
               </article>
             ))}
           </div>

@@ -5,11 +5,13 @@ export default {
     extend: {
       colors: {
         primary: {
-          500: '#EA580C',
-          600: '#c2410c',
+          50: '#e6f2fa',
+          100: '#d0e7f5',
+          500: '#1572B7',
+          600: '#0f5f96',
         },
         gold: {
-          500: '#D4A017',
+          500: '#1572B7',
         },
         dark: {
           DEFAULT: '#171717',

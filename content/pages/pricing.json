@@ -1,14 +1,14 @@
 {
   "meta": {
-    "title": "Shipping Calculator | Eagle Logistics",
-    "description": "Calculate domestic shipping costs. Compare courier partners and get sample rates from our rate card.",
-    "keywords": ["shipping calculator", "courier rates", "parcel cost", "Eagle Logistics"]
+    "title": "Price Calculator | Eagle Logistics",
+    "description": "Calculate shipping costs with DHL, FedEx, and UPS sample rates from our rate card.",
+    "keywords": ["price calculator", "shipping calculator", "DHL", "FedEx", "UPS", "Eagle Logistics"]
   },
   "content": {
-    "title": "Calculate Your Shipping Cost",
-    "subtitle": "Enter your parcel details to compare sample rates from multiple courier partners",
-    "calculateButton": "Calculate Price",
-    "notice": "Sample rates from our rate card. Final price depends on zone, partner availability, and parcel type — confirm on WhatsApp for an exact quote.",
+    "title": "Price Calculator",
+    "subtitle": "Enter your parcel details to compare sample rates from DHL, FedEx, and UPS",
+    "calculateButton": "Get Rates",
+    "notice": "Sample rates from our rate card. Final price depends on zone, partner availability, and parcel type - confirm on WhatsApp for an exact quote.",
     "offerReminder": "Monsoon Express: mention EAGLE15 on WhatsApp for 15% off domestic shipping (T&C apply).",
     "noMatchTitle": "No rate card match",
     "noMatchMessage": "We couldn't find a rate for this weight and distance combination. WhatsApp us for a custom quote.",
