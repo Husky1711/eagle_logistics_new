@@ -1,13 +1,9 @@
 {
   "meta": {
-    "title": "Things We Send | Eagle Logistics",
-    "description": "Popular items Eagle Logistics ships - books, clothes, footwear, medicines, photos, spices, sweets, and electronics from Bangalore to destinations worldwide.",
-    "keywords": [
-      "Things We Send",
-      "Eagle Logistics shipping items",
-      "send books abroad",
-      "international courier Bangalore"
-    ]
+    "title": "Items We Ship Abroad | Eagle Logistics Bangalore",
+    "description": "Ship books, clothes, footwear, medicines, photos, spices, sweets and electronics from Bangalore to destinations worldwide with Eagle Logistics tracking.",
+    "image": "/assets/things-we-send/popular-items-banner.jpg",
+    "imageAlt": "Popular items Eagle Logistics ships from Bangalore"
   },
   "content": {
     "title": "Things We Send",
@@ -25,8 +21,10 @@
         "bannerImage": "things-we-send/books-banner.jpg",
         "summary": "We undertake fulfilment for books in the field of book logistics. The delivered books of our customers are checked, counted and then stored in pallet spaces.",
         "meta": {
-          "title": "Books | Things We Send | Eagle Logistics",
-          "description": "Book logistics and fulfilment from Eagle Logistics - checked, counted, stored, and shipped to customer requirements."
+          "title": "Ship Books Abroad from Bangalore | Eagle Logistics",
+          "description": "Need textbooks or novels overseas? Eagle Logistics ships books from Bangalore with piece-count checks, secure packing and tracked DHL, FedEx or UPS delivery.",
+          "image": "/assets/things-we-send/books.jpg",
+          "imageAlt": "Ship books abroad with Eagle Logistics"
         },
         "body": [
           "We undertake fulfilment for books in the field of book logistics. The delivered books of our customers are checked, counted and then stored in pallet spaces. Shipments usually take place in various range of assortments according to customer requirements. The delivery of single orders and subsequent deliveries happens continuously after receipt of the orders."
@@ -39,8 +37,10 @@
         "image": "things-we-send/clothes.jpg",
         "summary": "From labelling, to gift wrapping, to custom cards for your eCommerce channel or any other store ready requirements, supply chain provide the flexible value-added services.",
         "meta": {
-          "title": "Clothes | Things We Send | Eagle Logistics",
-          "description": "Clothes and apparel logistics - storage, handling, customs clearance, and store-ready value-added services."
+          "title": "Ship Clothes Abroad from Bangalore | Eagle Logistics",
+          "description": "Moving wardrobes or gifting apparel abroad? Ship clothes from Bangalore with garment-friendly packing, customs help and tracked international courier service.",
+          "image": "/assets/things-we-send/clothes.jpg",
+          "imageAlt": "Ship clothes abroad with Eagle Logistics"
         },
         "body": [
           "With expertise in storage and handling, our specially trained and experienced personnel is a sure bet in bringing your merchandise directly to the customer. During promotional campaigns, fixed schedule deliveries and customs clearances for incoming or outgoing materials are implemented quickly and accurately. Our expert trade consultants can help you make sourcing decisions, as they come equipped with landed costs and a deep understanding of the regulatory environment that polices the clothing sector.",
@@ -54,8 +54,10 @@
         "image": "things-we-send/footwear.jpg",
         "summary": "Our structural engineers use their expertise to design the right structure and form, the number of pairs you can pack into the shipping carton and ocean container.",
         "meta": {
-          "title": "Footwear | Things We Send | Eagle Logistics",
-          "description": "Footwear shipping optimized for carton and container packing - safe, efficient logistics for shoes and related goods."
+          "title": "Ship Footwear Abroad from Bangalore | Eagle Logistics",
+          "description": "From sneakers to formal shoes, ship footwear abroad from Bangalore in carton-ready packs with live international tracking via Eagle Logistics partners.",
+          "image": "/assets/things-we-send/footwear.jpg",
+          "imageAlt": "Ship footwear abroad with Eagle Logistics"
         },
         "body": [
           "Our structural engineers use their expertise to design the right structure and form, and determine the right carton suite for your footwear, all with an eye toward maximizing the number of pairs you can pack into the shipping carton and ocean container. It’s the new standard of fully-integrated optimization in the footwear segment, one that we call “thinking inside the box.”",
@@ -69,8 +71,10 @@
         "image": "things-we-send/medicines.jpg",
         "summary": "This relatively arm’s-length relationship with logistics service providers suggests that the pharmaceutical supply chain is complex but highly standardised.",
         "meta": {
-          "title": "Medicines | Things We Send | Eagle Logistics",
-          "description": "Medical and pharmaceutical logistics - storage, fulfilment, shipping, tracking, and documentation support."
+          "title": "Ship Medicines Abroad from Bangalore | Eagle Logistics",
+          "description": "Courier medicines from Bangalore with paperwork guidance, secure packing and tracked pharmaceutical logistics handled by Eagle Logistics India specialists.",
+          "image": "/assets/things-we-send/medicines.jpg",
+          "imageAlt": "Ship medicines abroad with Eagle Logistics"
         },
         "body": [
           "Ensuring the right equipment and supplies are in the right hands in the right place at the right time is what drives our medical logistics and supply chain management services. We combine subject matter experts (SMEs) with logistics information systems specialists to help our customers in the planning, implementation, including warehousing, freight boarding, and inventory management and accountability.",
@@ -84,8 +88,10 @@
         "image": "things-we-send/photos.jpg",
         "summary": "Careful packing and tracked delivery for photo prints, albums, and related media - so memories arrive safely at the destination.",
         "meta": {
-          "title": "Photos | Things We Send | Eagle Logistics",
-          "description": "Ship photo prints, albums, and media securely with Eagle Logistics tracked courier partners."
+          "title": "Ship Photos & Albums Abroad | Eagle Logistics Bangalore",
+          "description": "Protect framed prints and albums in transit. Ship photos abroad from Bangalore with cushioned packing and tracked international courier from Eagle Logistics.",
+          "image": "/assets/things-we-send/photos.jpg",
+          "imageAlt": "Ship photos and albums with Eagle Logistics"
         },
         "body": [
           "Photo prints, albums, and related media need gentle handling so they arrive without bends, moisture damage, or scuffs. Eagle Logistics packs these items with protective materials and books them through recognized express courier partners.",
@@ -99,8 +105,10 @@
         "image": "things-we-send/spices.jpg",
         "summary": "We handle the commodity of herbs & spices in a gentle and safe manner. The goods retain their essential oil. We guarantee our customers perfect storage, sampling, quality control and import / export processing.",
         "meta": {
-          "title": "Spices | Things We Send | Eagle Logistics",
-          "description": "Herbs and spices logistics - gentle handling, storage, and import/export processing."
+          "title": "Ship Spices Abroad from Bangalore | Eagle Logistics",
+          "description": "Share Indian spices and herbs with family worldwide. Sealed packs from Bangalore, gentle handling and tracked international delivery via Eagle Logistics.",
+          "image": "/assets/things-we-send/spices.jpg",
+          "imageAlt": "Ship spices abroad with Eagle Logistics"
         },
         "body": [
           "Pepper, paprika, chilli, nutmeg, oregano, thyme, and a great variety of other herbs and spices require special transport and storage conditions. As a logistics professional for food, Eagle Logistics offers careful conditions for these sensitive natural products.",
@@ -114,8 +122,10 @@
         "image": "things-we-send/sweets.jpg",
         "summary": "Packaging plays a supporting role not only in terms of durability and food hygiene - but it also emphasises the quality of the content.",
         "meta": {
-          "title": "Sweets | Things We Send | Eagle Logistics",
-          "description": "Sweets and confectionery shipping with hygiene-focused packing and careful handling."
+          "title": "Ship Sweets Abroad from Bangalore | Eagle Logistics",
+          "description": "Festival mithai for family abroad? Ship homemade sweets from Bangalore with hygiene-first packing, careful handling and tracked international delivery.",
+          "image": "/assets/things-we-send/sweets.jpg",
+          "imageAlt": "Ship sweets abroad with Eagle Logistics"
         },
         "body": [
           "Managing product operations for sweets and confectionery includes registering goods reception and storage, supporting production logistics, and managing packaging lines where required.",
@@ -129,8 +139,10 @@
         "image": "things-we-send/electronics.jpg",
         "summary": "The mechanism of automating logistics processes and providing an integrated, end-to-end fulfilment and supply chain management services to the players of logistics processes.",
         "meta": {
-          "title": "Electronics | Things We Send | Eagle Logistics",
-          "description": "Electronics and electrical goods logistics - safe packing, inventory-aware fulfilment, and reliable delivery."
+          "title": "Ship Electronics Abroad from Bangalore | Eagle Logistics",
+          "description": "Ship phones, gadgets and accessories from Bangalore with shock-aware packing, careful handling and tracked international courier from Eagle Logistics.",
+          "image": "/assets/things-we-send/electronics.jpg",
+          "imageAlt": "Ship electronics abroad with Eagle Logistics"
         },
         "body": [
           "The service of Electronic Goods Logistics Services is provided by us to our specialized clients from the distinctive industrial sphere. Many reputed brands of electronics equipment are associated with us today because of our improved supply chain system and efficient & manageable inventory.",

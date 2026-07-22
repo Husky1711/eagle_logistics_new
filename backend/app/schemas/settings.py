@@ -35,6 +35,7 @@ class FooterSettings(BaseModel):
     quickLinks: list[NavItem]
     supportLinks: list[NavItem]
     countries: list[FooterCountry] = Field(default_factory=list)
+    flagImage: str | None = None
 
 
 class ContactSettings(BaseModel):

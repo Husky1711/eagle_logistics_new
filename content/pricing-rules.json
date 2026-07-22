@@ -2,33 +2,39 @@
   {
     "id": "dhl-standard",
     "courier": "dhl",
-    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "weight_range": { "min": 0, "max": 30, "unit": "kg" },
     "distance_zones": [
-      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 70, "price_per_kg": 18, "estimated_delivery": "1 day" },
-      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 120, "price_per_kg": 24, "estimated_delivery": "2-3 days" },
-      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 175, "price_per_kg": 30, "estimated_delivery": "3-5 days" }
+      { "zone": "Bangalore local", "max_distance": 50, "unit": "km", "base_price": 70, "price_per_kg": 18, "estimated_delivery": "1 day" },
+      { "zone": "India", "max_distance": 3000, "unit": "km", "base_price": 175, "price_per_kg": 30, "estimated_delivery": "2-4 days" },
+      { "zone": "Middle East & Asia", "max_distance": 6000, "unit": "km", "base_price": 420, "price_per_kg": 480, "estimated_delivery": "3-5 days" },
+      { "zone": "Europe", "max_distance": 11000, "unit": "km", "base_price": 520, "price_per_kg": 540, "estimated_delivery": "4-7 days" },
+      { "zone": "Americas & Oceania", "max_distance": 99999, "unit": "km", "base_price": 580, "price_per_kg": 567, "estimated_delivery": "5-8 days" }
     ],
     "active": true
   },
   {
     "id": "fedex-standard",
     "courier": "fedex",
-    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "weight_range": { "min": 0, "max": 30, "unit": "kg" },
     "distance_zones": [
-      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 65, "price_per_kg": 16, "estimated_delivery": "1 day" },
-      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 110, "price_per_kg": 22, "estimated_delivery": "2-3 days" },
-      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 165, "price_per_kg": 28, "estimated_delivery": "3-5 days" }
+      { "zone": "Bangalore local", "max_distance": 50, "unit": "km", "base_price": 65, "price_per_kg": 16, "estimated_delivery": "1 day" },
+      { "zone": "India", "max_distance": 3000, "unit": "km", "base_price": 165, "price_per_kg": 28, "estimated_delivery": "2-4 days" },
+      { "zone": "Middle East & Asia", "max_distance": 6000, "unit": "km", "base_price": 400, "price_per_kg": 470, "estimated_delivery": "3-5 days" },
+      { "zone": "Europe", "max_distance": 11000, "unit": "km", "base_price": 500, "price_per_kg": 530, "estimated_delivery": "4-7 days" },
+      { "zone": "Americas & Oceania", "max_distance": 99999, "unit": "km", "base_price": 560, "price_per_kg": 555, "estimated_delivery": "5-8 days" }
     ],
     "active": true
   },
   {
     "id": "ups-standard",
     "courier": "ups",
-    "weight_range": { "min": 0, "max": 10, "unit": "kg" },
+    "weight_range": { "min": 0, "max": 30, "unit": "kg" },
     "distance_zones": [
-      { "zone": "local", "max_distance": 50, "unit": "km", "base_price": 68, "price_per_kg": 17, "estimated_delivery": "1 day" },
-      { "zone": "regional", "max_distance": 500, "unit": "km", "base_price": 115, "price_per_kg": 23, "estimated_delivery": "2-3 days" },
-      { "zone": "national", "max_distance": 99999, "unit": "km", "base_price": 170, "price_per_kg": 29, "estimated_delivery": "3-5 days" }
+      { "zone": "Bangalore local", "max_distance": 50, "unit": "km", "base_price": 68, "price_per_kg": 17, "estimated_delivery": "1 day" },
+      { "zone": "India", "max_distance": 3000, "unit": "km", "base_price": 170, "price_per_kg": 29, "estimated_delivery": "2-4 days" },
+      { "zone": "Middle East & Asia", "max_distance": 6000, "unit": "km", "base_price": 410, "price_per_kg": 475, "estimated_delivery": "3-5 days" },
+      { "zone": "Europe", "max_distance": 11000, "unit": "km", "base_price": 510, "price_per_kg": 535, "estimated_delivery": "4-7 days" },
+      { "zone": "Americas & Oceania", "max_distance": 99999, "unit": "km", "base_price": 570, "price_per_kg": 560, "estimated_delivery": "5-8 days" }
     ],
     "active": true
   }

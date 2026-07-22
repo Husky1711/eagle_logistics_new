@@ -60,7 +60,7 @@ export default function HeroCarousel({ images = [], reducedMotion = false }) {
           <button
             type="button"
             onClick={prev}
-            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 text-ink opacity-0 shadow-lg transition-opacity group-hover:opacity-100 focus:opacity-100"
+            className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 text-ink opacity-90 shadow-lg transition-opacity sm:left-4 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100"
             aria-label="Previous slide"
           >
             <ChevronLeft size={22} />
@@ -68,7 +68,7 @@ export default function HeroCarousel({ images = [], reducedMotion = false }) {
           <button
             type="button"
             onClick={next}
-            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 text-ink opacity-0 shadow-lg transition-opacity group-hover:opacity-100 focus:opacity-100"
+            className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 text-ink opacity-90 shadow-lg transition-opacity sm:right-4 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100"
             aria-label="Next slide"
           >
             <ChevronRight size={22} />

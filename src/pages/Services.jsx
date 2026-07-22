@@ -72,7 +72,7 @@ function ServicesContent({ page, activeTab, setActiveTab }) {
         </AnimatePresence>
         <div className="absolute inset-0 bg-black/50" />
         <Container className="relative z-10 text-center">
-          <h1 className="font-display text-4xl font-bold lg:text-5xl">{content.hero?.headline}</h1>
+          <h1 className="font-display text-4xl font-bold text-white lg:text-5xl">{content.hero?.headline}</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-200">{content.hero?.subheadline}</p>
         </Container>
       </section>
@@ -80,7 +80,7 @@ function ServicesContent({ page, activeTab, setActiveTab }) {
       {content.intro && (
         <section className="border-b border-neutral-200 bg-white py-12">
           <Container>
-            <p className="mx-auto max-w-4xl text-center text-base leading-relaxed text-ink lg:text-lg">
+            <p className="mx-auto max-w-3xl text-base leading-relaxed text-ink lg:text-lg">
               {content.intro}
             </p>
           </Container>
@@ -124,6 +124,8 @@ function ServicesContent({ page, activeTab, setActiveTab }) {
             })}
           </div>
 
+          <h2 className="sr-only">{tab?.label || 'Service offerings'}</h2>
+
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={tab?.id || activeTab}
@@ -160,7 +162,7 @@ function ServicesContent({ page, activeTab, setActiveTab }) {
                           <span className="text-xs font-semibold uppercase tracking-wide text-gold-600">
                             {service.highlight}
                           </span>
-                          <h3 className="mt-2 font-display text-xl font-semibold">{service.title}</h3>
+                          <h3 className="mt-2 font-display text-xl font-semibold text-heading">{service.title}</h3>
                           <p className="mt-2 text-sm text-ink">{service.description}</p>
                         </div>
                       </Card>

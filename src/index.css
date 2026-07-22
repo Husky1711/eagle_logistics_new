@@ -22,6 +22,33 @@
     color: #1572B7;
   }
 
+  /* Dark surfaces: headings inherit white when the section/article uses text-white */
+  section.text-white :is(h1, h2, h3, h4, h5, h6),
+  article.text-white :is(h1, h2, h3, h4, h5, h6) {
+    color: #fff;
+  }
+
+  /* Explicit heading utilities still win on light surfaces */
+  .text-heading {
+    color: #1572B7;
+  }
+
+  .text-heading-footer {
+    color: #4db8e8;
+  }
+
+  .hover\:text-heading-footer:hover {
+    color: #4db8e8;
+  }
+
+  .focus\:ring-heading-footer:focus {
+    --tw-ring-color: #4db8e8;
+  }
+
+  .hover\:bg-heading-bright:hover {
+    background-color: #0C89CA;
+  }
+
   p {
     color: #333333;
   }

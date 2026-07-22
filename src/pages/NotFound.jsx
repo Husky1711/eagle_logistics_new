@@ -4,10 +4,12 @@ import Button from '../components/common/Button'
 import PageMeta from '../components/common/PageMeta'
 
 const NOT_FOUND_META = {
-  title: 'Page Not Found | Eagle Logistics',
+  title: 'Page Not Found | Eagle Logistics Bangalore',
   description:
-    'The page you requested could not be found. Return to Eagle Logistics home or contact our support team.',
-  keywords: ['404', 'Eagle Logistics'],
+    'Eagle Logistics page not found. Return home for Bangalore courier services, shipping rates, tracking and contact for domestic and international parcels.',
+  robots: 'noindex, follow',
+  image: '/assets/brand/logo.png',
+  imageAlt: 'Eagle Logistics Bangalore',
 }
 
 export default function NotFound() {

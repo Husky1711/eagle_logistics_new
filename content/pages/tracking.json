@@ -1,15 +1,21 @@
 {
   "meta": {
-    "title": "Shipment Tracker | Eagle Logistics",
-    "description": "Track your shipment with DHL, FedEx, or UPS.",
-    "keywords": ["shipment tracker", "courier tracking", "DHL", "FedEx", "UPS", "Eagle Logistics"]
+    "title": "Track Courier Shipment | Eagle Logistics Bangalore",
+    "description": "Track your Eagle Logistics shipment with DHL, FedEx or UPS. Enter your tracking number for live partner status updates from our Bangalore courier desk.",
+    "image": "/assets/pages/tracking-hero.jpg",
+    "imageAlt": "Track shipment with Eagle Logistics Bangalore"
   },
   "content": {
-    "title": "Shipment Tracker",
+    "title": "Track Shipment",
     "subtitle": "Select DHL, FedEx, or UPS and enter your tracking number",
+    "heroImage": "pages/tracking-hero.jpg",
     "courierLabel": "Select Courier",
     "featuredLabel": "Our partners",
-    "featuredCourierIds": ["dhl", "fedex", "ups"],
+    "featuredCourierIds": [
+      "dhl",
+      "fedex",
+      "ups"
+    ],
     "otherLabel": "Other partners",
     "trackButton": "Track Shipment",
     "redirectNotice": "You will be redirected to the official courier tracking website. Eagle Logistics is not responsible for partner tracking accuracy.",

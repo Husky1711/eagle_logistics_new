@@ -8,7 +8,8 @@ import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import Input from '../components/common/Input'
 import PageContentGate from '../components/common/PageContentGate'
-import { courierLogoUrl } from '../utils/assets'
+import SmartImage from '../components/common/SmartImage'
+import { courierLogoUrl, pageImageUrl, assetUrl } from '../utils/assets'
 import { buildWhatsAppUrl, buildTrackingWhatsAppMessage } from '../utils/whatsapp'
 
 export default function Tracking() {
@@ -53,7 +54,7 @@ function CourierLogoTab({ courier, selected, onSelect }) {
       }`}
     >
       {logo ? (
-        <img src={logo} alt="" className="h-10 max-w-[120px] object-contain" />
+        <img src={logo} alt={`${courier.name} logo`} className="h-10 max-w-[120px] object-contain" />
       ) : (
         <span className="font-display text-lg font-bold text-primary-600">{courier.name.slice(0, 2)}</span>
       )}
@@ -74,6 +75,11 @@ function TrackingContent({
   setFormError,
 }) {
   const content = page?.content || {}
+  const heroSrc = content.heroImage
+    ? content.heroImage.includes('/')
+      ? assetUrl(`assets/${content.heroImage.replace(/^assets\//, '')}`)
+      : pageImageUrl(content.heroImage)
+    : null
   const activeCouriers = (couriers || []).filter((c) => c.active).sort((a, b) => a.display_order - b.display_order)
   const featuredIds = content.featuredCourierIds || ['dhl', 'fedex', 'ups']
   const featured = featuredIds
@@ -109,12 +115,35 @@ function TrackingContent({
   return (
     <>
       <PageMeta meta={page?.meta} />
+
+      <section className="relative overflow-hidden bg-dark text-white">
+        {heroSrc && (
+          <picture className="absolute inset-0 block h-full w-full">
+            <source
+              type="image/webp"
+              srcSet={heroSrc.replace(/\.jpe?g$/i, '.webp')}
+            />
+            <SmartImage
+              src={heroSrc}
+              alt=""
+              fill
+              loading="eager"
+              fetchpriority="high"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </picture>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35" />
+        <Container className="relative z-10 py-20 text-center lg:py-28">
+          <h1 className="font-display text-4xl font-bold text-white lg:text-5xl">{content.title}</h1>
+          {content.subtitle && (
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">{content.subtitle}</p>
+          )}
+        </Container>
+      </section>
+
       <section className="section-padding bg-primary-50">
         <Container className="max-w-2xl">
-          <div className="mb-10 text-center">
-            <h1 className="font-display text-4xl font-bold text-heading">{content.title}</h1>
-            <p className="mt-4 text-ink">{content.subtitle}</p>
-          </div>
           <Card>
             <form onSubmit={handleTrack} className="space-y-6">
               {featured.length > 0 && (

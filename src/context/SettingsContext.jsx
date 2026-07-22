@@ -15,7 +15,7 @@ export function SettingsProvider({ children }) {
 
   useEffect(() => {
     let cancelled = false
-    fetch(contentUrl('settings.json'))
+    fetch(contentUrl('settings.json') + `?t=${Date.now()}`, { cache: 'no-store' })
       .then((res) => {
         if (!res.ok) throw new Error('Failed to load settings')
         return res.json()

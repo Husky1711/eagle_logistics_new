@@ -39,16 +39,16 @@ function AboutContent({ page }) {
             fill
             loading="eager"
             fetchpriority="high"
-            className="absolute inset-0 h-full w-full object-cover opacity-45"
+            className="absolute inset-0 h-full w-full object-cover opacity-30"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/55 to-primary-900/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/70 to-primary-900/50" />
         <Container className="relative z-10 py-20 text-center lg:py-28">
           <FadeIn>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-300">
               Eagle Logistics & Express Services
             </p>
-            <h1 className="mt-3 font-display text-4xl font-bold lg:text-6xl">{content.hero?.title}</h1>
+            <h1 className="mt-3 font-display text-4xl font-bold text-white lg:text-6xl">{content.hero?.title}</h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-neutral-200">{content.hero?.subtitle}</p>
           </FadeIn>
         </Container>
@@ -103,7 +103,7 @@ function AboutContent({ page }) {
                   <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-500 text-white">
                     <Eye size={28} aria-hidden />
                   </div>
-                  <h2 className="font-display text-2xl font-bold lg:text-3xl">{vision.title}</h2>
+                  <h2 className="font-display text-2xl font-bold text-white lg:text-3xl">{vision.title}</h2>
                   <p className="mt-4 flex-1 text-base leading-relaxed text-neutral-300">{vision.body}</p>
                 </article>
               )}

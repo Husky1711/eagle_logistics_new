@@ -1,11 +1,12 @@
 {
   "meta": {
-    "title": "Contact Us | Eagle Logistics",
-    "description": "Contact Eagle Logistics in Bangalore. Phone, email, and location - we're here for your shipping questions.",
-    "keywords": ["contact Eagle Logistics", "Bangalore logistics", "courier contact"]
+    "title": "Contact Eagle Logistics | Bangalore Courier Office",
+    "description": "Contact Eagle Logistics in Sampangi Rama Nagar, Bangalore. Call, email or WhatsApp for help with domestic and international courier and cargo shipping.",
+    "image": "/assets/brand/logo.png",
+    "imageAlt": "Contact Eagle Logistics Bangalore office"
   },
   "content": {
-    "title": "Contact",
+    "title": "Contact Us",
     "subtitle": "Reach Eagle Logistics & Express Services in Bangalore",
     "addressLabel": "Address",
     "phoneLabel": "Phone",
@@ -14,7 +15,7 @@
     "whatsappCta": "Chat on WhatsApp",
     "emailCta": "Send Email",
     "mapTitle": "Location",
-    "mapPlaceholder": "Map unavailable - use the address or Google Maps link above.",
+    "mapPlaceholder": "Map unavailable — use the address or Google Maps link above.",
     "stayConnected": "Stay Connected"
   }
 }

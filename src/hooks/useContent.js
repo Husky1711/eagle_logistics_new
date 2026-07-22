@@ -4,12 +4,15 @@ import { contentUrl } from '../utils/assets'
 const cache = new Map()
 const inflight = new Map()
 
-function fetchContent(path) {
+function fetchContent(path, { bust = false } = {}) {
   const url = contentUrl(path)
-  if (cache.has(url)) return Promise.resolve(cache.get(url))
-  if (inflight.has(url)) return inflight.get(url)
+  const requestUrl = bust ? `${url}?t=${Date.now()}` : url
 
-  const request = fetch(url, { cache: 'force-cache' })
+  // Always revalidate in-flight by URL key (without query)
+  if (!bust && cache.has(url)) return Promise.resolve(cache.get(url))
+  if (!bust && inflight.has(url)) return inflight.get(url)
+
+  const request = fetch(requestUrl, { cache: 'no-store' })
     .then((res) => {
       if (!res.ok) throw new Error(`Failed to load ${path}`)
       return res.json()
@@ -22,14 +25,14 @@ function fetchContent(path) {
       inflight.delete(url)
     })
 
-  inflight.set(url, request)
+  if (!bust) inflight.set(url, request)
   return request
 }
 
 /** Warm the content cache so route changes do not flash a spinner. */
 export function prefetchContent(paths) {
   paths.forEach((path) => {
-    fetchContent(path).catch(() => {})
+    fetchContent(path, { bust: true }).catch(() => {})
   })
 }
 
@@ -47,26 +50,22 @@ export function useContent(path) {
         setData(cache.get(url))
         setLoading(false)
         setError(null)
-        // Background refresh without blanking the UI
-        fetch(`${url}?t=${Date.now()}`, { cache: 'no-store' })
-          .then((res) => (res.ok ? res.json() : null))
-          .then((json) => {
-            if (!cancelled && json) {
-              cache.set(url, json)
-              setData(json)
-            }
-          })
-          .catch(() => {})
-        return
+      } else {
+        setLoading(true)
+        setError(null)
       }
 
-      setLoading(true)
-      setError(null)
       try {
-        const json = await fetchContent(path)
-        if (!cancelled) setData(json)
+        // Always bust HTTP cache so content edits show up
+        const json = await fetchContent(path, { bust: true })
+        if (!cancelled) {
+          setData(json)
+          setError(null)
+        }
       } catch (err) {
-        if (!cancelled) setError(err.message || 'Failed to load content')
+        if (!cancelled && !cache.has(url)) {
+          setError(err.message || 'Failed to load content')
+        }
       } finally {
         if (!cancelled) setLoading(false)
       }
@@ -91,4 +90,13 @@ export function combineContentStates(...states) {
 export function clearContentCache() {
   cache.clear()
   inflight.clear()
+}
+
+if (import.meta.hot) {
+  import.meta.hot.accept(() => {
+    clearContentCache()
+  })
+  import.meta.hot.dispose(() => {
+    clearContentCache()
+  })
 }

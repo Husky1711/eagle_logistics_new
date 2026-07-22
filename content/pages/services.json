@@ -1,23 +1,17 @@
 {
   "meta": {
-    "title": "Services | Eagle Logistics",
-    "description": "Domestic express, international courier, air cargo, surface cargo, student document delivery, and logistics solutions from Eagle Logistics.",
-    "keywords": [
-      "logistics services",
-      "express shipping",
-      "air cargo",
-      "international courier",
-      "surface cargo",
-      "Eagle Logistics"
-    ]
+    "title": "Courier & Cargo Services | Eagle Logistics Bangalore",
+    "description": "Domestic express, international courier, air and surface cargo, student document delivery and full logistics solutions from Eagle Logistics in Bangalore.",
+    "image": "/assets/pages/services-hero.jpg",
+    "imageAlt": "Eagle Logistics domestic and international courier services"
   },
   "content": {
     "hero": {
       "headline": "Services",
-      "subheadline": "Affordable international and domestic courier with professional customer care and continuous Track & Trace.",
+      "subheadline": "Affordable international and domestic courier with professional customer care and continuous track & trace.",
       "image": "services-hero.jpg"
     },
-    "intro": "Eagle Logistics & Express Services is dedicated to reach every Documents, Non-Documents - Sample Shipments, Commercial Shipments, Import & Export Goods - to every possible place in the world as per customer requirements. We are committed to provide affordable international courier service adhering to stringent time schedules and quality standards. We provide international express service with operational versatility and professional Customer Care, with shipment status monitored on a continuous basis through our web-based Track & Trace system. Our associates in New York/USA, Singapore and Dubai/UAE function as world hubs for international connectivity through a network of strategic business partners.",
+    "intro": "Eagle Logistics & Express Services delivers documents, non-documents, sample and commercial shipments, and import/export goods worldwide as required. We provide affordable international courier with strict schedules and quality standards, professional customer care, and continuous status updates through our web-based track & trace system. Our associates in New York, Singapore and Dubai act as hubs through a network of strategic partners.",
     "tabs": [
       {
         "id": "domestic",
@@ -112,7 +106,7 @@
       }
     ],
     "advantages": {
-      "title": "Advantage of Our Services",
+      "title": "Advantages of our services",
       "items": [
         {
           "title": "End-to-end tracking",

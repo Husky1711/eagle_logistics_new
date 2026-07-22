@@ -21,7 +21,7 @@
       },
       {
         "path": "/tracking",
-        "label": "Shipment Tracker"
+        "label": "Track Shipment"
       },
       {
         "path": "/offers",
@@ -43,7 +43,8 @@
     }
   },
   "footer": {
-    "description": "Ship with DHL, FedEx, and UPS - trusted express partners for reliable delivery.",
+    "description": "Ship with DHL, FedEx, and UPS — trusted express partners for reliable delivery.",
+    "flagImage": "/assets/brand/footer-flags.jpg",
     "quickLinks": [
       {
         "path": "/pricing",
@@ -51,7 +52,7 @@
       },
       {
         "path": "/tracking",
-        "label": "Shipment Tracker"
+        "label": "Track Shipment"
       },
       {
         "path": "/offers",
@@ -118,14 +119,14 @@
     ]
   },
   "contact": {
-    "companyName": "Eagle logistics & Express services",
-    "address": "15/2, 6th Cross, 1St Main Road\nSampangi Rama Nagar\nNear Corporation Circle\nBangalore : 560027.",
+    "companyName": "Eagle Logistics & Express Services",
+    "address": "15/2, 6th Cross, 1st Main Road\nSampangi Rama Nagar\nNear Corporation Circle\nBangalore : 560027.",
     "phone": "+91 80-40969947",
     "phoneSecondary": "+91 98864 96920",
     "whatsapp": "+919886496920",
     "email": "info@eaglelogistics.in",
-    "website": "https://www.eaglelogistics.com",
-    "hours": "",
+    "website": "https://www.eaglelogistics.in",
+    "hours": "Mon–Sat: 9:00 AM – 7:00 PM",
     "googleMapsUrl": "https://maps.google.com/?q=15/2+6th+Cross+1st+Main+Road+Sampangi+Rama+Nagar+Bangalore+560027",
     "googleMapsEmbed": "<iframe src=\"https://maps.google.com/maps?q=15%2F2+6th+Cross+1st+Main+Road+Sampangi+Rama+Nagar+Bangalore+560027&t=&z=15&ie=UTF8&iwloc=&output=embed\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\" title=\"Eagle Logistics Bangalore location\"></iframe>"
   },

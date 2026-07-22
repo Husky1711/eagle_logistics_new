@@ -113,7 +113,7 @@ function OffersContent({ page, offers, settings }) {
         )}
         <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35" />
         <Container className="relative z-10 py-20 text-center lg:py-28">
-          <h1 className="font-display text-4xl font-bold lg:text-5xl">{content.title}</h1>
+          <h1 className="font-display text-4xl font-bold text-white lg:text-5xl">{content.title}</h1>
           {content.headline && (
             <p className="mx-auto mt-4 max-w-3xl text-lg text-white lg:text-xl">{content.headline}</p>
           )}

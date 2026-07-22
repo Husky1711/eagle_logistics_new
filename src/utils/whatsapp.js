@@ -4,8 +4,9 @@ export function buildWhatsAppUrl(phone, message) {
   return `https://wa.me/${digits}?text=${text}`
 }
 
-export function buildPricingWhatsAppMessage({ weight, distance, code }) {
-  let msg = `Hi Eagle Logistics, I need a shipping quote: ${weight} kg, ${distance} km. I saw sample rates on your website.`
+export function buildPricingWhatsAppMessage({ weight, destination, distance, code }) {
+  const place = destination || (distance ? `${distance} km` : 'my destination')
+  let msg = `Hi Eagle Logistics, I need a shipping quote: ${weight} kg to ${place}. I saw sample rates on your website.`
   if (code) msg += ` I'd like to use code ${code}.`
   return msg
 }

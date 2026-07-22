@@ -42,12 +42,39 @@ function HomeContent({ page, reducedMotion }) {
     <>
       <PageMeta meta={page.meta} />
 
-      <section className="relative min-h-[420px] lg:min-h-[520px]">
+      <section className="relative min-h-[480px] lg:min-h-[560px]">
         <div className="absolute inset-0">
           <HeroCarousel images={slides} reducedMotion={reducedMotion} />
         </div>
+        <div className="absolute inset-0 z-10 flex items-center">
+          <Container className="relative pb-16 pt-8 sm:pb-20">
+            <FadeIn className="max-w-2xl text-white">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-200">
+                {hero.brand || 'Eagle Logistics'}
+              </p>
+              <h1 className="mt-3 font-display text-3xl font-bold text-white drop-shadow-sm sm:text-4xl lg:text-5xl">
+                {hero.headline || content.intro?.title || 'Eagle Logistics & Express Services'}
+              </h1>
+              {(hero.subheadline || content.intro?.body) && (
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
+                  {hero.subheadline ||
+                    'Trusted courier and cargo from Bangalore to destinations across India and the world.'}
+                </p>
+              )}
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button to={hero.ctaLink || '/pricing'} className="group">
+                  {hero.cta || 'Price Calculator'}
+                  <ArrowRight className="ml-2 inline transition-transform group-hover:translate-x-1" size={18} />
+                </Button>
+                <Button to="/tracking" variant="outline" className="!border-white !text-white hover:!bg-white/10">
+                  Track Shipment
+                </Button>
+              </div>
+            </FadeIn>
+          </Container>
+        </div>
         {hero.promo && (
-          <SlideDown className="absolute inset-x-0 bottom-0 z-20 bg-[#0b243d]/85 px-4 py-3.5 text-center text-sm font-medium text-white sm:text-base">
+          <SlideDown className="absolute inset-x-0 bottom-0 z-20 bg-[#0b243d]/90 px-4 py-3 text-center text-sm font-medium text-white sm:text-base">
             {hero.promo}
           </SlideDown>
         )}
@@ -56,9 +83,11 @@ function HomeContent({ page, reducedMotion }) {
       {content.intro && (
         <section className="section-padding bg-white">
           <Container>
-            <FadeIn className="mx-auto max-w-4xl text-center">
-              <h1 className="font-display text-3xl font-bold text-heading lg:text-4xl">{content.intro.title}</h1>
-              <p className="mt-6 text-base leading-relaxed text-ink lg:text-lg">{content.intro.body}</p>
+            <FadeIn className="mx-auto max-w-3xl">
+              <h2 className="font-display text-2xl font-bold text-heading lg:text-3xl">
+                {content.intro.sectionTitle || 'Why ship with Eagle'}
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-ink lg:text-lg">{content.intro.body}</p>
               <Link
                 to={content.intro.readMoreLink || '/about'}
                 className="mt-6 inline-flex items-center font-semibold text-primary-600 hover:underline"
@@ -79,7 +108,7 @@ function HomeContent({ page, reducedMotion }) {
                 <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-primary-50 shadow-soft">
                   <SmartImage
                     src={mediaUrl(content.mission.image)}
-                    alt=""
+                    alt={content.mission.imageAlt || 'Eagle Logistics parcel and logistics operations'}
                     className="aspect-[4/3] w-full object-cover"
                     wrapperClassName="aspect-[4/3] w-full"
                   />
@@ -118,7 +147,7 @@ function HomeContent({ page, reducedMotion }) {
                       wrapperClassName="aspect-[16/9] w-full"
                     />
                     <div className="p-6">
-                      <h3 className="font-display text-2xl font-semibold text-ink">{card.title}</h3>
+                      <h3 className="font-display text-2xl font-semibold text-heading">{card.title}</h3>
                       <p className="mt-3 text-sm leading-relaxed text-ink">{card.body}</p>
                       <Link
                         to={card.link || '/services'}
@@ -215,7 +244,7 @@ function HomeContent({ page, reducedMotion }) {
         <section className="section-padding bg-dark text-white">
           <Container>
             <FadeIn>
-              <h2 className="text-center font-display text-3xl font-bold lg:text-4xl">
+              <h2 className="text-center font-display text-3xl font-bold text-white lg:text-4xl">
                 {content.testimonials.title}
               </h2>
             </FadeIn>
@@ -279,10 +308,17 @@ function HomeContent({ page, reducedMotion }) {
             <FadeIn className="rounded-2xl border border-primary-100 bg-primary-50 px-6 py-12 text-center shadow-soft lg:px-12">
               <h2 className="font-display text-2xl font-bold text-heading lg:text-3xl">{content.cta.title}</h2>
               <p className="mt-3 text-ink">{content.cta.subtitle}</p>
-              <Button to={content.cta.buttonLink || '/pricing'} className="mt-8 group">
-                {content.cta.button}
-                <ArrowRight className="ml-2 inline transition-transform group-hover:translate-x-1" size={18} />
-              </Button>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <Button to={content.cta.buttonLink || '/pricing'} className="group">
+                  {content.cta.button}
+                  <ArrowRight className="ml-2 inline transition-transform group-hover:translate-x-1" size={18} />
+                </Button>
+                {content.cta.secondaryButton && content.cta.secondaryButtonLink && (
+                  <Button to={content.cta.secondaryButtonLink} variant="outline">
+                    {content.cta.secondaryButton}
+                  </Button>
+                )}
+              </div>
             </FadeIn>
           </Container>
         </section>

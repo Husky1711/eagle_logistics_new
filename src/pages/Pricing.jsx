@@ -10,6 +10,7 @@ import PageContentGate from '../components/common/PageContentGate'
 import { isOfferActive } from '../utils/dates'
 import { parsePositiveNumber } from '../utils/numbers'
 import { calculatePricing } from '../utils/pricingCalculator'
+import { PRICING_DESTINATIONS, getDestinationById } from '../utils/pricingDestinations'
 import { buildWhatsAppUrl, buildPricingWhatsAppMessage } from '../utils/whatsapp'
 
 export default function Pricing() {
@@ -25,13 +26,14 @@ export default function Pricing() {
   const { data: couriers } = couriersState
 
   const [weight, setWeight] = useState('')
-  const [distance, setDistance] = useState('')
+  const [destinationId, setDestinationId] = useState('usa')
   const [results, setResults] = useState(null)
   const [formError, setFormError] = useState('')
 
   const content = page?.content || {}
   const offerActive = isOfferActive(offers)
   const offerCode = offerActive ? offers?.code : undefined
+  const destination = getDestinationById(destinationId)
 
   const handleCalculate = (e) => {
     e.preventDefault()
@@ -43,15 +45,14 @@ export default function Pricing() {
       setFormError(weightResult.error)
       return
     }
-    const distanceResult = parsePositiveNumber(distance, 'distance (km)')
-    if (distanceResult.error) {
-      setFormError(distanceResult.error)
+    if (!destination) {
+      setFormError('Please select a destination.')
       return
     }
 
     const outcome = calculatePricing({
       weight: weightResult.value,
-      distance: distanceResult.value,
+      distance: destination.distanceKm,
       rules,
       couriers,
     })
@@ -66,7 +67,7 @@ export default function Pricing() {
     settings?.contact?.whatsapp,
     buildPricingWhatsAppMessage({
       weight,
-      distance,
+      destination: destination?.label,
       code: offerCode,
     }),
   )
@@ -83,7 +84,7 @@ export default function Pricing() {
 
           <div className="grid gap-8 lg:grid-cols-2">
             <Card>
-              <h2 className="mb-6 font-display text-xl font-semibold">Parcel Details</h2>
+              <h2 className="mb-6 font-display text-xl font-semibold text-heading">Parcel Details</h2>
               <form onSubmit={handleCalculate} className="space-y-4">
                 <Input
                   label="Weight (kg)"
@@ -95,16 +96,24 @@ export default function Pricing() {
                   placeholder="e.g. 2.5"
                   required
                 />
-                <Input
-                  label="Distance (km)"
-                  type="number"
-                  step="1"
-                  min="1"
-                  value={distance}
-                  onChange={(e) => setDistance(e.target.value)}
-                  placeholder="e.g. 200"
-                  required
-                />
+                <div>
+                  <label htmlFor="destination" className="mb-1.5 block text-sm font-medium text-ink">
+                    Destination
+                  </label>
+                  <select
+                    id="destination"
+                    value={destinationId}
+                    onChange={(e) => setDestinationId(e.target.value)}
+                    className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-ink focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
+                    required
+                  >
+                    {PRICING_DESTINATIONS.map((d) => (
+                      <option key={d.id} value={d.id}>
+                        {d.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
                 {formError && <p className="text-sm text-red-600">{formError}</p>}
                 <Button type="submit" className="w-full">
                   {content.calculateButton || 'Calculate Price'}
@@ -116,7 +125,7 @@ export default function Pricing() {
             <div>
               {results && results.length > 0 ? (
                 <div className="space-y-4">
-                  <h2 className="font-display text-xl font-semibold">Best Options</h2>
+                  <h2 className="font-display text-xl font-semibold text-heading">Best Options</h2>
                   {results.map((r, i) => (
                     <Card key={r.courier} className={i === 0 ? 'border-gold-500 ring-1 ring-gold-400' : ''}>
                       {i === 0 && (
@@ -142,6 +151,7 @@ export default function Pricing() {
                           {r.breakdown.weight_cost.toFixed(2)}
                         </p>
                         <p>Zone: {r.breakdown.zone}</p>
+                        {destination && <p>To: {destination.label}</p>}
                       </div>
                     </Card>
                   ))}
@@ -166,7 +176,7 @@ export default function Pricing() {
                 </Card>
               ) : (
                 <Card className="flex min-h-[280px] items-center justify-center text-center text-neutral-500">
-                  Enter parcel details to see sample rates from our rate card
+                  Enter weight and destination to see sample rates from our rate card
                 </Card>
               )}
             </div>

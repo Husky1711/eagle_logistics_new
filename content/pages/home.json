@@ -1,18 +1,16 @@
 {
   "meta": {
-    "title": "Home | Eagle Logistics & Express Services",
-    "description": "Eagle Logistics, Estd 2010 - discounted international logistics from India to USA, UK, EU, Middle East and Far East. Doorstep pickup, tracked delivery, domestic and international courier.",
-    "keywords": [
-      "Eagle Logistics",
-      "Bangalore courier",
-      "international shipping India",
-      "door to door cargo",
-      "domestic courier"
-    ]
+    "title": "Bangalore Courier & International Shipping | Eagle Logistics",
+    "description": "Bangalore courier for domestic and international parcels to the USA, UK, EU and Middle East. Doorstep pickup, tracked delivery with DHL, FedEx and UPS.",
+    "image": "/assets/home/international.jpg",
+    "imageAlt": "International courier and cargo from Eagle Logistics Bangalore"
   },
   "content": {
     "hero": {
-      "promo": "Your Gift or Parcel to abroad at most economical price : Just 567*/Kg",
+      "brand": "Eagle Logistics",
+      "headline": "Ship from Bangalore to the world",
+      "subheadline": "Affordable domestic and international courier with doorstep pickup and end-to-end tracking.",
+      "promo": "Gifts & parcels abroad from ₹567*/kg · *conditions apply",
       "cta": "Price Calculator",
       "ctaLink": "/pricing"
     },
@@ -25,41 +23,43 @@
     ],
     "intro": {
       "title": "Eagle Logistics & Express Services",
-      "body": "We, Eagle Logistics, Estd in 2010 provide a very discounted international logistics. We've got some unbelievably low prices for sending international parcels from India to USA, UK or any other destinations in European Unions, Middle east or far east. We arrange your parcel collected from your door step. Or drop it off at a local pickup point and the parcel will be delivered by our reliable and tracked logistics service which can save you considerable amounts when sending parcels overseas. We specialize in local, national and international courier. We employ the most stringent safety measures. With us there is no chance of loss, pilferage or damage to your package. Besides we are one of the few courier companies that provide international door-to door cargo. So when you think reliability, think Eagle logistics & Express services.",
-      "readMoreLabel": "Read More",
+      "sectionTitle": "Why ship with Eagle",
+      "body": "Established in 2010, Eagle Logistics offers competitive rates for international parcels from India to the USA, UK, European Union, Middle East and Far East. Arrange doorstep collection or drop off at a local pickup point — then track your shipment through our reliable partner network. We specialise in local, national and international courier with careful handling and international door-to-door cargo.",
+      "readMoreLabel": "About Eagle",
       "readMoreLink": "/about"
     },
     "mission": {
       "title": "Our Mission",
-      "image": "home/parcel.jpg",
+      "image": "home/international.jpg",
+      "imageAlt": "International shipping and logistics operations",
       "items": [
-        "Let us be the link between you and your loved ones",
-        "To track and record all customer shipments to abroad",
-        "Have dedicated and passionate staff working for you",
-        "Give you, the customer, transparency throughout the delivery process",
-        "Give you, the customer, the best possible customer service experience"
+        "Be the link between you and your loved ones abroad",
+        "Track and record every customer shipment",
+        "Serve you with dedicated, passionate staff",
+        "Give you full transparency throughout delivery",
+        "Deliver the best possible customer service experience"
       ]
     },
     "serviceCards": [
       {
         "id": "domestic",
         "title": "Domestic",
-        "body": "Your time sensitive Documents / Non documents are delivered next day in all Metros/Major cities & Towns on priority basis",
+        "body": "Time-sensitive documents and parcels delivered next day to metros, major cities and towns on a priority basis.",
         "image": "home/domestic.jpg",
         "link": "/services",
-        "linkLabel": "Read More"
+        "linkLabel": "View services"
       },
       {
         "id": "international",
         "title": "International",
-        "body": "All documents / Non-documents are delivered worldwide at most economical rates. The chosen modes of operational connectivity gives us a cutting edge for faster services as per the requirements of the customers.",
+        "body": "Documents and non-documents delivered worldwide at economical rates, with modes chosen for speed and reliability.",
         "image": "home/international.jpg",
         "link": "/services",
-        "linkLabel": "Read More"
+        "linkLabel": "View services"
       }
     ],
     "advantages": {
-      "title": "Advantage of Our Services",
+      "title": "Advantages of our services",
       "items": [
         {
           "id": "track",
@@ -84,14 +84,14 @@
         },
         {
           "id": "customs",
-          "text": "Easy to fill out customs documents, built into the booking process",
+          "text": "Easy customs documents built into the booking process",
           "icon": "FileText",
           "iconImage": "home/advantage-4.png",
           "link": "/services"
         },
         {
           "id": "pickup",
-          "text": "Choice of having the parcel collected from home / work / drop it off locally",
+          "text": "Home or work collection — or drop off locally",
           "icon": "Package",
           "iconImage": "home/advantage-5.png",
           "link": "/contact"
@@ -99,45 +99,85 @@
       ]
     },
     "popularItems": {
-      "title": "Most Popular Items We Send",
+      "title": "Most popular items we send",
       "viewAllLabel": "View All",
       "viewAllLink": "/things-we-send",
       "items": [
-        { "id": "sweets", "title": "Sweets", "slug": "sweets", "image": "home/popular-sweets.jpg" },
-        { "id": "footwear", "title": "Footwear", "slug": "footwear", "image": "home/popular-footwear.jpg" },
-        { "id": "spices", "title": "Spices", "slug": "spices", "image": "home/popular-spices.jpg" },
-        { "id": "medicines", "title": "Medicines", "slug": "medicines", "image": "home/popular-medicines.jpg" },
-        { "id": "photos", "title": "Photos", "slug": "photos", "image": "home/popular-photos.jpg" },
-        { "id": "books", "title": "Books", "slug": "books", "image": "home/popular-books.jpg" },
-        { "id": "clothes", "title": "Clothes", "slug": "clothes", "image": "home/popular-clothes.jpg" },
-        { "id": "electronics", "title": "Electronics", "slug": "electronics", "image": "home/popular-electronics.jpg" }
+        {
+          "id": "sweets",
+          "title": "Sweets",
+          "slug": "sweets",
+          "image": "home/popular-sweets.jpg"
+        },
+        {
+          "id": "footwear",
+          "title": "Footwear",
+          "slug": "footwear",
+          "image": "home/popular-footwear.jpg"
+        },
+        {
+          "id": "spices",
+          "title": "Spices",
+          "slug": "spices",
+          "image": "home/popular-spices.jpg"
+        },
+        {
+          "id": "medicines",
+          "title": "Medicines",
+          "slug": "medicines",
+          "image": "home/popular-medicines.jpg"
+        },
+        {
+          "id": "photos",
+          "title": "Photos",
+          "slug": "photos",
+          "image": "home/popular-photos.jpg"
+        },
+        {
+          "id": "books",
+          "title": "Books",
+          "slug": "books",
+          "image": "home/popular-books.jpg"
+        },
+        {
+          "id": "clothes",
+          "title": "Clothes",
+          "slug": "clothes",
+          "image": "home/popular-clothes.jpg"
+        },
+        {
+          "id": "electronics",
+          "title": "Electronics",
+          "slug": "electronics",
+          "image": "home/popular-electronics.jpg"
+        }
       ]
     },
     "testimonials": {
-      "title": "Real People From Heart",
+      "title": "What customers say",
       "items": [
         {
           "id": 1,
-          "quote": "Me and my family are very much impressed with the awesome service by Eagle Logistics.",
-          "name": "Mr. John Marcus",
+          "quote": "My family and I are very impressed with the service from Eagle Logistics. Smooth booking and clear updates.",
+          "name": "John Marcus",
           "location": "California"
         },
         {
           "id": 2,
-          "quote": "Me and my family are very much impressed with the awesome service by Eagle Logistics.",
+          "quote": "Doorstep pickup from Malleshwaram was easy and the parcel reached on time. Highly recommend.",
           "name": "Nidhi",
           "location": "Malleshwaram"
         },
         {
           "id": 3,
-          "quote": "Very good service. I sent a parcel to my husband at NV USA; it reached within the third day. Thank you Eagle.",
+          "quote": "I sent a parcel to my husband in Nevada, USA — it arrived within three days. Thank you, Eagle.",
           "name": "Sharda",
           "location": "Indiranagar"
         }
       ]
     },
     "cargo": {
-      "title": "Cargo Services",
+      "title": "Cargo services",
       "items": [
         {
           "id": "air",
@@ -164,9 +204,11 @@
     },
     "cta": {
       "title": "Ready to ship with Eagle?",
-      "subtitle": "Calculate your cost or talk to our team on WhatsApp.",
+      "subtitle": "Get a sample rate online, or message us on WhatsApp for an exact quote.",
       "button": "Price Calculator",
-      "buttonLink": "/pricing"
+      "buttonLink": "/pricing",
+      "secondaryButton": "Contact Us",
+      "secondaryButtonLink": "/contact"
     }
   }
 }

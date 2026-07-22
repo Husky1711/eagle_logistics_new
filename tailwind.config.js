@@ -21,6 +21,7 @@ export default {
           DEFAULT: '#1572B7',
           bright: '#0C89CA',
           link: '#428BCA',
+          footer: '#4db8e8',
         },
         ink: {
           DEFAULT: '#333333',
@@ -37,8 +38,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         container: '1280px',

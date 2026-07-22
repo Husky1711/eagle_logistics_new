@@ -1,54 +1,49 @@
 {
   "meta": {
-    "title": "Why Eagle | Eagle Logistics",
-    "description": "Eagle Logistics, established in 2010, provides courier and logistics services across India and worldwide - door-to-door pickup, tracked delivery, and reliable express partners.",
-    "keywords": [
-      "Why Eagle",
-      "Eagle Logistics About",
-      "Bangalore courier",
-      "international shipping India",
-      "door to door cargo"
-    ]
+    "title": "About Eagle Logistics | Bangalore Courier Since 2010",
+    "description": "Eagle Logistics since 2010 in Bangalore offers door-to-door courier and cargo across India and worldwide, with tracked delivery and trusted express partners.",
+    "image": "/assets/pages/about-hero.jpg",
+    "imageAlt": "About Eagle Logistics Bangalore courier company"
   },
   "content": {
     "hero": {
       "title": "Why Eagle",
-      "subtitle": "Established in 2010 - trusted courier and logistics from Bangalore to destinations across India and the world.",
+      "subtitle": "Established in 2010 — trusted courier and logistics from Bangalore to destinations across India and the world.",
       "image": "about-hero.jpg"
     },
     "about": {
       "eyebrow": "Estd. 2010",
       "title": "About Us",
-      "lead": "We, Eagle Logistics, Estd in 2010 are one of the leading providers of courier and logistics services in India, catering to the needs of common people, Industries, Commercial Establishments and Educational Institutions. We undertake door-to-door bulk pickup and deliveries of documents, books, stationeries, clothing and footwear, non perishable food items, Electronics etc. Our delivery services cover major destinations throughout the world like USA, UK, European Union (EU), Middle East, Far East and including local and National destinations. We offer these services at unbelievable low prices, for sending international couriers and parcels from India to destinations across the world.",
+      "lead": "Eagle Logistics is one of India’s leading courier and logistics providers, serving individuals, industries, commercial establishments and educational institutions. We offer door-to-door pickup and delivery of documents, books, stationery, clothing, footwear, non-perishable food, electronics and more — across India and to major destinations worldwide including the USA, UK, European Union, Middle East and Far East, at competitive rates.",
       "highlights": [
         {
           "icon": "MapPin",
           "title": "Doorstep or local pickup",
-          "body": "We also can arrange to pick your parcel from your door step Or collect it from a local pickup point and assure that it will be delivered by our reliable and tracked logistics service thus saving you considerable amount of time and money."
+          "body": "We can collect your parcel from your doorstep or a local pickup point and deliver it through our reliable, tracked logistics network — saving you time and money."
         },
         {
           "icon": "Shield",
           "title": "Safety you can trust",
-          "body": "We employ the most stringent safety measures ensuring that there is no chance of loss, pilferage or damage to your package. Besides, we are one of the few courier companies that provide international door-to door cargo. So when you think reliability, think Eagle logistics & Express services."
+          "body": "We use stringent safety measures to prevent loss, pilferage or damage. We are among the few courier companies that also provide international door-to-door cargo."
         },
         {
           "icon": "Search",
           "title": "Tracked every step",
-          "body": "Our customer services team is well-equipped with an on line tracking system and other communication aids to enable round the clock tracking and prompt delivery of your shipments. We guarantee that all shipments will be handled with great care and also that the same will be booked through recognized Express Courier companies."
+          "body": "Our customer service team uses online tracking and communication tools for round-the-clock visibility and prompt delivery. Shipments are booked through recognised express partners."
         }
       ]
     },
     "vision": {
       "title": "Vision",
-      "body": "To be identified as the largest & most trusted Courier Company in the country with its presence in every nook and corner of our country. To be identified as an economical and cost effective Courier Service. To stay well ahead of the others and establish new benchmarks in courier service, productivity enhancement, customer & employee satisfaction."
+      "body": "To be recognised as the largest and most trusted courier company in the country, with nationwide reach; to remain an economical, cost-effective service; and to set new benchmarks in productivity, customer satisfaction and employee satisfaction."
     },
     "mission": {
       "title": "Mission",
-      "body": "Let us be the link between you and your loved ones. Have dedicated and passionate staff working for you. Give you, the Customer, full transparency throughout the delivery process. Give you, the Customer, best possible customer service experience."
+      "body": "Be the link between you and your loved ones. Serve you with dedicated, passionate staff. Give you full transparency throughout delivery. Deliver the best possible customer service experience."
     },
     "values": {
       "title": "Values",
-      "body": "We offer a quick and easy consulting service to show you how we can cut your costs and save you money. The service comes at a very small charge but should you choose to ship with Eagle Express, we will cover the consulting costs and save you even more. Simply ask us about the benefits of our consulting work when you contact us or request a quote.",
+      "body": "We offer a quick consulting conversation to show how we can cut shipping costs. If you ship with Eagle Logistics, we can credit that consulting fee back so you save even more. Ask about consulting benefits when you contact us or request a quote.",
       "items": [
         "Entrepreneurship",
         "Partnerships",

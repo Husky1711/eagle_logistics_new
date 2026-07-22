@@ -11,7 +11,7 @@ const SOCIAL_LINKS = [
   { key: 'gmail', label: 'Gmail', Icon: Mail },
 ]
 
-/** Slim red utility strip — contacts + socials only */
+/** Slim utility strip — contacts + socials (socials desktop-only to reduce mobile clutter) */
 export default function TopBar() {
   const { settings } = useSettings()
   const contact = settings?.contact || {}
@@ -25,7 +25,7 @@ export default function TopBar() {
 
   return (
     <div className="w-full bg-red-700 text-white" role="region" aria-label="Contact bar">
-      <div className="container-custom flex flex-col gap-2 py-3 text-xs sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:text-sm">
+      <div className="container-custom flex flex-col gap-2 py-2.5 text-xs sm:flex-row sm:items-center sm:justify-between sm:py-3 sm:text-sm">
         <p className="font-medium text-white">
           Have a question?{' '}
           <Link to="/contact" className="font-bold text-white underline-offset-2 hover:underline">
@@ -33,7 +33,7 @@ export default function TopBar() {
           </Link>
         </p>
 
-        <div className="flex max-w-full flex-wrap items-center gap-x-3 gap-y-1.5 sm:gap-x-4">
+        <div className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1.5">
           {telHref && (
             <a href={telHref} className="inline-flex min-w-0 items-center gap-1.5 hover:text-white/85">
               <Phone size={14} className="shrink-0" aria-hidden />
@@ -53,8 +53,8 @@ export default function TopBar() {
           )}
           {activeSocial.length > 0 && (
             <>
-              <span className="hidden h-4 w-px bg-white/30 sm:block" aria-hidden />
-              <div className="flex flex-wrap items-center gap-1.5" aria-label="Social links">
+              <span className="hidden h-4 w-px bg-white/30 md:block" aria-hidden />
+              <div className="hidden flex-wrap items-center gap-1.5 md:flex" aria-label="Social links">
                 {activeSocial.map(({ key, label, Icon }) => {
                   const href = social[key]
                   const external = !href.startsWith('mailto:')
@@ -65,7 +65,7 @@ export default function TopBar() {
                       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       aria-label={label}
                       title={label}
-                      className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white/25"
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white/25"
                     >
                       <Icon size={14} aria-hidden />
                     </a>
