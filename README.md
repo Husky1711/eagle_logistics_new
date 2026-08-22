@@ -1,65 +1,49 @@
-# Eagle Logistics
+# Eagle Logistics — Public site
 
-Static, responsive marketing website for **Eagle Logistics** — a logistics aggregator that compares courier partners for the best shipping rates.
+Static, responsive marketing website for **Eagle Logistics**.
 
-> **Full Project 1 documentation:** see **[PROJECT1.md](PROJECT1.md)** — requirements, architecture, flows, repo structure, testing, and handoff to Project 2.
+> **Branch:** `public-site` — public marketing site only (no admin panel, no FastAPI backend).  
+> Use this branch for **GoDaddy / static hosting** deploys.  
+> Full CMS work stays on **`project-2`**.
 
-## Project 1 (complete)
+> **Project 1 docs:** [PROJECT1.md](PROJECT1.md)
 
-- 8 public routes: Home, Services, Pricing, Tracking, About, Contact, Privacy, Terms
+## What’s included
+
+- Public routes: Home, Services, Pricing, Tracking, Cargo, Things We Send, Offers, About, Contact, Privacy, Terms
 - Content-driven via JSON (`/content/` at repo root) — see `content/README.md`
 - Pricing calculator powered by `pricing-rules.json` + client-side engine
 - Images from repo assets only (`public/assets/`)
-- **Deploy target:** GitHub Codespaces (`npm run dev`). Run `npm run verify` for sign-off.
-- **GitHub Pages / public SEO:** deferred until pre-launch (basename, sitemap, og:image).
-- **Release tag:** `v1.0.0-p1` — static marketing MVP; Project 2 adds admin CMS.
-
-## Content workflow
-
-**Source of truth:** `/content/` at the repository root.
-
-**Never edit** `public/content/` by hand — it is generated.
-
-```bash
-npm run sync:content   # copies content/ → public/content/
-npm run dev            # sync runs automatically (predev)
-npm run build          # sync runs automatically (prebuild)
-npm test               # unit tests (pricing calculator, offer dates)
-npm run qa:browser     # browser QA (dev server on :5173)
-npm run verify         # full sign-off: test + build + preview + browser QA
-```
+- Production SEO meta via `PageMeta` (title, description, Open Graph, Twitter, JSON-LD)
 
 ## Development
 
 ```bash
 npm install
-npm run generate:logos # one-time courier logo assets (already committed)
+npm run sync:content
 npm run dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173)
 
-### GitHub Codespaces (client demo)
+## Build for GoDaddy (static hosting)
 
-Use branch **`project-2`** — it has the latest site content (couriers, settings, offers).
+```bash
+npm run build
+```
 
-1. GitHub → **Code** → **Codespaces** → **Create codespace on `project-2`**
-2. Wait ~2–3 minutes (install + content sync only — no tests on create)
-3. The public site auto-starts on port **5173** (`postStartCommand`)
-4. Check the terminal output for the shareable URL, or open the **Ports** tab
-5. Set port **5173** visibility to **Public**, copy the link, send to your client
+Upload the contents of **`dist/`** into GoDaddy `public_html` (via File Manager or FTP).
 
-No terminal commands needed. The client opens the link and browses the site (Home, Pricing, Tracking, Contact, etc.).
+For React Router SPA routes, add an `.htaccess` in `public_html` that rewrites unknown paths to `index.html`.
 
-To restart the demo server manually:
+## Codespaces demo
+
+1. GitHub → **Code** → **Codespaces** → **Create codespace on `public-site`**
+2. Wait for install + content sync
+3. Public site auto-starts on port **5173**
 
 ```bash
 npm run demo:codespaces
-```
-
-For local development sign-off (not run on Codespace create):
-
-```bash
 npm run verify
 ```
 
@@ -67,37 +51,13 @@ npm run verify
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `VITE_BASE_PATH` | `/` | Base URL for GitHub Pages (`/eagle_logistics_new/`) |
+| `VITE_BASE_PATH` | `/` | Vite base URL (use `/` on custom domain) |
+| `VITE_PUBLIC_SITE_URL` | `https://www.eaglelogistics.in` | Canonical / Open Graph base URL |
 
-## Asset sources
+## Related branches
 
-Images copied from reference repo branch `render-v1.0.0` ([Husky1711/eagle](https://github.com/Husky1711/eagle)).
-
-## Project 2 (planned)
-
-Admin panel + FastAPI backend to CRUD the same JSON files (content, offers, pricing rules, SEO, media).
-
-**Planning:** see **[PROJECT2.md](PROJECT2.md)** — development on branch **`project-2`**.
-
-### Sprint 1 dev (project-2 branch)
-
-```bash
-# Terminal A — API (copy backend/.env.example → backend/.env first)
-npm run dev:api
-
-# Terminal B — public site
-npm run dev
-
-# Terminal C — admin UI (http://localhost:5174)
-npm run dev:admin
-
-# Or all three:
-npm run dev:all
-```
-
-Default admin login: see `backend/.env.example` (`admin` / `change-me-in-production`).
-
-## Reference
-
-- **New repo:** [eagle_logistics_new](https://github.com/Husky1711/eagle_logistics_new)
-- **Reference only:** [Husky1711/eagle](https://github.com/Husky1711/eagle) (`render-v1.0.0` branch)
+| Branch | Purpose |
+|--------|---------|
+| `public-site` | Public site only — GoDaddy / static deploy |
+| `project-2` | Admin CMS + FastAPI + public site |
+| `main` | Project 1 freeze (`v1.0.0-p1`) |

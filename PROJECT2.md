@@ -1,5 +1,7 @@
 # Project 2 — Eagle Logistics Admin CMS
 
+> **Note:** Admin + API live on branch **`project-2`**. Branch **`public-site`** is the marketing site only (no `admin/` or `backend/`) for static / GoDaddy deploys.
+
 **Status:** In progress (~50% overall)  
 **Branch:** `project-2` (all P2 work happens here; `main` stays frozen at `v1.0.0-p1`)  
 **Depends on:** [PROJECT1.md](PROJECT1.md) — static public site complete  

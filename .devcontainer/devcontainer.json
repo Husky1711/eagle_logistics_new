@@ -1,23 +1,16 @@
 {
-  "name": "Eagle Logistics Dev",
+  "name": "Eagle Logistics Public Site",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
-  "features": {
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    }
-  },
-  "forwardPorts": [5173, 5174, 8000, 4173],
+  "forwardPorts": [5173, 4173],
   "portsAttributes": {
     "5173": { "label": "Public site (share this)", "onAutoForward": "notify" },
-    "5174": { "label": "Admin app", "onAutoForward": "silent" },
-    "8000": { "label": "FastAPI", "onAutoForward": "silent" },
     "4173": { "label": "Vite preview", "onAutoForward": "silent" }
   },
   "postCreateCommand": "npm install && npm run sync:content",
   "postStartCommand": "node scripts/codespaces-demo.mjs",
   "customizations": {
     "vscode": {
-      "extensions": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss", "ms-python.python"]
+      "extensions": ["dbaeumer.vscode-eslint", "bradlc.vscode-tailwindcss"]
     }
   },
   "remoteUser": "node"

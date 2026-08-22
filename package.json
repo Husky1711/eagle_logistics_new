@@ -3,9 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "workspaces": [
-    "admin"
-  ],
   "scripts": {
     "sync:content": "node scripts/sync-content.js",
     "generate:logos": "node scripts/generate-courier-logos.mjs",
@@ -18,20 +15,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "qa:browser": "node scripts/browser-qa.mjs",
-    "qa:couriers": "node scripts/couriers-browser-qa.mjs",
-    "qa:pricing-rules": "node scripts/pricing-rules-browser-qa.mjs",
-    "qa:pricing-rules:headed": "node scripts/pricing-rules-browser-qa.mjs --headed",
-    "qa:walkthrough": "node scripts/user-walkthrough-qa.mjs",
-    "qa:walkthrough:headed": "node scripts/user-walkthrough-qa.mjs",
-    "qa:sprint-1-2a": "node scripts/admin-e2e-qa.mjs",
-    "qa:sprint-2b": "node scripts/pricing-rules-browser-qa.mjs && node scripts/admin-e2e-qa.mjs",
     "verify": "node scripts/codespaces-verify.mjs",
     "demo:codespaces": "node scripts/codespaces-demo.mjs",
-    "dev:codespaces": "node scripts/codespaces-demo.mjs",
-    "dev:api": "cd backend && python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000",
-    "dev:admin": "npm run dev --workspace=eagle-logistics-admin",
-    "dev:all": "concurrently -n public,admin,api -c blue,magenta,green \"npm run dev\" \"npm run dev:admin\" \"npm run dev:api\"",
-    "test:api": "cd backend && python -m pytest"
+    "dev:codespaces": "node scripts/codespaces-demo.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",
@@ -44,7 +30,6 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
-    "concurrently": "^8.2.2",
     "playwright": "^1.61.1",
     "postcss": "^8.4.32",
     "sharp": "^0.33.5",

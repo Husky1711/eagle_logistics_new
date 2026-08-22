@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [project-2, main]
+    branches: [public-site, project-2, main]
   pull_request:
-    branches: [project-2, main]
+    branches: [public-site, project-2, main]
 
 jobs:
   test:
@@ -17,20 +17,11 @@ jobs:
           node-version: "20"
           cache: npm
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: backend/requirements.txt
-
       - name: Install Node dependencies
-        run: npm install && npm install --workspace=admin
-
-      - name: Install Python dependencies
-        run: pip install -r backend/requirements.txt
+        run: npm install
 
       - name: Unit tests (public)
         run: npm test
 
-      - name: API tests
-        run: npm run test:api
+      - name: Production build
+        run: npm run build
