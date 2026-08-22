@@ -25,18 +25,18 @@ export default function TopBar() {
 
   return (
     <div className="w-full bg-red-700 text-white" role="region" aria-label="Contact bar">
-      <div className="container-custom flex flex-col gap-2 py-2.5 text-xs sm:flex-row sm:items-center sm:justify-between sm:py-3 sm:text-sm">
-        <p className="font-medium text-white">
+      <div className="flex w-full max-w-full flex-col gap-2 px-3 py-3 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-4 sm:py-3.5 sm:text-base lg:px-6">
+        <p className="shrink-0 font-medium text-white">
           Have a question?{' '}
           <Link to="/contact" className="font-bold text-white underline-offset-2 hover:underline">
             Contact Us
           </Link>
         </p>
 
-        <div className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1.5">
+        <div className="flex max-w-full flex-wrap items-center gap-x-4 gap-y-1.5 sm:justify-end">
           {telHref && (
-            <a href={telHref} className="inline-flex min-w-0 items-center gap-1.5 hover:text-white/85">
-              <Phone size={14} className="shrink-0" aria-hidden />
+            <a href={telHref} className="inline-flex min-w-0 items-center gap-2 hover:text-white/85">
+              <Phone size={18} className="shrink-0" aria-hidden />
               <span className="truncate">{contact.phone}</span>
             </a>
           )}
@@ -45,16 +45,16 @@ export default function TopBar() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 hover:text-white/85"
+              className="inline-flex items-center gap-2 hover:text-white/85"
             >
-              <MessageCircle size={14} className="shrink-0" aria-hidden />
+              <MessageCircle size={18} className="shrink-0" aria-hidden />
               <span>WhatsApp</span>
             </a>
           )}
           {activeSocial.length > 0 && (
             <>
-              <span className="hidden h-4 w-px bg-white/30 md:block" aria-hidden />
-              <div className="hidden flex-wrap items-center gap-1.5 md:flex" aria-label="Social links">
+              <span className="hidden h-5 w-px bg-white/30 md:block" aria-hidden />
+              <div className="hidden flex-wrap items-center gap-2 md:flex" aria-label="Social links">
                 {activeSocial.map(({ key, label, Icon }) => {
                   const href = social[key]
                   const external = !href.startsWith('mailto:')
@@ -65,9 +65,9 @@ export default function TopBar() {
                       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       aria-label={label}
                       title={label}
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white/25"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white/25"
                     >
-                      <Icon size={14} aria-hidden />
+                      <Icon size={16} aria-hidden />
                     </a>
                   )
                 })}
