@@ -1,6 +1,9 @@
 # Eagle Logistics - Apache rules for cPanel (static SPA)
 # Canonical: https://www.eaglelogistics.in
 
+# Do not expose directory listings for /assets, /content, etc.
+Options -Indexes
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
