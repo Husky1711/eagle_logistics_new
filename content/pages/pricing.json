@@ -9,7 +9,7 @@
     "title": "Price Calculator",
     "subtitle": "Enter weight and destination to compare sample rates from DHL, FedEx, and UPS",
     "calculateButton": "Get Rates",
-    "notice": "Sample rates from our rate card. Final price depends on zone, partner availability, and parcel type — confirm on WhatsApp for an exact quote.",
+    "notice": "Sample rates from our rate card. Final price depends on zone, partner availability, and parcel type. Confirm on WhatsApp for an exact quote.",
     "offerReminder": "Monsoon Express: mention EAGLE15 on WhatsApp for 15% off domestic shipping (T&C apply).",
     "noMatchTitle": "No rate card match",
     "noMatchMessage": "We couldn't find a rate for this weight and destination. WhatsApp us for a custom quote.",

@@ -42,7 +42,7 @@ function AboutContent({ page }) {
             className="absolute inset-0 h-full w-full object-cover opacity-30"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/70 to-primary-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/45 via-black/30 to-primary-900/25" />
         <Container className="relative z-10 py-20 text-center lg:py-28">
           <FadeIn>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-300">

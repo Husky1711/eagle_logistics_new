@@ -1,10 +1,10 @@
-/** Fallback settings when settings.json cannot be loaded — must match live Bangalore contact */
+/** Fallback settings when settings.json cannot be loaded - must match live Bangalore contact */
 export const DEFAULT_SETTINGS = {
   site: {
     name: 'Eagle Logistics',
     tagline: 'Delivering Excellence, Every Mile',
     description:
-      'Ship with DHL, FedEx, and UPS through Eagle Logistics — trusted express partners for domestic and international delivery.',
+      'Ship with DHL, FedEx, and UPS through Eagle Logistics, trusted express partners for domestic and international delivery.',
   },
   header: {
     logo: '/assets/brand/logo.png',
@@ -25,7 +25,7 @@ export const DEFAULT_SETTINGS = {
   },
   footer: {
     description:
-      'Ship with DHL, FedEx, and UPS — trusted express partners for reliable delivery.',
+      'Ship with DHL, FedEx, and UPS, trusted express partners for reliable delivery.',
     flagImage: '/assets/brand/footer-flags.jpg',
     quickLinks: [
       { path: '/pricing', label: 'Price Calculator' },
@@ -45,12 +45,12 @@ export const DEFAULT_SETTINGS = {
     companyName: 'Eagle Logistics & Express Services',
     address:
       '15/2, 6th Cross, 1st Main Road\nSampangi Rama Nagar\nNear Corporation Circle\nBangalore : 560027.',
-    phone: '+91 80-40969947',
+    phone: '+91 80 40969947',
     phoneSecondary: '+91 98864 96920',
     whatsapp: '+919886496920',
     email: 'info@eaglelogistics.in',
     website: 'https://www.eaglelogistics.in',
-    hours: 'Mon–Sat: 9:00 AM – 7:00 PM',
+    hours: 'Mon-Sat: 9:00 AM - 7:00 PM',
     googleMapsUrl:
       'https://maps.google.com/?q=15/2+6th+Cross+1st+Main+Road+Sampangi+Rama+Nagar+Bangalore+560027',
     googleMapsEmbed:

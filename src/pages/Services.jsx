@@ -162,7 +162,7 @@ function ServicesContent({ page, activeTab, setActiveTab }) {
                           <span className="text-xs font-semibold uppercase tracking-wide text-gold-600">
                             {service.highlight}
                           </span>
-                          <h3 className="mt-2 font-display text-xl font-semibold text-heading">{service.title}</h3>
+                          <h3 className="mt-2 font-display text-xl font-semibold text-[#FC012E]">{service.title}</h3>
                           <p className="mt-2 text-sm text-ink">{service.description}</p>
                         </div>
                       </Card>

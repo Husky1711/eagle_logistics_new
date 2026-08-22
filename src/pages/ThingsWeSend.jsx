@@ -94,7 +94,7 @@ function ThingsWeSendHub({ page }) {
                       )}
                     </div>
                     <div className="flex flex-1 flex-col p-5">
-                      <h3 className="font-display text-xl font-semibold text-heading">{item.title}</h3>
+                      <h3 className="font-display text-xl font-semibold text-[#FC012E]">{item.title}</h3>
                       <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-ink">
                         {item.summary}
                       </p>

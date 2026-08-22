@@ -47,6 +47,7 @@ function CourierLogoTab({ courier, selected, onSelect }) {
       type="button"
       onClick={() => onSelect(courier.id)}
       aria-pressed={selected}
+      aria-label={courier.name}
       className={`flex min-h-[88px] flex-col items-center justify-center gap-2 rounded-xl border px-3 py-3 transition ${
         selected
           ? 'border-primary-500 bg-primary-50 ring-1 ring-primary-500'
@@ -54,11 +55,10 @@ function CourierLogoTab({ courier, selected, onSelect }) {
       }`}
     >
       {logo ? (
-        <img src={logo} alt={`${courier.name} logo`} className="h-10 max-w-[120px] object-contain" />
+        <img src={logo} alt="" className="h-10 max-w-[120px] object-contain" />
       ) : (
-        <span className="font-display text-lg font-bold text-primary-600">{courier.name.slice(0, 2)}</span>
+        <span className="font-display text-lg font-bold text-primary-600">{courier.name}</span>
       )}
-      <span className="text-xs font-semibold text-ink">{courier.name}</span>
     </button>
   )
 }

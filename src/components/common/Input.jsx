@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-export default function Input({ label, id, error, className = '', ...props }) {
+export default function Input({ label, id, error, required, className = '', ...props }) {
   const generatedId = useId()
   const inputId = id || generatedId
   return (
@@ -8,10 +8,16 @@ export default function Input({ label, id, error, className = '', ...props }) {
       {label && (
         <label htmlFor={inputId} className="mb-2 block text-sm font-medium text-ink">
           {label}
+          {required && (
+            <span className="ml-0.5 text-[#FC012E]" aria-hidden>
+              *
+            </span>
+          )}
         </label>
       )}
       <input
         id={inputId}
+        required={required}
         className="w-full rounded-lg border border-neutral-300 px-4 py-3 text-neutral-900 transition-colors focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20"
         {...props}
       />

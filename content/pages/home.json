@@ -24,7 +24,7 @@
     "intro": {
       "title": "Eagle Logistics & Express Services",
       "sectionTitle": "Why ship with Eagle",
-      "body": "Established in 2010, Eagle Logistics offers competitive rates for international parcels from India to the USA, UK, European Union, Middle East and Far East. Arrange doorstep collection or drop off at a local pickup point — then track your shipment through our reliable partner network. We specialise in local, national and international courier with careful handling and international door-to-door cargo.",
+      "body": "Established in 2010, Eagle Logistics offers competitive rates for international parcels from India to the USA, UK, European Union, Middle East and Far East. Arrange doorstep collection or drop off at a local pickup point, then track your shipment through our reliable partner network. We specialise in local, national and international courier with careful handling and international door-to-door cargo.",
       "readMoreLabel": "About Eagle",
       "readMoreLink": "/about"
     },
@@ -91,7 +91,7 @@
         },
         {
           "id": "pickup",
-          "text": "Home or work collection — or drop off locally",
+          "text": "Home or work collection, or drop off locally",
           "icon": "Package",
           "iconImage": "home/advantage-5.png",
           "link": "/contact"
@@ -170,7 +170,7 @@
         },
         {
           "id": 3,
-          "quote": "I sent a parcel to my husband in Nevada, USA — it arrived within three days. Thank you, Eagle.",
+          "quote": "I sent a parcel to my husband in Nevada, USA. It arrived within three days. Thank you, Eagle.",
           "name": "Sharda",
           "location": "Indiranagar"
         }

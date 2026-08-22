@@ -287,7 +287,7 @@ function HomeContent({ page, reducedMotion }) {
                       wrapperClassName="aspect-[16/10] w-full"
                     />
                     <div className="p-5">
-                      <h3 className="font-display text-xl font-semibold text-heading">{item.title}</h3>
+                      <h3 className="font-display text-xl font-semibold text-[#FC012E]">{item.title}</h3>
                       <p className="mt-2 text-sm text-ink">{item.summary}</p>
                       <span className="mt-3 inline-flex items-center text-sm font-semibold text-primary-600">
                         Read More

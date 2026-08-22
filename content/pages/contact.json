@@ -2,12 +2,13 @@
   "meta": {
     "title": "Contact Eagle Logistics | Bangalore Courier Office",
     "description": "Contact Eagle Logistics in Sampangi Rama Nagar, Bangalore. Call, email or WhatsApp for help with domestic and international courier and cargo shipping.",
-    "image": "/assets/brand/logo.png",
-    "imageAlt": "Contact Eagle Logistics Bangalore office"
+    "image": "/assets/pages/contact-hero.jpg",
+    "imageAlt": "Contact Eagle Logistics customer support team"
   },
   "content": {
     "title": "Contact Us",
     "subtitle": "Reach Eagle Logistics & Express Services in Bangalore",
+    "heroImage": "contact-hero.jpg",
     "addressLabel": "Address",
     "phoneLabel": "Phone",
     "emailLabel": "Email",
@@ -15,7 +16,20 @@
     "whatsappCta": "Chat on WhatsApp",
     "emailCta": "Send Email",
     "mapTitle": "Location",
-    "mapPlaceholder": "Map unavailable — use the address or Google Maps link above.",
-    "stayConnected": "Stay Connected"
+    "mapPlaceholder": "Map unavailable. Use the address or Google Maps link above.",
+    "stayConnected": "Stay Connected",
+    "feedbackTitle": "Send us feedback",
+    "feedbackSubtitle": "Questions, suggestions or shipping help. We will get back to you.",
+    "feedbackNameLabel": "Name",
+    "feedbackEmailLabel": "Email",
+    "feedbackPhoneLabel": "Phone (optional)",
+    "feedbackTopicLabel": "Topic",
+    "feedbackMessageLabel": "Message",
+    "feedbackMessagePlaceholder": "Tell us how we can help…",
+    "feedbackSubmit": "Send feedback",
+    "feedbackHelper": "Opens WhatsApp with your message so our Bangalore team can reply quickly.",
+    "feedbackSuccessTitle": "Thanks for your feedback",
+    "feedbackSuccessBody": "Your message is ready in WhatsApp. Send it to reach our team.",
+    "feedbackSendAnother": "Send another message"
   }
 }
