@@ -6,7 +6,7 @@ import { chromium } from 'playwright'
 import { restoreContent, snapshotContent } from './e2e-content-restore.mjs'
 
 const PASSWORD = 'change-me-in-production'
-const PUBLIC = 'http://localhost:5173'
+const PUBLIC = 'http://127.0.0.1:5173'
 const ADMIN_PORTS = [5174, 5175, 5176]
 const headed = !process.argv.includes('--headless')
 
@@ -18,9 +18,9 @@ const fail = (area, msg) => { results.fail.push({ area, msg }); log(area, `FAIL 
 async function findAdminUrl(page) {
   for (const port of ADMIN_PORTS) {
     try {
-      await page.goto(`http://localhost:${port}/login`, { waitUntil: 'networkidle', timeout: 8000 })
+      await page.goto(`http://127.0.0.1:${port}/login`, { waitUntil: 'networkidle', timeout: 8000 })
       if ((await page.locator('#username').count()) && (await page.title()).includes('Admin')) {
-        return `http://localhost:${port}`
+        return `http://127.0.0.1:${port}`
       }
     } catch { /* next */ }
   }
@@ -116,7 +116,7 @@ async function testAdmin(page, adminUrl) {
   pass('Admin', 'settings phone restored')
 
   // Offers
-  await page.goto(`${adminUrl}/offers`, { waitUntil: 'networkidle' })
+  await page.goto(`${adminUrl}/site-banner`, { waitUntil: 'networkidle' })
   const titleLoc = page.locator('label:has-text("Title") input')
   const origTitle = await titleLoc.inputValue()
   const offerMarker = `QA Offer ${Date.now().toString().slice(-5)}`
@@ -132,7 +132,7 @@ async function testAdmin(page, adminUrl) {
   if ((await page.locator('body').innerText()).includes(offerMarker)) pass('Admin', 'offer title visible on public home')
   else fail('Admin', 'offer title NOT on public home')
 
-  await page.goto(`${adminUrl}/offers`, { waitUntil: 'networkidle' })
+  await page.goto(`${adminUrl}/site-banner`, { waitUntil: 'networkidle' })
   await titleLoc.fill(origTitle)
   await page.getByRole('button', { name: /Save offer/i }).click()
   pass('Admin', 'offer title restored')
@@ -179,8 +179,7 @@ async function testAdmin(page, adminUrl) {
   }
 
   if (rulesData) {
-    const delhivery = rulesData.find((r) => r.id === 'delhivery-standard')
-    const testRule = delhivery || rulesData.find((r) => r.id === 'dtdc-standard')
+    const testRule = rulesData[0]
     const origBase = testRule?.distance_zones?.[0]?.base_price
     const pricePerKg = testRule?.distance_zones?.[0]?.price_per_kg ?? 11
 

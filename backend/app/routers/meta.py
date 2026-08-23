@@ -12,6 +12,8 @@ store = ContentStore(settings.CONTENT_DIR, settings.REPO_ROOT)
 META_FILES = {
     "settings_saved_at": "settings.json",
     "offers_saved_at": "offers.json",
+    "offers_page_saved_at": "pages/offers.json",
+    "home_page_saved_at": "pages/home.json",
     "couriers_saved_at": "couriers.json",
     "pricing_rules_saved_at": "pricing-rules.json",
 }

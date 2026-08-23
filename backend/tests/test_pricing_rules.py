@@ -8,22 +8,23 @@ from fastapi.testclient import TestClient
 from app.config import settings
 from app.services.content_store import ContentStore
 
-VALID_RULE = {
-    "id": "qa-pricing-rule",
-    "courier": "dtdc",
-    "weight_range": {"min": 0, "max": 10, "unit": "kg"},
-    "distance_zones": [
-        {
-            "zone": "local",
-            "max_distance": 50,
-            "unit": "km",
-            "base_price": 40,
-            "price_per_kg": 10,
-            "estimated_delivery": "1–2 days",
-        }
-    ],
-    "active": True,
-}
+def _valid_rule(courier_id: str, rule_id: str = "qa-pricing-rule") -> dict:
+    return {
+        "id": rule_id,
+        "courier": courier_id,
+        "weight_range": {"min": 0, "max": 10, "unit": "kg"},
+        "distance_zones": [
+            {
+                "zone": "local",
+                "max_distance": 50,
+                "unit": "km",
+                "base_price": 40,
+                "price_per_kg": 10,
+                "estimated_delivery": "1–2 days",
+            }
+        ],
+        "active": True,
+    }
 
 
 def _restore_pricing_rules(store, data):
@@ -67,50 +68,57 @@ def test_get_pricing_rules_returns_list(auth_client: TestClient, original_pricin
     assert {"id", "courier", "weight_range", "distance_zones", "active"} <= set(first.keys())
 
 
-def test_pricing_rules_round_trip(auth_client: TestClient, original_pricing_rules):
+def test_pricing_rules_round_trip(auth_client: TestClient, original_pricing_rules, store):
+    courier_id = store.read("couriers.json")[0]["id"]
     current = auth_client.get("/api/admin/pricing-rules").json()
-    current.append(VALID_RULE)
+    current.append(_valid_rule(courier_id))
     updated = auth_client.put("/api/admin/pricing-rules", json=current)
     assert updated.status_code == 200
     assert any(item["id"] == "qa-pricing-rule" for item in updated.json())
 
 
-def test_pricing_rules_syncs_public_content(auth_client: TestClient, original_pricing_rules):
+def test_pricing_rules_syncs_public_content(auth_client: TestClient, original_pricing_rules, store):
+    courier_id = store.read("couriers.json")[0]["id"]
     current = auth_client.get("/api/admin/pricing-rules").json()
-    current.append({**VALID_RULE, "id": "sync-marker"})
-    auth_client.put("/api/admin/pricing-rules", json=current)
+    current.append(_valid_rule(courier_id, "sync-marker"))
+    put = auth_client.put("/api/admin/pricing-rules", json=current)
+    assert put.status_code == 200
 
     public_path = settings.REPO_ROOT / "public" / "content" / "pricing-rules.json"
     synced = json.loads(public_path.read_text(encoding="utf-8"))
     assert any(item["id"] == "sync-marker" for item in synced)
 
 
-def test_unknown_courier_rejected(auth_client: TestClient, original_pricing_rules):
+def test_unknown_courier_rejected(auth_client: TestClient, original_pricing_rules, store):
+    courier_id = store.read("couriers.json")[0]["id"]
     current = auth_client.get("/api/admin/pricing-rules").json()
-    current.append({**VALID_RULE, "id": "bad-courier-ref", "courier": "not-a-real-courier"})
+    current.append({**_valid_rule(courier_id), "id": "bad-courier-ref", "courier": "not-a-real-courier"})
     response = auth_client.put("/api/admin/pricing-rules", json=current)
     assert response.status_code == 400
     assert "unknown courier" in response.json()["detail"].lower()
 
 
-def test_duplicate_ids_rejected(auth_client: TestClient, original_pricing_rules):
-    duplicate = {**VALID_RULE, "id": "dup-test-rule"}
+def test_duplicate_ids_rejected(auth_client: TestClient, original_pricing_rules, store):
+    courier_id = store.read("couriers.json")[0]["id"]
+    duplicate = _valid_rule(courier_id, "dup-test-rule")
     response = auth_client.put("/api/admin/pricing-rules", json=[duplicate, {**duplicate}])
     assert response.status_code == 422
 
 
-def test_invalid_weight_range_rejected(auth_client: TestClient, original_pricing_rules):
+def test_invalid_weight_range_rejected(auth_client: TestClient, original_pricing_rules, store):
+    courier_id = store.read("couriers.json")[0]["id"]
     current = auth_client.get("/api/admin/pricing-rules").json()
-    bad = copy.deepcopy(VALID_RULE)
+    bad = copy.deepcopy(_valid_rule(courier_id))
     bad["weight_range"] = {"min": 10, "max": 5, "unit": "kg"}
     current.append(bad)
     response = auth_client.put("/api/admin/pricing-rules", json=current)
     assert response.status_code == 422
 
 
-def test_empty_zones_rejected(auth_client: TestClient, original_pricing_rules):
+def test_empty_zones_rejected(auth_client: TestClient, original_pricing_rules, store):
+    courier_id = store.read("couriers.json")[0]["id"]
     current = auth_client.get("/api/admin/pricing-rules").json()
-    bad = {**VALID_RULE, "id": "no-zones", "distance_zones": []}
+    bad = {**_valid_rule(courier_id), "id": "no-zones", "distance_zones": []}
     current.append(bad)
     response = auth_client.put("/api/admin/pricing-rules", json=current)
     assert response.status_code == 422
@@ -118,10 +126,12 @@ def test_empty_zones_rejected(auth_client: TestClient, original_pricing_rules):
 
 def test_rule_id_rename_rejected(auth_client: TestClient, original_pricing_rules):
     current = auth_client.get("/api/admin/pricing-rules").json()
+    assert current, "pricing-rules.json must contain at least one rule"
+    target_id = current[0]["id"]
     renamed = []
     for rule in current:
-        if rule["id"] == "dtdc-standard":
-            renamed.append({**rule, "id": "dtdc-renamed"})
+        if rule["id"] == target_id:
+            renamed.append({**rule, "id": f"{target_id}-renamed"})
         else:
             renamed.append(rule)
     response = auth_client.put("/api/admin/pricing-rules", json=renamed)

@@ -68,7 +68,7 @@ if (await page.getByText(/saved and synced/i).count()) {
 }
 
 // Inactive offer hides strip
-await page.goto(`${admin}/offers`, { waitUntil: 'networkidle' })
+await page.goto(`${admin}/site-banner`, { waitUntil: 'networkidle' })
 const offerCb = page.locator('label:has-text("Offer active") input')
 const wasActive = await offerCb.isChecked()
 await offerCb.setChecked(false)
@@ -83,7 +83,7 @@ if (await page.getByRole('region', { name: 'Promotional offer' }).count()) {
     title: 'Offer strip still visible when active=false',
   })
 }
-await page.goto(`${admin}/offers`, { waitUntil: 'networkidle' })
+await page.goto(`${admin}/site-banner`, { waitUntil: 'networkidle' })
 await offerCb.setChecked(wasActive)
 await page.getByRole('button', { name: /Save offer/i }).click()
 

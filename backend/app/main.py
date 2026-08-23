@@ -3,7 +3,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 
 from app.config import settings
-from app.routers import auth, couriers, meta, offers, pricing_rules, publish, settings as settings_router
+from app.routers import (
+    auth,
+    couriers,
+    media,
+    meta,
+    offers,
+    pages_home,
+    pages_offers,
+    pricing_rules,
+    publish,
+    settings as settings_router,
+)
 
 app = FastAPI(title=settings.APP_NAME, version=settings.APP_VERSION)
 
@@ -26,6 +37,9 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/api")
 app.include_router(settings_router.router, prefix="/api")
 app.include_router(offers.router, prefix="/api")
+app.include_router(pages_offers.router, prefix="/api")
+app.include_router(pages_home.router, prefix="/api")
+app.include_router(media.router, prefix="/api")
 app.include_router(publish.router, prefix="/api")
 app.include_router(couriers.router, prefix="/api")
 app.include_router(pricing_rules.router, prefix="/api")

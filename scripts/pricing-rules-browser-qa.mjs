@@ -5,8 +5,8 @@
 import { chromium } from 'playwright'
 import { restoreContent, snapshotContent } from './e2e-content-restore.mjs'
 
-const PUBLIC = 'http://localhost:5173'
-const ADMIN_PORTS = [5176, 5175, 5174]
+const PUBLIC = 'http://127.0.0.1:5173'
+const ADMIN_PORTS = [5174, 5175, 5176]
 const PASSWORD = 'change-me-in-production'
 const headed = process.argv.includes('--headed')
 
@@ -15,8 +15,10 @@ const snapshot = snapshotContent(['pricing-rules.json'])
 async function findAdminUrl(page) {
   for (const port of ADMIN_PORTS) {
     try {
-      await page.goto(`http://localhost:${port}/login`, { waitUntil: 'networkidle', timeout: 10000 })
-      if ((await page.title()).includes('Admin')) return `http://localhost:${port}`
+      await page.goto('about:blank').catch(() => {})
+      await page.goto(`http://127.0.0.1:${port}/login`, { waitUntil: 'domcontentloaded', timeout: 12000 })
+      await page.waitForSelector('#username', { timeout: 8000 })
+      if ((await page.title()).includes('Admin')) return `http://127.0.0.1:${port}`
     } catch {
       // try next port
     }
@@ -25,12 +27,12 @@ async function findAdminUrl(page) {
 }
 
 async function login(page, adminUrl) {
-  await page.goto(`${adminUrl}/login`, { waitUntil: 'networkidle' })
+  await page.goto(`${adminUrl}/login`, { waitUntil: 'domcontentloaded' })
   if (await page.getByRole('heading', { name: 'Dashboard' }).count()) return
   await page.locator('#username').fill('admin')
   await page.locator('#password').fill(PASSWORD)
   await page.getByRole('button', { name: /Sign in/i }).click()
-  await page.waitForURL((url) => !url.pathname.includes('/login'), { timeout: 12000 })
+  await page.getByRole('heading', { name: 'Dashboard' }).waitFor({ timeout: 15000 })
 }
 
 async function loadRulesFromEditor(page) {
@@ -50,12 +52,21 @@ async function readPublicRules() {
   return res.json()
 }
 
-async function runPublicCalculator(page, weight, distance) {
-  await page.goto(`${PUBLIC}/pricing`, { waitUntil: 'networkidle' })
+async function runPublicCalculator(page, weight) {
+  await page.goto(`${PUBLIC}/pricing`, { waitUntil: 'domcontentloaded' })
+  const submit = page.getByRole('button', { name: /Get Rates|Calculate/i })
+  await submit.waitFor({ timeout: 20000 })
   await page.getByLabel('Weight (kg)').fill(String(weight))
-  await page.getByLabel('Distance (km)').fill(String(distance))
-  await page.getByRole('button', { name: /Calculate Price/i }).click()
-  await page.waitForTimeout(1200)
+  const destination = page.locator('#destination')
+  if (await destination.count()) {
+    const options = await destination.locator('option').all()
+    if (options.length > 0) {
+      const value = await options[0].getAttribute('value')
+      if (value) await destination.selectOption(value)
+    }
+  }
+  await submit.click()
+  await page.waitForTimeout(1500)
 }
 
 async function getCourierPriceOnPage(page, courierName) {
@@ -84,7 +95,7 @@ async function main() {
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } })
 
   try {
-    const apiOk = await fetch('http://localhost:8000/health').then((r) => r.ok).catch(() => false)
+    const apiOk = await fetch('http://127.0.0.1:8000/health').then((r) => r.ok).catch(() => false)
     if (!apiOk) {
       fail('API not running on :8000 — run npm run dev:api')
       process.exit(1)
@@ -132,14 +143,20 @@ async function main() {
       return
     }
 
-    const dtdcRule = data.find((r) => r.id === 'dtdc-standard')
-    const delhiveryRule = data.find((r) => r.id === 'delhivery-standard')
-    const testRule = delhiveryRule || dtdcRule
+    const testRule = data[0]
     if (!testRule) {
-      fail('delhivery-standard / dtdc-standard rule missing from editor')
+      fail('no pricing rules in editor')
       return
     }
-    const testCourierName = testRule.courier === 'delhivery' ? 'Delhivery' : 'DTDC'
+    // Prefer a human-readable name from public courier list; fall back to id.
+    let testCourierName = testRule.courier
+    try {
+      const couriers = await (await fetch(`${PUBLIC}/content/couriers.json?ts=${Date.now()}`)).json()
+      const match = couriers.find((c) => c.id === testRule.courier)
+      if (match?.name) testCourierName = match.name
+    } catch {
+      // keep id
+    }
     const originalBase = testRule.distance_zones[0].base_price
     const pricePerKg = testRule.distance_zones[0].price_per_kg
 
@@ -219,9 +236,8 @@ async function main() {
 
     // Public calculator reflects new rate
     const weight = 2
-    const distance = 30
     const expected = marker + weight * pricePerKg
-    await runPublicCalculator(page, weight, distance)
+    await runPublicCalculator(page, weight)
     if (!(await page.getByRole('heading', { name: 'Best Options' }).count())) {
       fail('calculator did not show results after rate change')
     } else {

@@ -17,6 +17,8 @@ def test_meta_returns_saved_at_fields(auth_client: TestClient):
     assert set(body.keys()) == {
         "settings_saved_at",
         "offers_saved_at",
+        "offers_page_saved_at",
+        "home_page_saved_at",
         "couriers_saved_at",
         "pricing_rules_saved_at",
     }

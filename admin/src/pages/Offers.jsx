@@ -51,8 +51,12 @@ export default function Offers() {
   return (
     <form onSubmit={handleSave} className="space-y-6">
       <div>
-        <h1 className="font-display text-2xl font-bold text-dark">Promotional offer</h1>
-        <p className="mt-2 text-sm text-neutral-600">Controls the offer strip on the public site.</p>
+        <h1 className="font-display text-2xl font-bold text-dark">Homepage offer strip</h1>
+        <p className="mt-2 text-sm text-neutral-600">
+          The small promo banner shown on every page (when active). For the full{' '}
+          <code className="text-xs">/offers</code> page — hero, poster, university section — use{' '}
+          <strong>Special Offers page</strong> in the sidebar.
+        </p>
       </div>
 
       <section className="space-y-4 rounded-xl bg-white p-6 shadow-soft">

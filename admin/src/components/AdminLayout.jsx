@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { useUnsavedChanges } from '../context/UnsavedChangesContext'
 import { PUBLIC_SITE_URL } from '../config/publicSite'
 
 const navClass = ({ isActive }) =>
@@ -8,12 +9,31 @@ const navClass = ({ isActive }) =>
     isActive ? 'bg-primary-500 text-white' : 'text-neutral-700 hover:bg-neutral-200'
   }`
 
+function GuardedNavLink({ to, end, children }) {
+  const { confirmLeave } = useUnsavedChanges()
+
+  return (
+    <NavLink
+      to={to}
+      end={end}
+      className={navClass}
+      onClick={(event) => {
+        if (!confirmLeave()) event.preventDefault()
+      }}
+    >
+      {children}
+    </NavLink>
+  )
+}
+
 export default function AdminLayout({ children }) {
   const { user, logout } = useAuth()
+  const { confirmLeave } = useUnsavedChanges()
   const navigate = useNavigate()
   const [logoutError, setLogoutError] = useState('')
 
   const handleLogout = async () => {
+    if (!confirmLeave()) return
     setLogoutError('')
     try {
       await logout()
@@ -46,21 +66,15 @@ export default function AdminLayout({ children }) {
 
       <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 lg:grid-cols-[220px_1fr]">
         <nav className="flex flex-row gap-2 lg:flex-col">
-          <NavLink to="/" end className={navClass}>
+          <GuardedNavLink to="/" end>
             Dashboard
-          </NavLink>
-          <NavLink to="/settings" className={navClass}>
-            Settings
-          </NavLink>
-          <NavLink to="/offers" className={navClass}>
-            Offers
-          </NavLink>
-          <NavLink to="/couriers" className={navClass}>
-            Couriers
-          </NavLink>
-          <NavLink to="/pricing-rules" className={navClass}>
-            Pricing rules
-          </NavLink>
+          </GuardedNavLink>
+          <GuardedNavLink to="/settings">Settings</GuardedNavLink>
+          <GuardedNavLink to="/site-banner">Homepage offer strip</GuardedNavLink>
+          <GuardedNavLink to="/pages/home">Home page</GuardedNavLink>
+          <GuardedNavLink to="/pages/offers">Special Offers page</GuardedNavLink>
+          <GuardedNavLink to="/couriers">Couriers</GuardedNavLink>
+          <GuardedNavLink to="/pricing-rules">Pricing rules</GuardedNavLink>
           <a
             href={PUBLIC_SITE_URL}
             target="_blank"

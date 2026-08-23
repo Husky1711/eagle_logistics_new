@@ -4,5 +4,7 @@ from pydantic import BaseModel
 class AdminMeta(BaseModel):
     settings_saved_at: str | None = None
     offers_saved_at: str | None = None
+    offers_page_saved_at: str | None = None
+    home_page_saved_at: str | None = None
     couriers_saved_at: str | None = None
     pricing_rules_saved_at: str | None = None

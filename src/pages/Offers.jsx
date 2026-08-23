@@ -25,15 +25,17 @@ export default function Offers() {
   )
 }
 
-function FeatureList({ title, items }) {
+function FeatureList({ title, items, columns = 'sm:grid-cols-2 lg:grid-cols-3' }) {
   if (!items?.length) return null
   return (
-    <div className="mt-6">
-      <h3 className="font-display text-lg font-semibold text-heading">{title}</h3>
-      <ul className="mt-3 space-y-2">
+    <div>
+      {title && <h3 className="font-display text-xl font-semibold text-heading">{title}</h3>}
+      <ul className={`mt-4 grid gap-3 ${columns}`}>
         {items.map((item) => (
-          <li key={item} className="flex items-start gap-2 text-sm text-ink">
-            <Check className="mt-0.5 shrink-0 text-primary-500" size={16} aria-hidden />
+          <li key={item} className="flex items-start gap-2.5 text-sm text-ink">
+            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-600">
+              <Check size={12} aria-hidden />
+            </span>
             <span>{item}</span>
           </li>
         ))}
@@ -42,45 +44,53 @@ function FeatureList({ title, items }) {
   )
 }
 
-function PromoRateCard({ promoCard }) {
+/** One visual unit: yellow rate + poster + CTAs. */
+function OfferShowcase({ promoCard, whatsappUrl, ctaDefault, whatsappCta }) {
   if (!promoCard) return null
-  const imageSrc = pageImageUrl(promoCard.image)
+
+  const line1 = promoCard.line1 || 'Send parcels to the USA from Bangalore'
+  const line2 = promoCard.line2 || '₹567 per kg*'
+  const posterSrc = pageImageUrl(promoCard.image)
+  const posterAlt = `${line1} ${line2}`.trim()
 
   return (
-    <aside className="overflow-hidden rounded-xl border border-neutral-200 shadow-soft lg:sticky lg:top-24">
-      <div className="bg-[#FFCC00] px-4 py-5 text-center text-[#1A3668]">
-        {promoCard.line1 && (
-          <p className="text-base font-extrabold leading-snug sm:text-lg">{promoCard.line1}</p>
-        )}
-        {promoCard.line2 && (
-          <p className="mt-1 text-xl font-extrabold leading-tight sm:text-2xl">{promoCard.line2}</p>
-        )}
+    <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-medium">
+      <div className="bg-[#FFCC00] px-4 py-4 text-center text-[#1A3668] sm:px-5 sm:py-5">
+        <p className="text-sm font-bold uppercase tracking-[0.12em] sm:text-base">Special rate</p>
+        <p className="mt-2 font-display text-lg font-extrabold leading-snug sm:text-xl md:text-2xl lg:text-3xl">
+          <span className="inline">{line1}</span>{' '}
+          <span className="inline whitespace-nowrap text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+            {line2}
+          </span>
+        </p>
       </div>
 
-      <div className="relative min-h-[340px] overflow-hidden bg-[#A9C9E0]">
-        {imageSrc && (
-          <SmartImage
-            src={imageSrc}
-            alt=""
-            fill
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_70%] opacity-95"
-            style={{ clipPath: 'inset(18% 0 0 0)' }}
-          />
-        )}
-        <div className="relative z-10 flex min-h-[340px] flex-col justify-between p-5">
-          {promoCard.items?.length > 0 && (
-            <ul className="space-y-1.5 text-sm font-semibold text-[#1A4A7A] drop-shadow-sm">
-              {promoCard.items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          )}
-          {promoCard.disclaimer && (
-            <p className="self-end text-[10px] text-white/90">{promoCard.disclaimer}</p>
+      {posterSrc && (
+        <SmartImage
+          src={posterSrc}
+          alt={posterAlt}
+          className="block h-auto w-full"
+          wrapperClassName="!rounded-none !bg-[#A9C9E0]"
+        />
+      )}
+
+      <div className="border-t border-neutral-100 p-4">
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <Button to="/pricing" className="flex-1 justify-center">
+            {ctaDefault || 'Price calculator'}
+          </Button>
+          {whatsappUrl && (
+            <Button href={whatsappUrl} variant="outline" className="flex-1 justify-center">
+              <MessageCircle className="mr-2 inline" size={16} aria-hidden />
+              {whatsappCta || 'WhatsApp'}
+            </Button>
           )}
         </div>
+        {promoCard.disclaimer && (
+          <p className="mt-2 text-center text-[11px] text-ink-soft">*{promoCard.disclaimer}</p>
+        )}
       </div>
-    </aside>
+    </div>
   )
 }
 
@@ -111,59 +121,79 @@ function OffersContent({ page, offers, settings }) {
             className="absolute inset-0 h-full w-full object-cover"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35" />
-        <Container className="relative z-10 py-20 text-center lg:py-28">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/45 to-black/30" />
+        <Container className="relative z-10 py-14 text-center lg:py-16">
           <h1 className="font-display text-4xl font-bold text-white lg:text-5xl">{content.title}</h1>
           {content.headline && (
-            <p className="mx-auto mt-4 max-w-3xl text-lg text-white lg:text-xl">{content.headline}</p>
+            <p className="mx-auto mt-3 max-w-2xl text-lg text-white/95">{content.headline}</p>
           )}
         </Container>
       </section>
 
       <section className="section-padding bg-primary-50">
-        <Container className="space-y-10">
+        <Container className="space-y-8">
           {promoActive && offers?.title && (
-            <Card className="border-gold-500 ring-1 ring-gold-400">
-              <span className="mb-3 inline-flex items-center gap-1 rounded-full bg-gold-500 px-3 py-0.5 text-xs font-bold text-white">
-                <Tag size={12} /> {content.currentPromoLabel || 'Current promo'}
+            <div className="flex flex-col gap-3 rounded-2xl border border-primary-200 bg-white px-5 py-4 shadow-soft sm:flex-row sm:items-center sm:gap-5 sm:px-6">
+              <span className="inline-flex w-fit shrink-0 items-center gap-1 rounded-full bg-primary-500 px-3 py-1 text-xs font-bold text-white">
+                <Tag size={12} aria-hidden />
+                {content.currentPromoLabel || 'Current promo'}
               </span>
-              <h2 className="font-display text-2xl font-semibold text-heading">{offers.title}</h2>
-              {offers.subtitle && <p className="mt-2 text-ink">{offers.subtitle}</p>}
-              {offers.code && (
-                <p className="mt-4 rounded-lg bg-neutral-100 px-3 py-2 font-mono text-sm font-semibold text-primary-700">
-                  Use code: {offers.code}
-                </p>
-              )}
-            </Card>
+              <div className="min-w-0">
+                <h2 className="font-display text-xl font-semibold text-heading sm:text-2xl">
+                  {offers.title}
+                </h2>
+                {offers.subtitle && (
+                  <p className="mt-1 text-sm text-ink sm:text-base">{offers.subtitle}</p>
+                )}
+              </div>
+            </div>
           )}
 
-          <div className="grid items-start gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-            <Card>
-              {content.lead && <p className="text-base text-ink">{content.lead}</p>}
-              {content.reassure && (
-                <p className="mt-3 text-base font-semibold text-primary-600">{content.reassure}</p>
-              )}
-              {(content.body || []).map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className="mt-4 text-ink leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-              <FeatureList title={content.featuresTitle} items={content.features} />
-              {content.offerNote && (
-                <p className="mt-6 rounded-lg bg-primary-50 p-4 text-sm text-ink leading-relaxed">
-                  {content.offerNote}
-                </p>
-              )}
-            </Card>
+          <div className="grid items-start gap-6 lg:grid-cols-12 lg:gap-8">
+            <div className="space-y-4 lg:col-span-5">
+              <Card>
+                {content.lead && <p className="text-base text-ink">{content.lead}</p>}
+                {content.reassure && (
+                  <p className="mt-2 text-base font-semibold text-primary-600">{content.reassure}</p>
+                )}
+                {(content.body || []).map((paragraph) => (
+                  <p key={paragraph.slice(0, 40)} className="mt-4 text-ink leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+                {content.offerNote && (
+                  <p className="mt-5 rounded-xl border border-primary-100 bg-primary-50/80 px-4 py-3 text-sm leading-relaxed text-ink">
+                    {content.offerNote}
+                  </p>
+                )}
+              </Card>
+            </div>
 
-            <PromoRateCard promoCard={promoCard} />
+            <div className="lg:col-span-7">
+              <OfferShowcase
+                promoCard={promoCard}
+                whatsappUrl={whatsappUrl}
+                ctaDefault={content.ctaDefault}
+                whatsappCta={content.whatsappCta}
+              />
+            </div>
           </div>
+
+          {content.features?.length > 0 && (
+            <Card>
+              <FeatureList
+                title={content.featuresTitle}
+                items={content.features}
+                columns="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              />
+            </Card>
+          )}
 
           {sections.map((section) => (
             <Card key={section.id}>
               <h2 className="font-display text-2xl font-bold text-heading">{section.title}</h2>
               {section.subtitle && (
-                <p className="mt-2 text-lg font-semibold text-gold-600">{section.subtitle}</p>
+                <p className="mt-2 text-lg font-semibold text-primary-600">{section.subtitle}</p>
               )}
               {section.lead && <p className="mt-4 text-ink">{section.lead}</p>}
               {section.reassure && (
@@ -174,11 +204,15 @@ function OffersContent({ page, offers, settings }) {
                   {paragraph}
                 </p>
               ))}
-              <FeatureList title={section.featuresTitle} items={section.features} />
+              {section.features?.length > 0 && (
+                <div className="mt-6">
+                  <FeatureList title={section.featuresTitle} items={section.features} />
+                </div>
+              )}
             </Card>
           ))}
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-1">
             <Button to="/pricing">{content.ctaDefault || 'Price Calculator'}</Button>
             {whatsappUrl && (
               <Button href={whatsappUrl} variant="outline">

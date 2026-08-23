@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { UnsavedChangesProvider } from '../context/UnsavedChangesContext'
 import AdminLayout from '../components/AdminLayout'
 
 export default function ProtectedRoute() {
@@ -16,8 +17,10 @@ export default function ProtectedRoute() {
   if (!user) return <Navigate to="/login" replace />
 
   return (
-    <AdminLayout>
-      <Outlet />
-    </AdminLayout>
+    <UnsavedChangesProvider>
+      <AdminLayout>
+        <Outlet />
+      </AdminLayout>
+    </UnsavedChangesProvider>
   )
 }

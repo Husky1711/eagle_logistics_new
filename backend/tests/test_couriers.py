@@ -196,10 +196,12 @@ def test_delete_courier_via_put(auth_client: TestClient, original_couriers):
 
 def test_courier_id_rename_rejected(auth_client: TestClient, original_couriers):
     current = auth_client.get("/api/admin/couriers").json()
+    assert current, "couriers.json must contain at least one courier"
+    target_id = current[0]["id"]
     renamed = []
     for courier in current:
-        if courier["id"] == "dtdc":
-            renamed.append({**courier, "id": "dtdc-renamed"})
+        if courier["id"] == target_id:
+            renamed.append({**courier, "id": f"{target_id}-renamed"})
         else:
             renamed.append(courier)
 

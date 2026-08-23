@@ -30,9 +30,21 @@ export default function Dashboard() {
       savedAt: meta?.settings_saved_at,
     },
     {
-      to: '/offers',
-      title: 'Promotional offer',
-      description: 'Offer strip title, dates, code, and CTA',
+      to: '/pages/home',
+      title: 'Home page',
+      description: 'Landing page: hero, cards, popular items, cargo, testimonials, CTA',
+      savedAt: meta?.home_page_saved_at,
+    },
+    {
+      to: '/pages/offers',
+      title: 'Special Offers page',
+      description: 'Full /offers page: SEO, intro, poster, university, features',
+      savedAt: meta?.offers_page_saved_at,
+    },
+    {
+      to: '/site-banner',
+      title: 'Homepage offer strip',
+      description: 'Small promo strip on every page — title, dates, code, CTA',
       savedAt: meta?.offers_saved_at,
     },
     {

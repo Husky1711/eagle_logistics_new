@@ -47,7 +47,13 @@ class ContentStore:
                 break
             except PermissionError:
                 if attempt == 2:
-                    raise
+                    # OneDrive / Windows often blocks atomic rename while the file
+                    # is open for read; in-place write still succeeds.
+                    content = temp_path.read_text(encoding="utf-8")
+                    with path.open("w", encoding="utf-8") as handle:
+                        handle.write(content)
+                    temp_path.unlink(missing_ok=True)
+                    break
                 time.sleep(0.15 * (attempt + 1))
 
     def last_modified_at(self, filename: str) -> str | None:

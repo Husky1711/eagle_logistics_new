@@ -4,6 +4,8 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Settings from './pages/Settings'
 import Offers from './pages/Offers'
+import OffersPage from './pages/OffersPage'
+import HomePage from './pages/HomePage'
 import Couriers from './pages/Couriers'
 import PricingRules from './pages/PricingRules'
 
@@ -14,7 +16,10 @@ export default function App() {
       <Route element={<ProtectedRoute />}>
         <Route index element={<Dashboard />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="offers" element={<Offers />} />
+        <Route path="site-banner" element={<Offers />} />
+        <Route path="offers" element={<Navigate to="/site-banner" replace />} />
+        <Route path="pages/offers" element={<OffersPage />} />
+        <Route path="pages/home" element={<HomePage />} />
         <Route path="couriers" element={<Couriers />} />
         <Route path="pricing-rules" element={<PricingRules />} />
       </Route>
