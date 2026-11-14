@@ -20,8 +20,47 @@ jobs:
       - name: Install Node dependencies
         run: npm install
 
+      # The build pre-renders every page with Playwright's Chromium (scripts/prerender.mjs)
+      - name: Install Chromium for pre-rendering
+        run: npx playwright install --with-deps chromium
+
       - name: Unit tests (public)
         run: npm test
 
       - name: Production build
         run: npm run build
+
+      - name: Keep built site for deploy
+        if: github.event_name == 'push' && github.ref == 'refs/heads/public-site'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          include-hidden-files: true
+
+  # Publishes the built site (dist/ + .cpanel.yml) to the `deploy` branch.
+  # cPanel Git Version Control tracks that branch: Update from Remote -> Deploy HEAD Commit.
+  deploy-branch:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/public-site'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency: deploy-branch
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+
+      - name: Publish to deploy branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: deploy
+          publish_dir: ./dist
+          # Normal commits on top of the branch so cPanel can fast-forward pull
+          force_orphan: false
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: "Site build from ${{ github.sha }}"

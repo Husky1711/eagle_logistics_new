@@ -1,0 +1,10 @@
+---
+# cPanel Git Version Control deployment for the `deploy` branch (built site).
+# Copied into dist/ by Vite; CI publishes dist/ to the `deploy` branch.
+# In cPanel: Git Version Control -> Manage -> Pull or Deploy ->
+#   "Update from Remote", then "Deploy HEAD Commit".
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/cp -R assets cargo content things-we-send $DEPLOYPATH
+    - /bin/cp *.html robots.txt sitemap.xml .htaccess $DEPLOYPATH
