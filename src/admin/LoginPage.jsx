@@ -31,7 +31,7 @@ export default function LoginPage({ insecure, onLogin }) {
   return (
     <AuthShell
       title="Welcome back"
-      subtitle="Sign in to manage offers on eaglelogistics.in"
+      subtitle="Sign in to manage offers and prices on eaglelogistics.in"
       insecure={insecure}
       footnote="5 wrong attempts lock sign-in for 15 minutes"
     >

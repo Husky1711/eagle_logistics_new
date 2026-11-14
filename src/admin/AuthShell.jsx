@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CalendarClock, Eye, EyeOff, Image as ImageIcon, ShieldCheck, Tag } from 'lucide-react'
+import { Calculator, CalendarClock, Eye, EyeOff, ShieldCheck, Tag } from 'lucide-react'
 import InsecureBanner from './InsecureBanner'
 
 const LOGO = '/assets/brand/logo.png'
@@ -8,7 +8,7 @@ const PHOTO = '/assets/home/slider-1.jpg'
 const FEATURES = [
   { icon: Tag, title: 'Add & update offers', text: 'Prices, codes and destinations in a few clicks' },
   { icon: CalendarClock, title: 'Schedule automatically', text: 'Offers go live and expire on the dates you set' },
-  { icon: ImageIcon, title: 'Upload banners', text: 'See exactly how each offer looks before saving' },
+  { icon: Calculator, title: 'Control your pricing', text: 'Courier rates, discounts and your commission — kept private' },
 ]
 
 /** Branded two-panel layout for the admin login and first-time setup. */
@@ -29,12 +29,12 @@ export default function AuthShell({ title, subtitle, insecure, children, footnot
               <img src={LOGO} alt="Eagle Logistics & Express Services" className="h-10 w-auto sm:h-12" />
             </div>
             <h2 className="mt-8 hidden font-display text-3xl font-bold leading-tight !text-white xl:text-4xl lg:block">
-              Your offers,
+              Offers & prices,
               <br />
               <span className="text-[#7fd0f5]">live in minutes.</span>
             </h2>
             <p className="mt-3 hidden max-w-sm text-base text-white/75 lg:block">
-              The admin for eaglelogistics.in — keep special offers fresh without touching code.
+              The admin for eaglelogistics.in — update offers and courier prices without touching code.
             </p>
           </div>
 

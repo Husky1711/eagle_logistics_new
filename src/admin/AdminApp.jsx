@@ -1,16 +1,18 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { ExternalLink, Image as ImageIcon, KeyRound, LogOut, ShieldAlert, Tag } from 'lucide-react'
+import { Calculator, ExternalLink, Image as ImageIcon, KeyRound, LogOut, ShieldAlert, Tag } from 'lucide-react'
 import { api } from './api'
 import LoginPage from './LoginPage'
 import SetupPage from './SetupPage'
 import OffersManager from './OffersManager'
 import PageBannerSettings from './PageBannerSettings'
 import AccountSettings from './AccountSettings'
+import PricingManager from './pricing/PricingManager'
 import InsecureBanner from './InsecureBanner'
 
 const TABS = [
   { id: 'offers', label: 'Offers', icon: Tag },
+  { id: 'pricing', label: 'Pricing', icon: Calculator },
   { id: 'banner', label: 'Offers page banner', icon: ImageIcon },
   { id: 'account', label: 'Password', icon: KeyRound },
 ]
@@ -67,7 +69,7 @@ export default function AdminApp() {
             <div className="flex items-center gap-3">
               <img src="/assets/brand/logo.png" alt="" className="h-9 w-auto" />
               <p className="border-l border-neutral-200 pl-3 text-sm text-ink">
-                <span className="block font-semibold text-heading">Offers admin</span>
+                <span className="block font-semibold text-heading">Website admin</span>
                 <span className="text-xs text-ink-soft">Signed in as {session.username}</span>
               </p>
             </div>
@@ -111,6 +113,7 @@ export default function AdminApp() {
         {!session.secure && <InsecureBanner />}
         <main className="mx-auto max-w-6xl px-4 py-6">
           {tab === 'offers' && <OffersManager onAuthLost={refresh} />}
+          {tab === 'pricing' && <PricingManager onAuthLost={refresh} />}
           {tab === 'banner' && <PageBannerSettings onAuthLost={refresh} />}
           {tab === 'account' && <AccountSettings />}
         </main>

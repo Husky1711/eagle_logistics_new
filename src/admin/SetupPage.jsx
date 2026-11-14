@@ -42,7 +42,7 @@ export default function SetupPage({ insecure, onDone }) {
   return (
     <AuthShell
       title="Create your admin account"
-      subtitle="One-time setup — this account manages offers on the website."
+      subtitle="One-time setup — this account manages offers and prices on the website."
       insecure={insecure}
       footnote="Your password is stored encrypted and never shown again"
     >

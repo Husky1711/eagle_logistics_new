@@ -52,6 +52,11 @@ export const api = {
   reorderOffers: (ids) => request('offers.php?action=reorder', { method: 'POST', body: { ids } }),
   saveSettings: (settings) => request('offers.php?action=settings', { method: 'POST', body: { settings } }),
 
+  pricing: () => request('pricing.php'),
+  savePricing: (pricing) => request('pricing.php?action=save', { method: 'POST', body: { pricing } }),
+  previewPricing: (body) => request('pricing.php?action=preview', { method: 'POST', body }),
+  resetPricing: () => request('pricing.php?action=reset', { method: 'POST', body: {} }),
+
   upload: (file) => {
     const form = new FormData()
     form.append('file', file)
