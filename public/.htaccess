@@ -24,6 +24,28 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP_HOST} ^eaglelogistics\.in$ [NC]
   RewriteRule ^ https://www.eaglelogistics.in%{REQUEST_URI} [L,R=301]
 
+  # Old site (until Nov 2026) used /Home/<Page>.html - send those links and
+  # their Google rankings to the matching new pages.
+  RewriteRule ^Home/?$ / [NC,R=301,L]
+  RewriteRule ^Home/(index|Create)\.html$ / [NC,R=301,L]
+  RewriteRule ^Home/About\.html$ /about [NC,R=301,L]
+  RewriteRule ^Home/Services\.html$ /services [NC,R=301,L]
+  RewriteRule ^Home/Tracking\.html$ /tracking [NC,R=301,L]
+  RewriteRule ^Home/Contact\.html$ /contact [NC,R=301,L]
+  RewriteRule ^Home/Specialoffers\.html$ /offers [NC,R=301,L]
+  RewriteRule ^Home/Things_We_Send\.html$ /things-we-send [NC,R=301,L]
+  RewriteRule ^Home/Books\.html$ /things-we-send/books [NC,R=301,L]
+  RewriteRule ^Home/Clothes\.html$ /things-we-send/clothes [NC,R=301,L]
+  RewriteRule ^Home/Electronics\.html$ /things-we-send/electronics [NC,R=301,L]
+  RewriteRule ^Home/Medicines\.html$ /things-we-send/medicines [NC,R=301,L]
+  RewriteRule ^Home/Photos\.html$ /things-we-send/photos [NC,R=301,L]
+  RewriteRule ^Home/Spices\.html$ /things-we-send/spices [NC,R=301,L]
+  RewriteRule ^Home/Sweets\.html$ /things-we-send/sweets [NC,R=301,L]
+  RewriteRule ^Home/Footwears\.html$ /things-we-send/footwear [NC,R=301,L]
+  RewriteRule ^Home/Air\.html$ /cargo/air [NC,R=301,L]
+  RewriteRule ^Home/Ship\.html$ /cargo/sea [NC,R=301,L]
+  RewriteRule ^Home/Surface\.html$ /cargo/surface [NC,R=301,L]
+
   # Drop trailing slashes (except the home page) so each page has one URL
   RewriteCond %{REQUEST_URI} !^/$
   RewriteRule ^(.+)/$ /$1 [L,R=301]
