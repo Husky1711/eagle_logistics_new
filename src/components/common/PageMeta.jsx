@@ -56,7 +56,7 @@ export default function PageMeta({ meta }) {
         url: SITE_URL,
         logo: absoluteUrl('/assets/brand/logo.png'),
         email: 'info@eaglelogistics.in',
-        telephone: '+918040969947',
+        telephone: '+918042296202',
         address: {
           '@type': 'PostalAddress',
           streetAddress: '15/2, 6th Cross, 1st Main Road, Sampangi Rama Nagar',
