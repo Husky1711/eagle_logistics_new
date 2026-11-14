@@ -131,13 +131,13 @@
           "id": "photos",
           "title": "Photos",
           "slug": "photos",
-          "image": "home/popular-photos.jpg"
+          "image": "things-we-send/photos.jpg"
         },
         {
           "id": "books",
           "title": "Books",
           "slug": "books",
-          "image": "home/popular-books.jpg"
+          "image": "things-we-send/books.jpg"
         },
         {
           "id": "clothes",
