@@ -50,20 +50,41 @@ export default function PageMeta({ meta }) {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Organization',
+        // LocalBusiness (a kind of Organization) helps Maps / "courier near me" results
+        '@type': 'LocalBusiness',
         '@id': `${SITE_URL}/#organization`,
-        name: SITE_NAME,
+        name: 'Eagle Logistics & Express Services',
+        alternateName: SITE_NAME,
+        description: DEFAULT_DESCRIPTION,
         url: SITE_URL,
         logo: absoluteUrl('/assets/brand/logo.png'),
+        image: absoluteUrl(DEFAULT_OG_IMAGE),
         email: 'info@eaglelogistics.in',
         telephone: '+918042296202',
+        foundingDate: '2010',
         address: {
           '@type': 'PostalAddress',
-          streetAddress: '15/2, 6th Cross, 1st Main Road, Sampangi Rama Nagar',
+          streetAddress: '15/2, 6th Cross, 1st Main Road, Sampangi Rama Nagar, Near Corporation Circle',
           addressLocality: 'Bangalore',
+          addressRegion: 'Karnataka',
           postalCode: '560027',
           addressCountry: 'IN',
         },
+        hasMap:
+          'https://maps.google.com/?q=15/2+6th+Cross+1st+Main+Road+Sampangi+Rama+Nagar+Bangalore+560027',
+        openingHoursSpecification: [
+          {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            opens: '09:00',
+            closes: '19:00',
+          },
+        ],
+        areaServed: ['Bangalore', 'India', 'Worldwide'],
+        contactPoint: [
+          { '@type': 'ContactPoint', telephone: '+918042296202', contactType: 'customer service' },
+          { '@type': 'ContactPoint', telephone: '+919886496920', contactType: 'customer service' },
+        ],
         sameAs: [
           'https://www.facebook.com/pg/Eagle-Logistics-Express-Services-2039127956323457/posts/',
           'https://twitter.com/EagleLogisticsE',

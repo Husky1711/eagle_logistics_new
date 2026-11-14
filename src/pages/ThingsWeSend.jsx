@@ -61,7 +61,7 @@ function ThingsWeSendHub({ page }) {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
         <Container className="relative z-10 py-20 text-center lg:py-28">
           <FadeIn>
-            <h1 className="font-display text-4xl font-bold text-white lg:text-5xl">{content.title}</h1>
+            <h1 className="font-display text-3xl font-bold sm:text-4xl text-white lg:text-5xl">{content.title}</h1>
             {content.headline && (
               <p className="mx-auto mt-4 max-w-3xl text-lg text-neutral-200 lg:text-xl">{content.headline}</p>
             )}
@@ -166,7 +166,9 @@ function ThingsWeSendDetail({ page, slug }) {
             <ArrowLeft className="mr-1" size={16} aria-hidden />
             Things We Send
           </Link>
-          <h1 className="mt-4 font-display text-4xl font-bold text-white lg:text-5xl">{item.title}</h1>
+          <h1 className="mt-4 font-display text-3xl font-bold sm:text-4xl text-white lg:text-5xl">
+            {item.heading || `Send ${item.title} Abroad from Bangalore`}
+          </h1>
         </Container>
       </section>
 

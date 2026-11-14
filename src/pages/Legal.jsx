@@ -20,7 +20,7 @@ function LegalContent({ page, fallbackTitle }) {
       <PageMeta meta={page?.meta} />
       <section className="section-padding bg-primary-50">
         <Container className="max-w-3xl">
-          <h1 className="font-display text-4xl font-bold text-heading">{content.title || fallbackTitle}</h1>
+          <h1 className="font-display text-3xl font-bold sm:text-4xl text-heading">{content.title || fallbackTitle}</h1>
           {content.lastUpdated && (
             <p className="mt-2 text-sm text-neutral-500">Last updated: {content.lastUpdated}</p>
           )}

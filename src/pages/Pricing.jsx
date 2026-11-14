@@ -78,7 +78,7 @@ export default function Pricing() {
       <section className="section-padding bg-primary-50">
         <Container>
           <div className="mb-12 text-center">
-            <h1 className="font-display text-4xl font-bold text-heading">{content.title}</h1>
+            <h1 className="font-display text-3xl font-bold sm:text-4xl text-heading">{content.title}</h1>
             <p className="mx-auto mt-4 max-w-2xl text-ink">{content.subtitle}</p>
           </div>
 

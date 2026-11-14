@@ -42,7 +42,7 @@ function HomeContent({ page, reducedMotion }) {
     <>
       <PageMeta meta={page.meta} />
 
-      <section className="relative min-h-[480px] lg:min-h-[560px]">
+      <section className="relative min-h-[560px] sm:min-h-[480px] lg:min-h-[560px]">
         <div className="absolute inset-0">
           <HeroCarousel images={slides} reducedMotion={reducedMotion} />
         </div>

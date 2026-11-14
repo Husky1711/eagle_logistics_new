@@ -72,7 +72,7 @@ function ServicesContent({ page, activeTab, setActiveTab }) {
         </AnimatePresence>
         <div className="absolute inset-0 bg-black/50" />
         <Container className="relative z-10 text-center">
-          <h1 className="font-display text-4xl font-bold text-white lg:text-5xl">{content.hero?.headline}</h1>
+          <h1 className="font-display text-3xl font-bold sm:text-4xl text-white lg:text-5xl">{content.hero?.headline}</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-200">{content.hero?.subheadline}</p>
         </Container>
       </section>

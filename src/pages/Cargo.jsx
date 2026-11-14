@@ -56,7 +56,9 @@ function CargoDetail({ page, slug }) {
             <ArrowLeft className="mr-1" size={16} aria-hidden />
             Home
           </Link>
-          <h1 className="mt-4 font-display text-4xl font-bold text-white lg:text-5xl">{item.title}</h1>
+          <h1 className="mt-4 font-display text-3xl font-bold sm:text-4xl text-white lg:text-5xl">
+            {item.heading || `${item.title} Services from Bangalore`}
+          </h1>
         </Container>
       </section>
 

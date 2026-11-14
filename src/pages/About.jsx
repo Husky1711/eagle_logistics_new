@@ -48,7 +48,7 @@ function AboutContent({ page }) {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary-300">
               Eagle Logistics & Express Services
             </p>
-            <h1 className="mt-3 font-display text-4xl font-bold text-white lg:text-6xl">{content.hero?.title}</h1>
+            <h1 className="mt-3 font-display text-3xl font-bold sm:text-4xl text-white lg:text-6xl">{content.hero?.title}</h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-neutral-200">{content.hero?.subtitle}</p>
           </FadeIn>
         </Container>
