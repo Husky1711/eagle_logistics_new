@@ -41,6 +41,7 @@ function ContactContent({ page, contact }) {
   const content = page?.content || {}
   const whatsappUrl = buildWhatsAppUrl(contact.whatsapp, 'Hi Eagle Logistics, I have a shipping inquiry.')
   const phones = [contact.phone, contact.phoneSecondary].filter(Boolean)
+  const emails = [contact.email, contact.emailSecondary].filter(Boolean)
   const websiteHref = contact.website
     ? contact.website.startsWith('http')
       ? contact.website
@@ -123,14 +124,18 @@ function ContactContent({ page, contact }) {
                   </DetailRow>
                 )}
 
-                {contact.email && (
+                {emails.length > 0 && (
                   <DetailRow icon={Mail} title={content.emailLabel || 'Email'}>
-                    <a
-                      href={`mailto:${contact.email}`}
-                      className="text-ink hover:text-heading hover:underline"
-                    >
-                      {contact.email}
-                    </a>
+                    {emails.map((email) => (
+                      <p key={email}>
+                        <a
+                          href={`mailto:${email}`}
+                          className="break-all text-ink hover:text-heading hover:underline"
+                        >
+                          {email}
+                        </a>
+                      </p>
+                    ))}
                   </DetailRow>
                 )}
 

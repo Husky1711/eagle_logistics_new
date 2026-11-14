@@ -49,6 +49,7 @@ export const DEFAULT_SETTINGS = {
     phoneSecondary: '+91 98864 96920',
     whatsapp: '+919886496920',
     email: 'info@eaglelogistics.in',
+    emailSecondary: 'saiprrashaadraop@gmail.com',
     website: 'https://www.eaglelogistics.in',
     hours: 'Mon-Sat: 9:00 AM - 7:00 PM',
     googleMapsUrl:

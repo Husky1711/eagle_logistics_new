@@ -24,6 +24,7 @@ export default function Footer() {
     : null
   const websiteLabel = contact.website?.replace(/^https?:\/\//, '') || ''
   const phones = [contact.phone, contact.phoneSecondary].filter(Boolean)
+  const emails = [contact.email, contact.emailSecondary].filter(Boolean)
   const addressLine = (contact.address || '').replace(/\n+/g, ', ')
 
   function handleTrack(e) {
@@ -120,14 +121,14 @@ export default function Footer() {
                     </a>
                   </p>
                 ))}
-                {contact.email && (
-                  <p className="flex items-center gap-2.5 !text-white/90">
+                {emails.map((email) => (
+                  <p key={email} className="flex min-w-0 items-center gap-2.5 !text-white/90">
                     <Mail className="h-4 w-4 shrink-0 text-heading-footer" aria-hidden />
-                    <a href={`mailto:${contact.email}`} className="text-white/90 hover:text-heading-footer">
-                      {contact.email}
+                    <a href={`mailto:${email}`} className="break-all text-white/90 hover:text-heading-footer">
+                      {email}
                     </a>
                   </p>
-                )}
+                ))}
                 {websiteHref && (
                   <p className="!text-white/90">
                     <a
