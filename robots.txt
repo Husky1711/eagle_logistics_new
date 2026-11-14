@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.eaglelogistics.in/sitemap.xml
+Sitemap: http://www.eaglelogistics.in/sitemap.xml

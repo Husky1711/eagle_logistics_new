@@ -1,7 +1,7 @@
 # Eagle Logistics - Apache rules for cPanel (pre-rendered static site)
-# Canonical: https://www.eaglelogistics.in
+# Canonical: http://www.eaglelogistics.in (switch to https once SSL is installed)
 #
-# Safe to upload to new.eaglelogistics.in too: the HTTPS/www redirect below
+# Safe to upload to new.eaglelogistics.in too: the www redirect below
 # only fires on the main eaglelogistics.in domain.
 
 # Do not expose directory listings for /assets, /content, etc.
@@ -18,11 +18,19 @@ ErrorDocument 404 /404.html
   RewriteEngine On
   RewriteBase /
 
-  # Main domain only: force HTTPS + www (single hop to canonical host)
-  RewriteCond %{HTTP_HOST} ^(www\.)?eaglelogistics\.in$ [NC]
-  RewriteCond %{HTTPS} !=on [OR]
+  # Main domain only: send eaglelogistics.in to www (canonical host).
+  # HTTP for now: the hosting plan has no valid SSL certificate yet (the old
+  # one expired Dec 2023), and forcing HTTPS would show visitors a warning page.
   RewriteCond %{HTTP_HOST} ^eaglelogistics\.in$ [NC]
-  RewriteRule ^ https://www.eaglelogistics.in%{REQUEST_URI} [L,R=301]
+  RewriteRule ^ http://www.eaglelogistics.in%{REQUEST_URI} [L,R=301]
+
+  # Once a valid certificate covers eaglelogistics.in + www, replace the two
+  # lines above with these, and change http:// to https:// in sitemap.xml,
+  # robots.txt, PageMeta.jsx, settings.json and settingsDefaults.js:
+  # RewriteCond %{HTTP_HOST} ^(www\.)?eaglelogistics\.in$ [NC]
+  # RewriteCond %{HTTPS} !=on [OR]
+  # RewriteCond %{HTTP_HOST} ^eaglelogistics\.in$ [NC]
+  # RewriteRule ^ https://www.eaglelogistics.in%{REQUEST_URI} [L,R=301]
 
   # Old site (until Nov 2026) used /Home/<Page>.html - send those links and
   # their Google rankings to the matching new pages.
