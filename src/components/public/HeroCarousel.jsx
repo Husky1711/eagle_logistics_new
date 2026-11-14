@@ -56,37 +56,44 @@ export default function HeroCarousel({ images = [], reducedMotion = false }) {
       <div className="absolute inset-0 bg-black/50" />
 
       {count > 1 && (
-        <>
+        // Controls sit in one row under the hero text (z-20 keeps them above the
+        // text overlay in Home.jsx so they stay clickable and never cover copy).
+        <div className="absolute bottom-[4.75rem] left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 sm:bottom-[4.5rem] sm:gap-2">
           <button
             type="button"
             onClick={prev}
-            className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 text-ink opacity-90 shadow-lg transition-opacity sm:left-4 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100"
+            className="rounded-full bg-white/90 p-1.5 text-ink shadow-lg transition hover:bg-white"
             aria-label="Previous slide"
           >
-            <ChevronLeft size={22} />
+            <ChevronLeft size={18} />
           </button>
-          <button
-            type="button"
-            onClick={next}
-            className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-2 text-ink opacity-90 shadow-lg transition-opacity sm:right-4 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100"
-            aria-label="Next slide"
-          >
-            <ChevronRight size={22} />
-          </button>
-          <div className="absolute bottom-16 left-1/2 z-10 flex -translate-x-1/2 gap-2 sm:bottom-20">
+          <div className="flex items-center">
             {slides.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 onClick={() => setIndex(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === index ? 'w-6 bg-white' : 'w-2 bg-white/60'
-                }`}
+                className="group/dot flex h-8 items-center px-1"
                 aria-label={`Go to slide ${i + 1}`}
-              />
+                aria-current={i === index ? 'true' : undefined}
+              >
+                <span
+                  className={`block h-2 rounded-full transition-all ${
+                    i === index ? 'w-6 bg-white' : 'w-2 bg-white/60 group-hover/dot:bg-white/90'
+                  }`}
+                />
+              </button>
             ))}
           </div>
-        </>
+          <button
+            type="button"
+            onClick={next}
+            className="rounded-full bg-white/90 p-1.5 text-ink shadow-lg transition hover:bg-white"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
       )}
     </div>
   )

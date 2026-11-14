@@ -47,7 +47,7 @@ function HomeContent({ page, reducedMotion }) {
           <HeroCarousel images={slides} reducedMotion={reducedMotion} />
         </div>
         <div className="absolute inset-0 z-10 flex items-center">
-          <Container className="relative pb-16 pt-8 sm:pb-20">
+          <Container className="relative pb-32 pt-8 sm:pb-28">
             <FadeIn className="max-w-2xl text-white">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-200">
                 {hero.brand || 'Eagle Logistics'}
