@@ -42,7 +42,15 @@ export default function Footer() {
           className="absolute inset-0 h-full w-full object-cover object-left"
           decoding="async"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-900/30 to-primary-900 lg:hidden" />
+        {/* Phones/tablets: flag stays visible in the top band, then fades to solid
+            navy behind the footer text so headings and links stay readable. */}
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(10,51,82,0.15) 0px, rgba(10,51,82,0.55) 140px, rgba(10,51,82,0.92) 230px, #0a3352 320px)',
+          }}
+        />
         <div
           className="absolute inset-0 hidden lg:block"
           style={{
