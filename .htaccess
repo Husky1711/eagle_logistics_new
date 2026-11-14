@@ -1,0 +1,43 @@
+# Eagle Logistics - Apache rules for cPanel (pre-rendered static site)
+# Canonical: https://www.eaglelogistics.in
+#
+# Safe to upload to new.eaglelogistics.in too: the HTTPS/www redirect below
+# only fires on the main eaglelogistics.in domain.
+
+# Do not expose directory listings for /assets, /content, etc.
+Options -Indexes
+
+# /things-we-send is both a page (things-we-send.html) and a folder of sub-pages;
+# don't let Apache append a trailing slash to folder names.
+DirectorySlash Off
+
+# Unknown URLs get a real 404 status with the pre-rendered "Page not found" page
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Main domain only: force HTTPS + www (single hop to canonical host)
+  RewriteCond %{HTTP_HOST} ^(www\.)?eaglelogistics\.in$ [NC]
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^eaglelogistics\.in$ [NC]
+  RewriteRule ^ https://www.eaglelogistics.in%{REQUEST_URI} [L,R=301]
+
+  # Drop trailing slashes (except the home page) so each page has one URL
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+  # Pre-rendered pages: /services -> services.html, /cargo/air -> cargo/air.html
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+)$ $1.html [L]
+
+  # Anything else that isn't a real file falls through to ErrorDocument 404
+</IfModule>
+
+# Marketing JSON is unhashed; avoid sticky caches after re-upload
+<IfModule mod_headers.c>
+  <FilesMatch "\.json$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

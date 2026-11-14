@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "title": "Courier & Cargo Services | Eagle Logistics Bangalore",
+    "description": "Domestic express, international courier, air and surface cargo, student document delivery and full logistics solutions from Eagle Logistics in Bangalore.",
+    "image": "/assets/pages/services-hero.jpg",
+    "imageAlt": "Eagle Logistics domestic and international courier services"
+  },
+  "content": {
+    "hero": {
+      "headline": "Courier & Cargo Services in Bangalore",
+      "subheadline": "Affordable international and domestic courier with professional customer care and continuous track & trace.",
+      "image": "services-hero.jpg"
+    },
+    "intro": "Eagle Logistics & Express Services delivers documents, non-documents, sample and commercial shipments, and import/export goods worldwide as required. We provide affordable international courier with strict schedules and quality standards, professional customer care, and continuous status updates through our web-based track & trace system. Our associates in New York, Singapore and Dubai act as hubs through a network of strategic partners.",
+    "tabs": [
+      {
+        "id": "domestic",
+        "label": "Domestic",
+        "heroImage": "slide-4.jpg",
+        "services": [
+          {
+            "title": "Express Service",
+            "highlight": "Next-day priority",
+            "description": "Your time-sensitive Documents / Non-documents are delivered next day in all Metros, Major Cities & Towns on a priority basis.",
+            "image": "slide-4.jpg",
+            "icon": "Zap"
+          },
+          {
+            "title": "Surface Cargo",
+            "highlight": "Pan-India fleet",
+            "description": "All your bulk consignments are transported through our own fleet of vehicles, leased railway wagons, and other modes to stations all over India - supported by container LCVs. We ensure added safety and timely delivery of surface shipments.",
+            "image": "slide-2.jpg",
+            "icon": "Truck"
+          }
+        ]
+      },
+      {
+        "id": "international",
+        "label": "International",
+        "heroImage": "slide-5.jpg",
+        "services": [
+          {
+            "title": "Global Service",
+            "highlight": "Worldwide delivery",
+            "description": "All documents / Non-documents are delivered worldwide at most economical rates. Chosen modes of operational connectivity give us a cutting edge for faster services as per customer requirements.",
+            "image": "slide-1.jpg",
+            "icon": "Globe"
+          },
+          {
+            "title": "Air Cargo",
+            "highlight": "24-48 hours",
+            "description": "Bulk consignments sent as cargo on flights to destinations of your choice. Specialized handling and door-to-door delivery for critical priority shipments such as medicines (vaccines), perishable commodities (fruits and vegetables), and other time-sensitive cargo. Delivered to the specific destination in 24-48 hrs based on requirements.",
+            "image": "services-hero.jpg",
+            "icon": "Plane"
+          },
+          {
+            "title": "Universal Express",
+            "highlight": "University applications",
+            "description": "Special messenger services for exclusive delivery of university applications. Special discounts for students sending applications from India to UK, USA, Australia, New Zealand and other major destinations - reliable, fast and secure.",
+            "image": "slide-5.jpg",
+            "icon": "GraduationCap"
+          }
+        ]
+      },
+      {
+        "id": "specialty",
+        "label": "Specialty",
+        "heroImage": "slide-1.jpg",
+        "services": [
+          {
+            "title": "Healthcare & Pharma",
+            "highlight": "Critical care & vaccines",
+            "description": "Specialized handling for medicines including cold-chain logistics for vaccines and other critical healthcare shipments.",
+            "image": "services-hero.jpg",
+            "icon": "HeartPulse"
+          },
+          {
+            "title": "Food & Homemade",
+            "highlight": "Authentic taste of home",
+            "description": "Gentle packing for pickles, sweets, spices, and homemade snacks with careful handling to protect fragile contents.",
+            "image": "slide-1.jpg",
+            "icon": "UtensilsCrossed"
+          }
+        ]
+      },
+      {
+        "id": "solutions",
+        "label": "Logistics Solutions",
+        "heroImage": "slide-3.jpg",
+        "services": [
+          {
+            "title": "Warehousing & Dispatches",
+            "highlight": "One-stop logistics",
+            "description": "We provide godown facilities and function as a logistics service provider for procurement, storage, processing, packaging and dispatch of goods as per customer needs - a one-stop shop for all logistic solutions.",
+            "image": "slide-4.jpg",
+            "icon": "Warehouse"
+          },
+          {
+            "title": "Bulk Cargo",
+            "highlight": "Economical bulk shipping",
+            "description": "Cost-effective solutions for larger consignments to major hubs worldwide through our partner network.",
+            "image": "slide-3.jpg",
+            "icon": "Container"
+          }
+        ]
+      }
+    ],
+    "advantages": {
+      "title": "Advantages of our services",
+      "items": [
+        {
+          "title": "End-to-end tracking",
+          "description": "Track your parcel from collection to delivery.",
+          "icon": "MapPin"
+        },
+        {
+          "title": "Quick quotes",
+          "description": "Get quotes in seconds for international shipping.",
+          "icon": "Calculator"
+        },
+        {
+          "title": "Parcel protection",
+          "description": "Add protection cover to the parcel if required.",
+          "icon": "Shield"
+        },
+        {
+          "title": "Customs support",
+          "description": "Easy to fill out customs documents, built into the booking process.",
+          "icon": "FileText"
+        },
+        {
+          "title": "Flexible pickup",
+          "description": "Choice of having the parcel collected from home / work, or drop it off locally.",
+          "icon": "Home"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Ship?",
+      "subtitle": "Tell us what you're sending - we'll find the best partner and rate.",
+      "button": "Price Calculator",
+      "buttonLink": "/pricing"
+    }
+  }
+}

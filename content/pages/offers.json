@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Courier Offers & Student Rates | Eagle Logistics",
+    "description": "Festive parcel offers, international shipping discounts and special student courier rates for university applications from Eagle Logistics in Bangalore.",
+    "image": "/assets/pages/special-offers-hero.png",
+    "imageAlt": "Special courier offers from Eagle Logistics"
+  },
+  "content": {
+    "title": "Courier Offers & Student Discounts",
+    "heroImage": "special-offers-hero.png",
+    "headline": "Celebrate festivals with Eagle Logistics festive offers",
+    "lead": "Missing sharing festival joy with loved ones abroad?",
+    "reassure": "Eagle Logistics is here to help.",
+    "body": [
+      "For the festive season and New Year, Eagle Logistics introduces offers so you can share joy with family and friends around the world.",
+      "Festivals such as New Year, Ugadi, Dussehra, Diwali and Christmas are moments to cherish relationships wherever your family is. We bridge that gap with promotions for valued customers."
+    ],
+    "featuresTitle": "Special features",
+    "features": [
+      "Reliable and secure delivery across India",
+      "Express delivery worldwide at discounted rates",
+      "Attractively packaged gift parcels",
+      "Doorstep pick-up",
+      "Loyalty points",
+      "Dedicated customer service teams",
+      "Online tracking 24×7"
+    ],
+    "offerNote": "Customers receive discounts on premium and international shipments during festive periods. International bookings may also qualify for lucky-draw coupons. Conditions apply.",
+    "promoCard": {
+      "line1": "Send parcels to the USA from Bangalore",
+      "line2": "₹567* per kg",
+      "image": "special-offers-promo.png",
+      "items": [
+        "Books",
+        "Clothes",
+        "Homemade sweets",
+        "Footwear",
+        "Spices",
+        "Biscuits",
+        "Medicines",
+        "And more"
+      ],
+      "disclaimer": "Conditions apply"
+    },
+    "sections": [
+      {
+        "id": "university",
+        "title": "University applications",
+        "subtitle": "Special discounts on international courier for students",
+        "lead": "Need a reliable courier for university applications abroad?",
+        "reassure": "Eagle Logistics is built for that.",
+        "body": [
+          "We offer special student discounts for applications from India to the UK, USA, Australia, New Zealand and other major destinations.",
+          "Exclusive messenger services deliver applications reliably, quickly and securely.",
+          "Enjoy premium express service with discounts, loyalty benefits and dedicated support.",
+          "The more you ship, the more you gain."
+        ],
+        "featuresTitle": "Special features",
+        "features": [
+          "Free home pick-up",
+          "Dedicated customer service",
+          "Loyalty bonus",
+          "Online tracking 24×7"
+        ]
+      }
+    ],
+    "whatsappCta": "Ask about offers on WhatsApp",
+    "ctaDefault": "Price Calculator",
+    "currentPromoLabel": "Current promo"
+  }
+}

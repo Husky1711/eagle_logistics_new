@@ -1,0 +1,214 @@
+{
+  "meta": {
+    "title": "Bangalore Courier & International Shipping | Eagle Logistics",
+    "description": "Bangalore courier for domestic and international parcels to the USA, UK, EU and Middle East. Doorstep pickup, tracked delivery with DHL, FedEx and UPS.",
+    "image": "/assets/home/international.jpg",
+    "imageAlt": "International courier and cargo from Eagle Logistics Bangalore"
+  },
+  "content": {
+    "hero": {
+      "brand": "Eagle Logistics",
+      "headline": "International Courier from Bangalore to the World",
+      "subheadline": "Affordable domestic and international courier with doorstep pickup and end-to-end tracking.",
+      "promo": "Gifts & parcels abroad from ₹567*/kg · *conditions apply",
+      "cta": "Price Calculator",
+      "ctaLink": "/pricing"
+    },
+    "heroImages": [
+      "home/slider-1.jpg",
+      "home/slider-2.jpg",
+      "home/slider-3.jpg",
+      "home/slider-4.jpg",
+      "home/slider-5.jpg"
+    ],
+    "intro": {
+      "title": "Eagle Logistics & Express Services",
+      "sectionTitle": "Why ship with Eagle",
+      "body": "Established in 2010, Eagle Logistics offers competitive rates for international parcels from India to the USA, UK, European Union, Middle East and Far East. Arrange doorstep collection or drop off at a local pickup point, then track your shipment through our reliable partner network. We specialise in local, national and international courier with careful handling and international door-to-door cargo.",
+      "readMoreLabel": "About Eagle",
+      "readMoreLink": "/about"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "image": "home/international.jpg",
+      "imageAlt": "International shipping and logistics operations",
+      "items": [
+        "Be the link between you and your loved ones abroad",
+        "Track and record every customer shipment",
+        "Serve you with dedicated, passionate staff",
+        "Give you full transparency throughout delivery",
+        "Deliver the best possible customer service experience"
+      ]
+    },
+    "serviceCards": [
+      {
+        "id": "domestic",
+        "title": "Domestic",
+        "body": "Time-sensitive documents and parcels delivered next day to metros, major cities and towns on a priority basis.",
+        "image": "home/domestic.jpg",
+        "link": "/services",
+        "linkLabel": "View services"
+      },
+      {
+        "id": "international",
+        "title": "International",
+        "body": "Documents and non-documents delivered worldwide at economical rates, with modes chosen for speed and reliability.",
+        "image": "home/international.jpg",
+        "link": "/services",
+        "linkLabel": "View services"
+      }
+    ],
+    "advantages": {
+      "title": "Advantages of our services",
+      "items": [
+        {
+          "id": "track",
+          "text": "Track your parcel from collection to delivery",
+          "icon": "MapPin",
+          "iconImage": "home/advantage-1.png",
+          "link": "/tracking"
+        },
+        {
+          "id": "quotes",
+          "text": "Get quotes in seconds for international shipping",
+          "icon": "Calculator",
+          "iconImage": "home/advantage-2.png",
+          "link": "/pricing"
+        },
+        {
+          "id": "protection",
+          "text": "Add protection cover to the parcel if required",
+          "icon": "Shield",
+          "iconImage": "home/advantage-3.png",
+          "link": "/services"
+        },
+        {
+          "id": "customs",
+          "text": "Easy customs documents built into the booking process",
+          "icon": "FileText",
+          "iconImage": "home/advantage-4.png",
+          "link": "/services"
+        },
+        {
+          "id": "pickup",
+          "text": "Home or work collection, or drop off locally",
+          "icon": "Package",
+          "iconImage": "home/advantage-5.png",
+          "link": "/contact"
+        }
+      ]
+    },
+    "popularItems": {
+      "title": "Most popular items we send",
+      "viewAllLabel": "View All",
+      "viewAllLink": "/things-we-send",
+      "items": [
+        {
+          "id": "sweets",
+          "title": "Sweets",
+          "slug": "sweets",
+          "image": "home/popular-sweets.jpg"
+        },
+        {
+          "id": "footwear",
+          "title": "Footwear",
+          "slug": "footwear",
+          "image": "home/popular-footwear.jpg"
+        },
+        {
+          "id": "spices",
+          "title": "Spices",
+          "slug": "spices",
+          "image": "home/popular-spices.jpg"
+        },
+        {
+          "id": "medicines",
+          "title": "Medicines",
+          "slug": "medicines",
+          "image": "home/popular-medicines.jpg"
+        },
+        {
+          "id": "photos",
+          "title": "Photos",
+          "slug": "photos",
+          "image": "home/popular-photos.jpg"
+        },
+        {
+          "id": "books",
+          "title": "Books",
+          "slug": "books",
+          "image": "home/popular-books.jpg"
+        },
+        {
+          "id": "clothes",
+          "title": "Clothes",
+          "slug": "clothes",
+          "image": "home/popular-clothes.jpg"
+        },
+        {
+          "id": "electronics",
+          "title": "Electronics",
+          "slug": "electronics",
+          "image": "home/popular-electronics.jpg"
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What customers say",
+      "items": [
+        {
+          "id": 1,
+          "quote": "My family and I are very impressed with the service from Eagle Logistics. Smooth booking and clear updates.",
+          "name": "John Marcus",
+          "location": "California"
+        },
+        {
+          "id": 2,
+          "quote": "Doorstep pickup from Malleshwaram was easy and the parcel reached on time. Highly recommend.",
+          "name": "Nidhi",
+          "location": "Malleshwaram"
+        },
+        {
+          "id": 3,
+          "quote": "I sent a parcel to my husband in Nevada, USA. It arrived within three days. Thank you, Eagle.",
+          "name": "Sharda",
+          "location": "Indiranagar"
+        }
+      ]
+    },
+    "cargo": {
+      "title": "Cargo services",
+      "items": [
+        {
+          "id": "air",
+          "title": "Air Cargo",
+          "slug": "air",
+          "image": "home/air-cargo.jpg",
+          "summary": "Fast air logistics with economical pricing and multimodal reach across India."
+        },
+        {
+          "id": "sea",
+          "title": "Sea Cargo",
+          "slug": "sea",
+          "image": "home/sea-cargo.jpg",
+          "summary": "Reliable FCL and LCL sea freight with worldwide shipping networks."
+        },
+        {
+          "id": "surface",
+          "title": "Surface Cargo",
+          "slug": "surface",
+          "image": "home/surface-cargo.jpg",
+          "summary": "Careful road transport with reliable, on-time domestic surface delivery."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to ship with Eagle?",
+      "subtitle": "Get a sample rate online, or message us on WhatsApp for an exact quote.",
+      "button": "Price Calculator",
+      "buttonLink": "/pricing",
+      "secondaryButton": "Contact Us",
+      "secondaryButtonLink": "/contact"
+    }
+  }
+}

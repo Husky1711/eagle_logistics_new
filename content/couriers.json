@@ -1,0 +1,29 @@
+[
+  {
+    "id": "dhl",
+    "name": "DHL",
+    "logo": "dhl.png",
+    "tracking_url": "https://www.dhl.com/in-en/home/tracking.html?tracking-id={id}",
+    "description": "Global express logistics for international shipments.",
+    "active": true,
+    "display_order": 1
+  },
+  {
+    "id": "fedex",
+    "name": "FedEx",
+    "logo": "fedex.png",
+    "tracking_url": "https://www.fedex.com/fedextrack/?trknbr={id}",
+    "description": "International and domestic express shipping.",
+    "active": true,
+    "display_order": 2
+  },
+  {
+    "id": "ups",
+    "name": "UPS",
+    "logo": "ups.png",
+    "tracking_url": "https://www.ups.com/track?tracknum={id}",
+    "description": "Global package delivery and logistics network.",
+    "active": true,
+    "display_order": 3
+  }
+]
