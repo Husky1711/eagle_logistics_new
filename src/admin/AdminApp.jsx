@@ -56,7 +56,7 @@ export default function AdminApp() {
   } else if (!session) {
     body = <Centered>Loading…</Centered>
   } else if (!session.configured) {
-    body = <SetupPage onDone={refresh} />
+    body = <SetupPage insecure={!session.secure} onDone={refresh} />
   } else if (!session.authenticated) {
     body = <LoginPage insecure={!session.secure} onLogin={refresh} />
   } else {

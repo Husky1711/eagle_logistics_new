@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import Input from '../components/common/Input'
+import { ArrowRight, FolderLock, KeyRound, Lock, Mail, User } from 'lucide-react'
 import { api } from './api'
+import AuthShell, { AuthButton, AuthError, AuthField, PasswordStrength } from './AuthShell'
 
 /** First run only: create the single admin account (needs ~/eagle-data/ALLOW_SETUP on the server). */
-export default function SetupPage({ onDone }) {
+export default function SetupPage({ insecure, onDone }) {
   const [allowed, setAllowed] = useState(null)
   const [form, setForm] = useState({ username: '', password: '', confirm: '', feedbackTo: '' })
   const [error, setError] = useState('')
@@ -17,10 +18,14 @@ export default function SetupPage({ onDone }) {
   }, [])
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+  const mismatch = form.confirm && form.confirm !== form.password
 
   async function submit(e) {
     e.preventDefault()
     setError('')
+    if (!/^[A-Za-z0-9._@-]{3,60}$/.test(form.username.trim())) {
+      return setError('Username: 3–60 letters, numbers or . _ @ -')
+    }
     if (form.password.length < 10) return setError('Password must be at least 10 characters')
     if (form.password !== form.confirm) return setError('Passwords do not match')
     setBusy(true)
@@ -35,46 +40,85 @@ export default function SetupPage({ onDone }) {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-primary-50 px-4 py-10">
-      <div className="w-full max-w-md rounded-2xl border border-neutral-200 bg-white p-7 shadow-soft">
-        <h1 className="font-display text-2xl font-bold text-heading">Set up the admin account</h1>
-        {allowed === null && <p className="mt-3 text-sm text-ink">Checking…</p>}
-        {allowed === false && (
-          <div className="mt-3 space-y-2 text-sm text-ink">
-            <p>Setup is locked. To unlock it once:</p>
-            <ol className="list-decimal space-y-1 pl-5">
-              <li>cPanel → File Manager → your home folder</li>
-              <li>Open (or create) the folder <code className="rounded bg-neutral-100 px-1">eagle-data</code></li>
-              <li>
-                Create an empty file named <code className="rounded bg-neutral-100 px-1">ALLOW_SETUP</code>
-              </li>
-              <li>Reload this page</li>
-            </ol>
-          </div>
-        )}
-        {allowed && (
-          <form onSubmit={submit} noValidate className="mt-5 space-y-4">
-            <Input label="Admin username" value={form.username} onChange={set('username')} autoComplete="username" required />
-            <Input label="Password (10+ characters)" type="password" value={form.password} onChange={set('password')} autoComplete="new-password" required />
-            <Input label="Confirm password" type="password" value={form.confirm} onChange={set('confirm')} autoComplete="new-password" required />
-            <Input
-              label="Send website feedback to (email)"
+    <AuthShell
+      title="Create your admin account"
+      subtitle="One-time setup — this account manages offers on the website."
+      insecure={insecure}
+      footnote="Your password is stored encrypted and never shown again"
+    >
+      {allowed === null && <p className="text-sm text-ink-soft">Checking…</p>}
+
+      {allowed === false && (
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
+          <p className="flex items-center gap-2 font-semibold">
+            <FolderLock size={18} aria-hidden /> Setup is locked
+          </p>
+          <ol className="mt-3 list-decimal space-y-1.5 pl-5">
+            <li>cPanel → File Manager → your home folder</li>
+            <li>
+              Open (or create) the folder <code className="rounded bg-white px-1.5 py-0.5">eagle-data</code>
+            </li>
+            <li>
+              Create an empty file named <code className="rounded bg-white px-1.5 py-0.5">ALLOW_SETUP</code>
+            </li>
+            <li>Reload this page</li>
+          </ol>
+        </div>
+      )}
+
+      {allowed && (
+        <form onSubmit={submit} noValidate className="space-y-5">
+          <AuthField
+            id="setup-username"
+            icon={User}
+            label="Admin username"
+            value={form.username}
+            onChange={set('username')}
+            autoComplete="username"
+            placeholder="e.g. eagleadmin"
+            autoFocus
+          />
+          <AuthField
+            id="setup-password"
+            icon={Lock}
+            label="Password"
+            type="password"
+            value={form.password}
+            onChange={set('password')}
+            autoComplete="new-password"
+            placeholder="At least 10 characters"
+            hint={<PasswordStrength value={form.password} />}
+          />
+          <AuthField
+            id="setup-confirm"
+            icon={KeyRound}
+            label="Confirm password"
+            type="password"
+            value={form.confirm}
+            onChange={set('confirm')}
+            autoComplete="new-password"
+            placeholder="Type it again"
+            hint={mismatch ? <p className="text-xs font-medium text-red-600">Passwords don&apos;t match yet</p> : null}
+          />
+          <div className="border-t border-dashed border-neutral-200 pt-5">
+            <AuthField
+              id="setup-feedback"
+              icon={Mail}
+              label="Send website feedback to"
               type="email"
               value={form.feedbackTo}
               onChange={set('feedbackTo')}
               placeholder="you@gmail.com"
+              hint={<p className="text-xs text-ink-soft">Messages from the Contact page form arrive here.</p>}
             />
-            {error && (
-              <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
-                {error}
-              </p>
-            )}
-            <button type="submit" disabled={busy} className="btn-primary w-full justify-center">
-              {busy ? 'Creating…' : 'Create admin account'}
-            </button>
-          </form>
-        )}
-      </div>
-    </div>
+          </div>
+          <AuthError>{error}</AuthError>
+          <AuthButton busy={busy} busyLabel="Creating account…">
+            Create admin account
+            <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </AuthButton>
+        </form>
+      )}
+    </AuthShell>
   )
 }
