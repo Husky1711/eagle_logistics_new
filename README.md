@@ -32,9 +32,12 @@ Open [http://localhost:5173](http://localhost:5173)
 npm run build
 ```
 
-Upload the contents of **`dist/`** into GoDaddy `public_html` (via File Manager or FTP).
+The build also **pre-renders every page** (`scripts/prerender.mjs`, runs after `vite build` using Playwright's Chromium) so search engines and link previews get real HTML per page:
+`dist/index.html`, `dist/services.html`, `dist/things-we-send/books.html`, … plus `dist/404.html`.
+Pages come from `public/sitemap.xml`, so add new routes there. Skip with `PRERENDER=0 npm run build`.
 
-For React Router SPA routes, add an `.htaccess` in `public_html` that rewrites unknown paths to `index.html`.
+Upload the contents of **`dist/`** (including the hidden **`.htaccess`**) into the site's folder in GoDaddy (via File Manager or FTP).
+`.htaccess` maps `/services` → `services.html`, returns a real 404 for unknown URLs, and forces HTTPS + `www` **only** on the main `eaglelogistics.in` domain, so it is also safe on `new.eaglelogistics.in`.
 
 ## Codespaces demo
 

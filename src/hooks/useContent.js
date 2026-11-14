@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
 import { contentUrl } from '../utils/assets'
 
-const cache = new Map()
+// Pre-rendered pages embed the content they were built with (scripts/prerender.mjs),
+// so the first client render matches the static HTML instead of showing a spinner.
+const cache = new Map(
+  typeof window !== 'undefined' && window.__PRERENDER_CONTENT__
+    ? Object.entries(window.__PRERENDER_CONTENT__)
+    : [],
+)
 const inflight = new Map()
 
 function fetchContent(path, { bust = false } = {}) {
@@ -38,6 +44,8 @@ export function prefetchContent(paths) {
 
 export function useContent(path) {
   const url = contentUrl(path)
+  // Lets scripts/prerender.mjs embed only the content a page actually renders
+  if (typeof window !== 'undefined') (window.__CONTENT_USED__ ||= new Set()).add(url)
   const [data, setData] = useState(() => (cache.has(url) ? cache.get(url) : null))
   const [loading, setLoading] = useState(() => !cache.has(url))
   const [error, setError] = useState(null)

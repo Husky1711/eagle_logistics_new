@@ -9,7 +9,12 @@ const SettingsContext = createContext({
 })
 
 export function SettingsProvider({ children }) {
-  const [settings, setSettings] = useState(DEFAULT_SETTINGS)
+  const [settings, setSettings] = useState(
+    () =>
+      (typeof window !== 'undefined' &&
+        window.__PRERENDER_CONTENT__?.[contentUrl('settings.json')]) ||
+      DEFAULT_SETTINGS,
+  )
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
