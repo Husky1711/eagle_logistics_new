@@ -50,7 +50,7 @@ export const DEFAULT_SETTINGS = {
     whatsapp: '+919886496920',
     email: 'info@eaglelogistics.in',
     emailSecondary: 'saiprrashaadraop@gmail.com',
-    website: 'https://www.eaglelogistics.in',
+    website: 'http://www.eaglelogistics.in',
     hours: 'Mon-Sat: 9:00 AM - 7:00 PM',
     googleMapsUrl:
       'https://maps.google.com/?q=15/2+6th+Cross+1st+Main+Road+Sampangi+Rama+Nagar+Bangalore+560027',

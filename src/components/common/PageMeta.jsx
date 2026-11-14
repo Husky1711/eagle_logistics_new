@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 import { assetUrl } from '../../utils/assets'
 
-const SITE_URL = (import.meta.env.VITE_PUBLIC_SITE_URL || 'https://www.eaglelogistics.in').replace(
+const SITE_URL = (import.meta.env.VITE_PUBLIC_SITE_URL || 'http://www.eaglelogistics.in').replace(
   /\/$/,
   '',
 )

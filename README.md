@@ -55,7 +55,7 @@ npm run verify
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `VITE_BASE_PATH` | `/` | Vite base URL (use `/` on custom domain) |
-| `VITE_PUBLIC_SITE_URL` | `https://www.eaglelogistics.in` | Canonical / Open Graph base URL |
+| `VITE_PUBLIC_SITE_URL` | `http://www.eaglelogistics.in` | Canonical / Open Graph base URL |
 
 ## Related branches
 
