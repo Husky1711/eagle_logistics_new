@@ -7,6 +7,7 @@ import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import Input from '../components/common/Input'
 import PageContentGate from '../components/common/PageContentGate'
+import RelatedLinks from '../components/common/RelatedLinks'
 import { isOfferActive } from '../utils/dates'
 import { parsePositiveNumber } from '../utils/numbers'
 import { calculatePricing } from '../utils/pricingCalculator'
@@ -183,6 +184,8 @@ export default function Pricing() {
           </div>
         </Container>
       </section>
+
+      <RelatedLinks pages={['tracking', 'thingsWeSend', 'offers', 'contact']} />
     </PageContentGate>
   )
 }

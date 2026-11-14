@@ -20,10 +20,12 @@ const couriers = [
   { id: 'ups', name: 'UPS', color: '#351C15' },
 ]
 
+// Tight 5:2 canvas with large lettering so logos stay readable in small phone tiles.
+// White plate keeps dark brand colours legible when a browser forces dark mode.
 function logoSvg({ name, color }) {
-  const fontSize = name.length > 8 ? 30 : 36
-  return `<svg width="320" height="120" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#ffffff" rx="12"/>
+  const fontSize = name.length > 8 ? 34 : name.length > 4 ? 46 : 58
+  return `<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#ffffff" rx="10"/>
   <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
     font-family="Arial, Helvetica, sans-serif" font-size="${fontSize}" font-weight="700" fill="${color}">${name}</text>
 </svg>`

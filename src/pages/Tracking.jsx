@@ -8,6 +8,7 @@ import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import Input from '../components/common/Input'
 import PageContentGate from '../components/common/PageContentGate'
+import RelatedLinks from '../components/common/RelatedLinks'
 import SmartImage from '../components/common/SmartImage'
 import { courierLogoUrl, pageImageUrl, assetUrl } from '../utils/assets'
 import { buildWhatsAppUrl, buildTrackingWhatsAppMessage } from '../utils/whatsapp'
@@ -48,14 +49,14 @@ function CourierLogoTab({ courier, selected, onSelect }) {
       onClick={() => onSelect(courier.id)}
       aria-pressed={selected}
       aria-label={courier.name}
-      className={`flex min-h-[88px] flex-col items-center justify-center gap-2 rounded-xl border px-3 py-3 transition ${
+      className={`flex min-h-[88px] flex-col items-center justify-center gap-2 rounded-xl border px-1.5 py-3 transition sm:px-3 ${
         selected
           ? 'border-primary-500 bg-primary-50 ring-1 ring-primary-500'
           : 'border-neutral-200 bg-white hover:border-primary-300'
       }`}
     >
       {logo ? (
-        <img src={logo} alt="" className="h-10 max-w-[120px] object-contain" />
+        <img src={logo} alt="" className="h-auto max-h-12 w-full max-w-[140px] object-contain" />
       ) : (
         <span className="font-display text-lg font-bold text-primary-600">{courier.name}</span>
       )}
@@ -125,7 +126,7 @@ function TrackingContent({
             />
             <SmartImage
               src={heroSrc}
-              alt=""
+              alt="World map of international courier routes for DHL, FedEx and UPS tracking"
               fill
               loading="eager"
               fetchpriority="high"
@@ -207,6 +208,8 @@ function TrackingContent({
           </Card>
         </Container>
       </section>
+
+      <RelatedLinks pages={['pricing', 'services', 'thingsWeSend', 'contact']} />
     </>
   )
 }

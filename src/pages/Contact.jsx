@@ -6,6 +6,7 @@ import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import PageContentGate from '../components/common/PageContentGate'
+import RelatedLinks from '../components/common/RelatedLinks'
 import SmartImage from '../components/common/SmartImage'
 import FeedbackForm from '../components/contact/FeedbackForm'
 import { FadeIn, Stagger, StaggerItem } from '../components/common/Motion'
@@ -72,7 +73,7 @@ function ContactContent({ page, contact }) {
         {heroSrc && (
           <SmartImage
             src={heroSrc}
-            alt=""
+            alt="Customer support for Eagle Logistics courier in Bangalore"
             fill
             loading="eager"
             fetchpriority="high"
@@ -208,6 +209,8 @@ function ContactContent({ page, contact }) {
           </FadeIn>
         </Container>
       </section>
+
+      <RelatedLinks pages={['services', 'pricing', 'tracking', 'offers']} />
     </>
   )
 }

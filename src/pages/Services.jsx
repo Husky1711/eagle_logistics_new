@@ -6,6 +6,7 @@ import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import Button from '../components/common/Button'
 import PageContentGate from '../components/common/PageContentGate'
+import RelatedLinks from '../components/common/RelatedLinks'
 import { DynamicIcon } from '../components/common/DynamicIcon'
 import { HoverLift, useMotionSafe } from '../components/common/Motion'
 import SmartImage from '../components/common/SmartImage'
@@ -59,7 +60,7 @@ function ServicesContent({ page, activeTab, setActiveTab }) {
             <motion.img
               key={heroSrc}
               src={heroSrc}
-              alt=""
+              alt="Air, road and cargo courier services from Eagle Logistics Bangalore"
               className="absolute inset-0 h-full w-full object-cover opacity-40"
               decoding="async"
               fetchpriority="high"
@@ -206,6 +207,8 @@ function ServicesContent({ page, activeTab, setActiveTab }) {
           )}
         </Container>
       </section>
+
+      <RelatedLinks pages={['pricing', 'thingsWeSend', 'airCargo', 'offers']} />
     </>
   )
 }

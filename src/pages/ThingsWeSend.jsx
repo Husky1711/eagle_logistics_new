@@ -51,7 +51,7 @@ function ThingsWeSendHub({ page }) {
         {heroSrc && (
           <SmartImage
             src={heroSrc}
-            alt=""
+            alt="Indian sweets, spices, dry fruits, books, clothes and shoes we ship abroad from Bangalore"
             fill
             loading="eager"
             fetchpriority="high"
@@ -150,7 +150,7 @@ function ThingsWeSendDetail({ page, slug }) {
         {heroSrc && (
           <SmartImage
             src={heroSrc}
-            alt=""
+            alt={`${item.title} packed for international courier from Bangalore`}
             fill
             loading="eager"
             fetchpriority="high"

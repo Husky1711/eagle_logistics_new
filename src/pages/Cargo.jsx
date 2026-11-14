@@ -44,7 +44,7 @@ function CargoDetail({ page, slug }) {
       <section className="relative overflow-hidden bg-dark text-white">
         <SmartImage
           src={mediaUrl(item.image)}
-          alt=""
+          alt={`${item.title} shipments from Bangalore with Eagle Logistics`}
           fill
           loading="eager"
           fetchpriority="high"

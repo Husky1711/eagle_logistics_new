@@ -113,7 +113,7 @@ function OffersContent({ page, offers, settings }) {
         {heroSrc && (
           <SmartImage
             src={heroSrc}
-            alt=""
+            alt="Festive diyas and flowers for Eagle Logistics festival courier offers"
             fill
             loading="eager"
             fetchpriority="high"
