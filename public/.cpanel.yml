@@ -6,5 +6,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=$HOME/public_html/
-    - /bin/cp -R assets cargo content things-we-send $DEPLOYPATH
+    - /bin/cp -R api assets cargo content things-we-send $DEPLOYPATH
     - /bin/cp *.html robots.txt sitemap.xml .htaccess $DEPLOYPATH

@@ -9,6 +9,7 @@
     "compress:images": "node scripts/compress-images.mjs",
     "predev": "npm run sync:content",
     "dev": "vite",
+    "dev:php": "node scripts/php-dev.mjs",
     "prebuild": "npm run sync:content",
     "build": "vite build",
     "postbuild": "node scripts/prerender.mjs",

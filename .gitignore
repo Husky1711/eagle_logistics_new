@@ -9,6 +9,10 @@ qa-screenshots/
 public/content/
 content/.backups/
 
+# Offers admin data + uploads (live only on the server, never in git)
+eagle-data/
+public/uploads/
+
 # Environment
 .env
 .env.local

@@ -11,6 +11,8 @@ import SmartImage from '../components/common/SmartImage'
 import { isOfferActive } from '../utils/dates'
 import { buildWhatsAppUrl } from '../utils/whatsapp'
 import { pageImageUrl } from '../utils/assets'
+import { useLiveOffers } from '../hooks/useLiveOffers'
+import OfferCard from '../components/offers/OfferCard'
 
 export default function Offers() {
   const pageState = useContent('pages/offers.json')
@@ -98,12 +100,19 @@ function OffersContent({ page, offers, settings }) {
   const sections = content.sections || []
   const promoCard = content.promoCard
   const promoActive = isOfferActive(offers)
+  // Offers managed in /admin (PHP API). Until it answers, or if it's unavailable,
+  // the page shows its built-in promo below.
+  const live = useLiveOffers()
+  const useLive = live.status === 'ready'
+  const liveHero = useLive ? live.settings : {}
 
   const whatsappUrl = buildWhatsAppUrl(
     settings?.contact?.whatsapp,
     'Hi Eagle Logistics, I want to know about current special offers.',
   )
-  const heroSrc = pageImageUrl(content.heroImage)
+  const heroSrc = liveHero.heroImage || pageImageUrl(content.heroImage)
+  const heroTitle = liveHero.heroTitle || content.title
+  const heroSubtitle = liveHero.heroSubtitle || content.headline
 
   return (
     <>
@@ -122,16 +131,18 @@ function OffersContent({ page, offers, settings }) {
         )}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/45 to-black/30" />
         <Container className="relative z-10 py-14 text-center lg:py-16">
-          <h1 className="font-display text-3xl font-bold sm:text-4xl text-white lg:text-5xl">{content.title}</h1>
-          {content.headline && (
-            <p className="mx-auto mt-3 max-w-2xl text-lg text-white/95">{content.headline}</p>
+          <h1 className="font-display text-3xl font-bold sm:text-4xl text-white lg:text-5xl">{heroTitle}</h1>
+          {heroSubtitle && (
+            <p className="mx-auto mt-3 max-w-2xl text-lg text-white/95">{heroSubtitle}</p>
           )}
         </Container>
       </section>
 
       <section className="section-padding bg-primary-50">
         <Container className="space-y-8">
-          {promoActive && offers?.title && (
+          {useLive && <LiveOffers offers={live.offers} whatsapp={settings?.contact?.whatsapp} whatsappUrl={whatsappUrl} />}
+
+          {!useLive && promoActive && offers?.title && (
             <div className="flex flex-col gap-3 rounded-2xl border border-primary-200 bg-white px-5 py-4 shadow-soft sm:flex-row sm:items-center sm:gap-5 sm:px-6">
               <span className="inline-flex w-fit shrink-0 items-center gap-1 rounded-full bg-primary-500 px-3 py-1 text-xs font-bold text-white">
                 <Tag size={12} aria-hidden />
@@ -150,7 +161,7 @@ function OffersContent({ page, offers, settings }) {
 
           {/* Row 1: story + poster — independent heights, no forced match */}
           <div className="grid items-start gap-6 lg:grid-cols-12 lg:gap-8">
-            <div className="space-y-4 lg:col-span-5">
+            <div className={`space-y-4 ${useLive ? 'lg:col-span-12' : 'lg:col-span-5'}`}>
               <Card>
                 {content.lead && <p className="text-base text-ink">{content.lead}</p>}
                 {content.reassure && (
@@ -169,9 +180,11 @@ function OffersContent({ page, offers, settings }) {
               </Card>
             </div>
 
-            <div className="lg:col-span-7">
-              <OfferShowcase promoCard={promoCard} whatsappUrl={whatsappUrl} />
-            </div>
+            {!useLive && (
+              <div className="lg:col-span-7">
+                <OfferShowcase promoCard={promoCard} whatsappUrl={whatsappUrl} />
+              </div>
+            )}
           </div>
 
           {/* Row 2: features get their own full-width band — no empty card belly */}
@@ -223,5 +236,34 @@ function OffersContent({ page, offers, settings }) {
         </Container>
       </section>
     </>
+  )
+}
+
+function LiveOffers({ offers, whatsapp, whatsappUrl }) {
+  if (!offers.length) {
+    return (
+      <Card className="text-center">
+        <h2 className="font-display text-2xl font-bold text-heading">New offers coming soon</h2>
+        <p className="mx-auto mt-2 max-w-xl text-ink">
+          There are no special offers running right now. Message us for today&apos;s best rates.
+        </p>
+        {whatsappUrl && (
+          <Button href={whatsappUrl} className="mt-5">
+            <MessageCircle className="mr-2 inline" size={18} aria-hidden />
+            Ask on WhatsApp
+          </Button>
+        )}
+      </Card>
+    )
+  }
+  return (
+    <div>
+      <h2 className="font-display text-2xl font-bold text-heading lg:text-3xl">Current offers</h2>
+      <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {offers.map((offer) => (
+          <OfferCard key={offer.id} offer={offer} whatsapp={whatsapp} />
+        ))}
+      </div>
+    </div>
   )
 }

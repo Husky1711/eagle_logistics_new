@@ -10,6 +10,8 @@ import { DynamicIcon } from '../components/common/DynamicIcon'
 import { FadeIn, Stagger, StaggerItem, SlideDown } from '../components/common/Motion'
 import SmartImage from '../components/common/SmartImage'
 import { assetUrl, heroImageUrl } from '../utils/assets'
+import { useLiveOffers } from '../hooks/useLiveOffers'
+import { homeStripOffer } from '../utils/offers'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
 function mediaUrl(path) {
@@ -33,6 +35,10 @@ export default function Home() {
 function HomeContent({ page, reducedMotion }) {
   const content = page?.content || {}
   const hero = content.hero || {}
+  // Promo strip: top live offer from /admin, else the built-in text
+  const live = useLiveOffers()
+  const stripOffer = live.status === 'ready' ? homeStripOffer(live.offers) : null
+  const promoText = live.status === 'ready' ? stripOffer?.homeStripText : hero.promo
   const slides = (content.heroImages || []).map((file, i) => ({
     url: mediaUrl(file),
     alt: `Eagle Logistics hero ${i + 1}`,
@@ -73,9 +79,15 @@ function HomeContent({ page, reducedMotion }) {
             </FadeIn>
           </Container>
         </div>
-        {hero.promo && (
+        {promoText && (
           <SlideDown className="absolute inset-x-0 bottom-0 z-20 bg-[#0b243d]/90 px-4 py-3 text-center text-sm font-medium text-white sm:text-base">
-            {hero.promo}
+            {stripOffer ? (
+              <Link to="/offers" className="text-white hover:underline">
+                {promoText} <span aria-hidden>→</span>
+              </Link>
+            ) : (
+              promoText
+            )}
           </SlideDown>
         )}
       </section>

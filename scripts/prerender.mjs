@@ -60,6 +60,13 @@ const browser = await chromium.launch()
 // so overwriting it mid-run would leak the home page into later snapshots.
 const outputs = []
 
+// /admin isn't pre-rendered (it needs the PHP API); it gets the plain app shell, marked noindex
+const shell = readFileSync(join(dist, 'index.html'), 'utf8')
+outputs.push([
+  join(dist, 'admin.html'),
+  shell.replace('<head>', '<head>\n    <meta name="robots" content="noindex, nofollow" />'),
+])
+
 try {
   // Reduced motion renders plain markup (no animation start states) in the snapshot
   const context = await browser.newContext({ reducedMotion: 'reduce', viewport: { width: 1280, height: 900 } })

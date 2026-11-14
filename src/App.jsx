@@ -1,4 +1,6 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { SettingsProvider } from './context/SettingsContext'
 import PublicLayout from './layouts/PublicLayout'
 import Home from './pages/Home'
 import Services from './pages/Services'
@@ -12,10 +14,23 @@ import Contact from './pages/Contact'
 import { Privacy, Terms } from './pages/Legal'
 import NotFound from './pages/NotFound'
 
+// Admin is its own chunk, so visitors never download it
+const AdminApp = lazy(() => import('./admin/AdminApp'))
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="admin/*"
+          element={
+            <SettingsProvider>
+              <Suspense fallback={null}>
+                <AdminApp />
+              </Suspense>
+            </SettingsProvider>
+          }
+        />
         <Route element={<PublicLayout />}>
           <Route index element={<Home />} />
           <Route path="services" element={<Services />} />

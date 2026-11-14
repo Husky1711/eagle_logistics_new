@@ -1,0 +1,5 @@
+# PHP API - only the public endpoints are reachable
+Options -Indexes
+<FilesMatch "^_">
+  Require all denied
+</FilesMatch>

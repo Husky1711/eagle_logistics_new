@@ -64,3 +64,7 @@ npm run verify
 | `public-site` | Public site only — GoDaddy / static deploy |
 | `project-2` | Admin CMS + FastAPI + public site |
 | `main` | Project 1 freeze (`v1.0.0-p1`) |
+
+## Offers admin (branch `offers-admin`)
+
+PHP-backed `/admin` for managing offers, plus email delivery for the Contact form. See [docs/OFFERS-ADMIN.md](docs/OFFERS-ADMIN.md) for how it works, local setup, and go-live steps (needs SSL first).

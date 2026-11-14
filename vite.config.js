@@ -12,6 +12,11 @@ export default defineConfig({
     port: 5173,
     host: true,
     open: false,
+    // PHP API runs separately in dev: npm run dev:php (needs PHP installed)
+    proxy: {
+      '/api': 'http://127.0.0.1:8080',
+      '/uploads': 'http://127.0.0.1:8080',
+    },
   },
   preview: {
     port: 4173,

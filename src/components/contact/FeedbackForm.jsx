@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import { CheckCircle2, Send } from 'lucide-react'
+import { AlertCircle, CheckCircle2, MessageCircle, Send } from 'lucide-react'
 import Input from '../common/Input'
 import Button from '../common/Button'
 import { buildWhatsAppUrl } from '../../utils/whatsapp'
@@ -11,13 +11,15 @@ const TOPICS = [
   { value: 'other', label: 'Other' },
 ]
 
-const empty = { name: '', email: '', phone: '', topic: 'feedback', message: '' }
+const empty = { name: '', email: '', phone: '', topic: 'feedback', message: '', website: '' }
 
 export default function FeedbackForm({ whatsapp, email, copy = {} }) {
   const formId = useId()
   const [values, setValues] = useState(empty)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
 
   function update(field) {
     return (e) => {
@@ -55,10 +57,36 @@ export default function FeedbackForm({ whatsapp, email, copy = {} }) {
       .join('\n')
   }
 
-  function handleSubmit(e) {
+  /** Sends to public/api/feedback.php, which emails the team. */
+  async function handleSubmit(e) {
     e.preventDefault()
+    setSendError('')
     if (!validate()) return
 
+    setSending(true)
+    try {
+      const res = await fetch('/api/feedback.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...values, name: values.name.trim(), email: values.email.trim() }),
+      })
+      const json = (res.headers.get('content-type') || '').includes('application/json') ? await res.json() : null
+      if (res.ok && json?.ok) {
+        setSent(true)
+        setValues(empty)
+        return
+      }
+      if (json?.fields) setErrors(json.fields)
+      setSendError(json?.error || 'Could not send right now.')
+    } catch {
+      setSendError('Could not send right now.')
+    } finally {
+      setSending(false)
+    }
+  }
+
+  /** Fallback when email sending isn't available: same message via WhatsApp / mail app. */
+  function sendViaApp() {
     const text = buildMessage()
     const wa = buildWhatsAppUrl(whatsapp, text)
     if (wa) {
@@ -86,7 +114,7 @@ export default function FeedbackForm({ whatsapp, email, copy = {} }) {
         </h3>
         <p className="mx-auto mt-2 max-w-md text-sm text-ink">
           {copy.successBody ||
-            'Your message is ready in WhatsApp. Send it to reach our Bangalore team.'}
+            "Your message has reached our Bangalore team. We'll reply to your email soon."}
         </p>
         <Button type="button" className="mt-5" onClick={() => setSent(false)}>
           {copy.sendAnother || 'Send another message'}
@@ -97,6 +125,14 @@ export default function FeedbackForm({ whatsapp, email, copy = {} }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      {/* Honeypot: hidden from people, bots fill it in */}
+      <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label>
+          Website
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" value={values.website} onChange={update('website')} />
+        </label>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <Input
           id={`${formId}-name`}
@@ -171,13 +207,28 @@ export default function FeedbackForm({ whatsapp, email, copy = {} }) {
         {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
       </div>
 
+      {sendError && (
+        <div role="alert" className="flex flex-col gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 sm:flex-row sm:items-center sm:justify-between">
+          <span className="flex items-start gap-2">
+            <AlertCircle size={18} className="mt-0.5 shrink-0" aria-hidden />
+            {sendError}
+          </span>
+          {(whatsapp || email) && (
+            <button type="button" onClick={sendViaApp} className="inline-flex shrink-0 items-center font-semibold text-red-900 underline">
+              <MessageCircle size={16} className="mr-1.5" aria-hidden />
+              Send via WhatsApp instead
+            </button>
+          )}
+        </div>
+      )}
+
       <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-ink-soft">
-          {copy.helper || 'Opens WhatsApp with your message so our team can reply quickly.'}
+          {copy.helper || 'Our team replies by email, usually within one working day.'}
         </p>
-        <Button type="submit" className="w-full sm:w-auto">
+        <Button type="submit" className="w-full sm:w-auto" disabled={sending} aria-busy={sending}>
           <Send className="mr-2 inline" size={16} aria-hidden />
-          {copy.submitLabel || 'Send feedback'}
+          {sending ? 'Sending…' : copy.submitLabel || 'Send feedback'}
         </Button>
       </div>
     </form>

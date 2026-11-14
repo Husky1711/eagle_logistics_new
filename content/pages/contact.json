@@ -27,9 +27,9 @@
     "feedbackMessageLabel": "Message",
     "feedbackMessagePlaceholder": "Tell us how we can help…",
     "feedbackSubmit": "Send feedback",
-    "feedbackHelper": "Opens WhatsApp with your message so our Bangalore team can reply quickly.",
+    "feedbackHelper": "Our Bangalore team replies by email, usually within one working day.",
     "feedbackSuccessTitle": "Thanks for your feedback",
-    "feedbackSuccessBody": "Your message is ready in WhatsApp. Send it to reach our team.",
+    "feedbackSuccessBody": "Your message has reached our Bangalore team. We'll reply to your email soon.",
     "feedbackSendAnother": "Send another message"
   }
 }
