@@ -257,15 +257,18 @@ function zone_for_destination(array $pricing, string $destination): ?array
 /** Published rate from the slab table, or null if the courier has no rate for this weight. */
 function published_rate(array $card, float $weight): ?array
 {
+    // [weight, price] pairs - PHP array keys can't be decimals (0.5 would become 0)
     $slabs = [];
     foreach (($card['slabs'] ?? []) as $w => $price) {
-        $slabs[(float) $w] = (float) $price;
+        $slabs[] = [(float) $w, (float) $price];
     }
     if (!$slabs) {
         return null;
     }
-    ksort($slabs);
-    foreach ($slabs as $w => $price) {
+    usort($slabs, function ($a, $b) {
+        return $a[0] <=> $b[0];
+    });
+    foreach ($slabs as [$w, $price]) {
         if ($weight <= $w + 1e-9) {
             return ['rate' => $price, 'slab' => $w, 'extraKg' => 0];
         }
@@ -274,9 +277,9 @@ function published_rate(array $card, float $weight): ?array
     if ($above === null) {
         return null;
     }
-    $lastW = array_key_last($slabs);
+    [$lastW, $lastPrice] = $slabs[count($slabs) - 1];
     $extraKg = (int) ceil(round($weight - $lastW, 6));
-    return ['rate' => $slabs[$lastW] + $extraKg * (float) $above, 'slab' => $lastW, 'extraKg' => $extraKg];
+    return ['rate' => $lastPrice + $extraKg * (float) $above, 'slab' => $lastW, 'extraKg' => $extraKg];
 }
 
 /** Full breakdown for one courier (admin sees all of it; visitors only get price + transit). */

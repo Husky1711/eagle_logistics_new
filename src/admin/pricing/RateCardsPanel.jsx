@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Percent } from 'lucide-react'
+import { InlineAdd } from '../ui'
 
 /**
  * Courier rate card grid: rows = weight slabs, columns = zones, cells = published ₹ rate.
@@ -32,11 +33,10 @@ export default function RateCardsPanel({ draft, update }) {
     })
   }
 
-  function adjustAll() {
-    const input = window.prompt(`Change every ${courier.name} rate by what %? (e.g. 5 for a 5% increase, -3 for a decrease)`)
-    if (input === null) return
+  /** Returns an error message, or nothing on success. */
+  function adjustAll(input) {
     const pct = Number(input)
-    if (!Number.isFinite(pct) || pct <= -90 || pct > 300) return window.alert('Enter a percentage like 5 or -3')
+    if (input === '' || !Number.isFinite(pct) || pct === 0 || pct <= -90 || pct > 300) return 'Enter a % like 5 (increase) or -3 (decrease)'
     update((d) => {
       for (const zc of Object.values(d.rateCards[courier.id] || {})) {
         for (const w of Object.keys(zc.slabs || {})) zc.slabs[w] = Math.round(zc.slabs[w] * (1 + pct / 100))
@@ -65,13 +65,15 @@ export default function RateCardsPanel({ draft, update }) {
             </button>
           ))}
         </div>
-        <button
-          type="button"
-          onClick={adjustAll}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-primary-300 bg-white px-3 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50"
-        >
-          <Percent size={15} aria-hidden /> Adjust all {courier.name} rates by %
-        </button>
+        <InlineAdd
+          key={courier.id}
+          icon={Percent}
+          label={`Adjust all ${courier.name} rates by %`}
+          placeholder="e.g. 5 or -3"
+          inputType="number"
+          submitLabel="Apply"
+          onAdd={adjustAll}
+        />
       </div>
 
       <div className="max-h-[65vh] overflow-auto rounded-2xl border border-neutral-200 bg-white shadow-soft">

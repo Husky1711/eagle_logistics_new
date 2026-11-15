@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { RotateCcw } from 'lucide-react'
 import { Field, inputCls } from './QuoteTester'
 import { parseNumberList } from './format'
+import { ConfirmButton } from '../ui'
 
 export default function SettingsPanel({ draft, update, onResetDemo }) {
   const s = draft.settings
@@ -66,9 +67,14 @@ export default function SettingsPanel({ draft, update, onResetDemo }) {
         </ol>
       </div>
 
-      <button type="button" onClick={onResetDemo} className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline">
+      <ConfirmButton
+        onConfirm={onResetDemo}
+        question="Replace ALL pricing with demo numbers? (A backup is kept.)"
+        confirmLabel="Reset"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-red-700 hover:underline"
+      >
         <RotateCcw size={15} aria-hidden /> Reset all pricing to demo numbers
-      </button>
+      </ConfirmButton>
     </div>
   )
 }

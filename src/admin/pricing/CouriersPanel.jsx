@@ -1,19 +1,21 @@
-import { Plus, Trash2 } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 import { slugify } from './format'
+import { ConfirmButton, InlineAdd } from '../ui'
 
 const num = (v) => (v === '' ? '' : Number(v))
 
 /** Per-courier margins + transit times. */
 export default function CouriersPanel({ draft, update }) {
-  function addCourier() {
-    const name = window.prompt('Courier name (e.g. Aramex, DTDC, Blue Dart)')
-    if (!name?.trim()) return
+  /** Returns an error message, or nothing on success. */
+  function addCourier(name) {
+    if (!name) return 'Type a courier name'
     const id = slugify(name)
-    if (!id || draft.couriers.some((c) => c.id === id)) return window.alert('That courier already exists.')
+    if (!id) return 'Use letters or numbers in the name'
+    if (draft.couriers.some((c) => c.id === id || c.name.toLowerCase() === name.toLowerCase())) return 'That courier already exists'
     update((d) => {
       d.couriers.push({
         id,
-        name: name.trim(),
+        name,
         active: false,
         discountPercent: 0,
         fuelPercent: 0,
@@ -26,7 +28,6 @@ export default function CouriersPanel({ draft, update }) {
   }
 
   function removeCourier(c) {
-    if (!window.confirm(`Remove ${c.name} and its rate card?`)) return
     update((d) => {
       d.couriers = d.couriers.filter((x) => x.id !== c.id)
       delete d.rateCards[c.id]
@@ -90,18 +91,22 @@ export default function CouriersPanel({ draft, update }) {
                   </td>
                 ))}
                 <td className="px-3 py-3 text-right">
-                  <button type="button" onClick={() => removeCourier(c)} className="rounded-lg p-2 text-red-700 hover:bg-red-50" aria-label={`Remove ${c.name}`}>
+                  <ConfirmButton
+                    onConfirm={() => removeCourier(c)}
+                    question="Remove + rate card?"
+                    confirmLabel="Remove"
+                    label={`Remove ${c.name}`}
+                    className="rounded-lg p-2 text-red-700 hover:bg-red-50"
+                  >
                     <Trash2 size={16} />
-                  </button>
+                  </ConfirmButton>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="border-t border-neutral-100 px-4 py-3">
-          <button type="button" onClick={addCourier} className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:underline">
-            <Plus size={16} /> Add courier
-          </button>
+          <InlineAdd label="Add courier" placeholder="e.g. Aramex, DTDC, Blue Dart" onAdd={addCourier} />
         </div>
       </div>
 

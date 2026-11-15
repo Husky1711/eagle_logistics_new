@@ -78,7 +78,6 @@ export default function PricingManager({ onAuthLost }) {
   }
 
   async function resetDemo() {
-    if (!window.confirm('Replace ALL pricing with the demo numbers? (The current version is kept as a backup.)')) return
     try {
       const res = await api.resetPricing()
       setSaved(res.pricing)

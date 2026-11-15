@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { ArrowDown, ArrowUp, Copy, Home, Pencil, Plus, Trash2 } from 'lucide-react'
 import { api } from './api'
 import OfferEditor from './OfferEditor'
+import { ConfirmButton } from './ui'
 import { offerStatus, validityText } from '../utils/offers'
 
 const STATUS = {
@@ -50,7 +51,6 @@ export default function OffersManager({ onAuthLost }) {
   }
 
   async function remove(offer) {
-    if (!window.confirm(`Delete "${offer.title}"? This can't be undone from here.`)) return
     try {
       const res = await api.deleteOffer(offer.id)
       setData((d) => ({ ...d, offers: res.offers }))
@@ -145,7 +145,14 @@ export default function OffersManager({ onAuthLost }) {
                   <button type="button" onClick={() => setEditing(offer)} className="inline-flex items-center gap-1.5 rounded-lg border border-primary-300 px-3 py-2 text-sm font-semibold text-primary-600 hover:bg-primary-50">
                     <Pencil size={15} aria-hidden /> Edit
                   </button>
-                  <IconButton label="Delete" onClick={() => remove(offer)} icon={Trash2} danger />
+                  <ConfirmButton
+                    onConfirm={() => remove(offer)}
+                    question="Delete offer?"
+                    label="Delete"
+                    className="rounded-lg p-2 text-red-700 hover:bg-red-50"
+                  >
+                    <Trash2 size={18} aria-hidden />
+                  </ConfirmButton>
                 </div>
               </li>
             )
