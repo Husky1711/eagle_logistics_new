@@ -13,9 +13,10 @@ export default defineConfig({
     host: true,
     open: false,
     // PHP API runs separately in dev: npm run dev:php (needs PHP installed)
+    // PHP_DEV_URL lets tests point the site at a separate PHP server
     proxy: {
-      '/api': 'http://127.0.0.1:8080',
-      '/uploads': 'http://127.0.0.1:8080',
+      '/api': process.env.PHP_DEV_URL || 'http://127.0.0.1:8080',
+      '/uploads': process.env.PHP_DEV_URL || 'http://127.0.0.1:8080',
     },
   },
   preview: {

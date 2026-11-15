@@ -26,6 +26,7 @@ if ($method === 'GET') {
 $action = $_GET['action'] ?? '';
 
 if ($action === 'login') {
+    require_secure_connection();
     $config = load_config();
     if (empty($config['admin_password_hash'])) {
         fail('Admin account is not set up yet', 503);
@@ -76,6 +77,7 @@ if ($action === 'logout') {
 }
 
 if ($action === 'password') {
+    require_secure_connection();
     require_admin();
     $config = load_config();
     $body = read_json_body();

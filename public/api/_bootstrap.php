@@ -154,6 +154,23 @@ function is_https(): bool
         || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
 }
 
+/** Requests from this computer itself (local development and testing). */
+function is_local_request(): bool
+{
+    return in_array($_SERVER['REMOTE_ADDR'] ?? '', ['127.0.0.1', '::1'], true);
+}
+
+/**
+ * Passwords must never travel unencrypted: on the live site, signing in,
+ * creating the account and changing the password only work over https.
+ */
+function require_secure_connection(): void
+{
+    if (!is_https() && !is_local_request()) {
+        fail('For your security, admin sign-in only works on https://. Install the SSL certificate first.', 403);
+    }
+}
+
 function start_session(): void
 {
     if (session_status() === PHP_SESSION_ACTIVE) {

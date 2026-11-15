@@ -22,6 +22,7 @@ if ($method === 'GET') {
 if (!$allowed) {
     fail('Setup is locked', 403);
 }
+require_secure_connection();
 
 $body = read_json_body();
 $username = clean_text($body['username'] ?? '', 60);
