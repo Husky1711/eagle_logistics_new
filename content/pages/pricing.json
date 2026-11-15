@@ -1,14 +1,14 @@
 {
   "meta": {
     "title": "Shipping Price Calculator | Eagle Logistics Bangalore",
-    "description": "Compare sample DHL, FedEx and UPS shipping rates by weight and destination. Get Bangalore courier quotes from Eagle Logistics and confirm on WhatsApp.",
+    "description": "Compare DHL, FedEx and UPS courier prices from Bangalore by weight and destination, including box size. Book instantly with Eagle Logistics on WhatsApp.",
     "image": "/assets/brand/logo.png",
     "imageAlt": "Eagle Logistics shipping price calculator"
   },
   "content": {
     "title": "International Courier Price Calculator",
-    "subtitle": "Enter weight and destination to compare sample rates from DHL, FedEx, and UPS",
-    "calculateButton": "Get Rates",
+    "subtitle": "Choose your destination and parcel weight to compare DHL, FedEx and UPS prices instantly",
+    "calculateButton": "Compare prices",
     "notice": "Sample rates from our rate card. Final price depends on zone, partner availability, and parcel type. Confirm on WhatsApp for an exact quote.",
     "offerReminder": "Monsoon Express: mention EAGLE15 on WhatsApp for 15% off domestic shipping (T&C apply).",
     "noMatchTitle": "No rate card match",
